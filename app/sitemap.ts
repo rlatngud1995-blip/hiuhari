@@ -3,16 +3,14 @@ import type { MetadataRoute } from "next";
 
 const SITE = "https://www.hiuhair.com";
 
-/* 기존 헤어 시술 */
 const HAIR_SERVICES = [
   "layered-cut",
   "build-perm",
   "wave-perm",
   "color",
-  "extensions",
+  "wedding-color",
 ];
 
-/* 지역별 검색 페이지 */
 const REGIONS = [
   "cheonan",
   "cheongdang",
@@ -22,7 +20,6 @@ const REGIONS = [
   "dujeong",
 ];
 
-/* 여자머리 관련 검색 키워드 */
 const AREA_SERVICES = [
   "womens-hair",
   "womens-cut",
@@ -30,7 +27,7 @@ const AREA_SERVICES = [
   "build-perm",
   "wave-perm",
   "color",
-  "extensions",
+  "wedding-color",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -58,24 +55,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const hairPages: MetadataRoute.Sitemap =
-    HAIR_SERVICES.map((service) => ({
+    HAIR_SERVICES.map(service => ({
       url: `${SITE}/hair/${service}`,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     }));
 
   const areaPages: MetadataRoute.Sitemap =
-    REGIONS.flatMap((region) =>
-      AREA_SERVICES.map((service) => ({
+    REGIONS.flatMap(region =>
+      AREA_SERVICES.map(service => ({
         url: `${SITE}/area/${region}/${service}`,
         changeFrequency: "monthly" as const,
         priority: 0.6,
       }))
     );
 
-  return [
-    ...mainPages,
-    ...hairPages,
-    ...areaPages,
-  ];
+  return [...mainPages, ...hairPages, ...areaPages];
 }
