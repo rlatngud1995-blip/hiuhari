@@ -1,0 +1,293 @@
+
+.reserve-page {
+  min-height: 100vh;
+  background: #f9f8f5;
+  color: #202630;
+}
+
+.reserve-header {
+  background: white;
+  border-bottom: 1px solid #ebe7e1;
+}
+
+.reserve-header-inner {
+  max-width: 1120px;
+  margin: auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reserve-brand {
+  font-family: Georgia, serif;
+  font-size: 25px;
+  color: #173b72;
+  font-weight: 600;
+  letter-spacing: 3px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.reserve-brand small {
+  font-size: 9px;
+  margin-top: 5px;
+  letter-spacing: 3px;
+}
+
+.reserve-home {
+  font-size: 12px;
+  color: #565e6a;
+}
+
+.reserve-title {
+  text-align: center;
+  padding: 75px 20px 55px;
+}
+
+.reserve-title p,
+.reserve-step {
+  color: #244779;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.reserve-title h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(47px,6vw,70px);
+  margin: 15px 0;
+  color: #1a3155;
+}
+
+.reserve-title span {
+  color: #717780;
+  font-size: 13px;
+}
+
+.reserve-layout {
+  max-width: 1120px;
+  padding: 0 24px 100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.4fr .85fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.reserve-form {
+  background: white;
+  border: 1px solid #ebe7e1;
+  padding: 48px;
+}
+
+.reserve-form h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 12px 0 28px;
+}
+
+.reserve-form label:not(.reserve-consent) {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 22px 0 10px;
+}
+
+.reserve-form input:not([type="checkbox"]),
+.reserve-form select,
+.reserve-form textarea {
+  font: inherit;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #dededb;
+  background: #fff;
+  color: #202630;
+  border-radius: 2px;
+  font-size: 14px;
+  min-width: 0;
+}
+
+.reserve-form input:focus,
+.reserve-form select:focus,
+.reserve-form textarea:focus {
+  outline: 1px solid #244779;
+  border-color: #244779;
+}
+
+.reserve-form textarea {
+  resize: vertical;
+}
+
+.reserve-line {
+  border-top: 1px solid #e9e7e2;
+  margin: 38px 0;
+}
+
+.reserve-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.reserve-hint {
+  font-size: 11px;
+  line-height: 1.9;
+  color: #7b8087;
+}
+
+.reserve-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 26px;
+  font-size: 11px;
+  line-height: 1.9;
+  color: #666b72;
+}
+
+.reserve-consent input {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  accent-color: #173b72;
+  margin-top: 3px;
+}
+
+.reserve-submit {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  background: #173b72;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 20px;
+  margin-top: 28px;
+}
+
+.reserve-bottom-note {
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.9;
+  color: #797d84;
+  margin: 16px 0 0;
+}
+
+.reserve-aside-card {
+  background: #173b72;
+  color: white;
+  padding: 44px 35px;
+}
+
+.reserve-aside-card > span {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #cdd8e8;
+}
+
+.reserve-aside-card h2 {
+  font-family: Georgia, serif;
+  font-size: 51px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  line-height: 1.15;
+  margin: 24px 0;
+}
+
+.reserve-aside-card p {
+  color: #dae1eb;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.reserve-aside-card h3 {
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 32px;
+}
+
+.reserve-aside-divider {
+  border-top: 1px solid #6680a4;
+  margin: 32px 0;
+}
+
+.reserve-aside-card a {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  margin-top: 12px;
+  border: 1px solid #b8c5da;
+  font-size: 12px;
+  color: white;
+}
+
+.reserve-footer {
+  text-align: center;
+  padding: 35px 15px 105px;
+  background: #1c2431;
+  color: #bbc3d0;
+  font-size: 10px;
+  line-height: 2;
+  letter-spacing: 2px;
+}
+
+.reserve-mobile-actions {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .reserve-title {
+    padding: 50px 20px 40px;
+  }
+
+  .reserve-layout {
+    grid-template-columns: 1fr;
+    padding: 0 15px 60px;
+  }
+
+  .reserve-form {
+    padding: 27px 20px;
+  }
+
+  .reserve-aside-card {
+    padding: 33px 25px;
+  }
+
+  .reserve-mobile-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.4fr;
+    gap: 8px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: white;
+    border-top: 1px solid #e5e4e0;
+  }
+
+  .reserve-mobile-actions a {
+    background: #f0eee9;
+    text-align: center;
+    padding: 13px 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #173b72;
+  }
+
+  .reserve-mobile-actions a:last-child {
+    background: #173b72;
+    color: white;
+  }
+}
+
+@media (max-width: 400px) {
+  .reserve-two {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
