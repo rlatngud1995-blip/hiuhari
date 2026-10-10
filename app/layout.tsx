@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 /* =====================================
-   하이유헤어 청당점 기본 설정
+   하이유헤어 청당점 기본 정보
 ===================================== */
 
 const SITE_URL = "https://hiuhair.com";
@@ -14,11 +14,17 @@ const TITLE =
   "하이유헤어 청당점 이해린 디자이너 | 천안 청당동 미용실";
 
 const DESCRIPTION =
-  "천안 청당동 하이유헤어 청당점 이해린 디자이너 공식 개인 홈페이지. 여성 레이어드컷, 빌드펌, 물결펌, C컬, 매트브라운, 베이지브라운, 블루염색, 붙임머리 등 헤어스타일 포트폴리오와 네이버 예약 안내.";
+  "천안 청당동 하이유헤어 청당점 이해린 디자이너 홈페이지. 여성 레이어드컷, 빌드펌, 물결펌, C컬, 매트브라운, 베이지브라운, 루비레드, 블루염색, 붙임머리 등 헤어스타일 포트폴리오와 네이버 예약 안내.";
 
 /* =====================================
-   파비콘 이미지
-   public 폴더 실제 파일명
+   네이버 서치어드바이저 소유확인
+===================================== */
+
+const NAVER_VERIFICATION =
+  "b4fb8e0dce6fb86a3562fba77533b0d934f30d4b";
+
+/* =====================================
+   파비콘 및 대표 이미지
 ===================================== */
 
 const FAVICON =
@@ -27,14 +33,7 @@ const FAVICON =
 const PROFILE_IMAGE = "/IMG_1443.jpeg";
 
 /* =====================================
-   네이버 서치어드바이저
-===================================== */
-
-const NAVER_TOKEN =
-  process.env.NAVER_SITE_VERIFICATION?.trim();
-
-/* =====================================
-   홈페이지 SEO 메타데이터
+   SEO 메타데이터
 ===================================== */
 
 export const metadata: Metadata = {
@@ -76,29 +75,20 @@ export const metadata: Metadata = {
     follow: true,
   },
 
-  verification: NAVER_TOKEN
-    ? {
-        other: {
-          "naver-site-verification": NAVER_TOKEN,
-        },
-      }
-    : undefined,
-
-  /* =====================================
-     파비콘 / 모바일 아이콘
-  ===================================== */
+  verification: {
+    other: {
+      "naver-site-verification": NAVER_VERIFICATION,
+    },
+  },
 
   icons: {
     icon: [
       {
         url: FAVICON,
         type: "image/png",
-        sizes: "any",
       },
     ],
-
     shortcut: FAVICON,
-
     apple: [
       {
         url: FAVICON,
@@ -106,10 +96,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
-  /* =====================================
-     SNS 공유 정보
-  ===================================== */
 
   openGraph: {
     type: "website",
@@ -121,8 +107,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: PROFILE_IMAGE,
-        width: 1200,
-        height: 1500,
         alt: "하이유헤어 청당점 이해린 디자이너",
       },
     ],
@@ -139,7 +123,7 @@ export const metadata: Metadata = {
 };
 
 /* =====================================
-   공통 레이아웃
+   전체 홈페이지 레이아웃
 ===================================== */
 
 export default function RootLayout({
