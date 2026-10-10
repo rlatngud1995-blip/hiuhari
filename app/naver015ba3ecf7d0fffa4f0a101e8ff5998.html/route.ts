@@ -10,7 +10,6 @@ export function GET() {
       status: 200,
       headers: {
         "Content-Type": "text/html; charset=utf-8",
-        "Cache-Control": "public, max-age=300",
       },
     }
   );
