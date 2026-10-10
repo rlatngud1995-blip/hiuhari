@@ -18,10 +18,11 @@ const DESCRIPTION =
 
 /* =====================================
    네이버 서치어드바이저 소유확인
+   새 인증코드
 ===================================== */
 
 const NAVER_VERIFICATION =
-  "b4fb8e0dce6fb86a3562fba77533b0d934f30d4b";
+  "d0255edb43432ea0834785c7719c3f0f8e53aeda";
 
 /* =====================================
    파비콘 및 대표 이미지
@@ -88,7 +89,9 @@ export const metadata: Metadata = {
         type: "image/png",
       },
     ],
+
     shortcut: FAVICON,
+
     apple: [
       {
         url: FAVICON,
