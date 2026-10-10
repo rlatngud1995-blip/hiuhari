@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 /* =====================================
-   하이유헤어 기본 정보
+   하이유헤어 청당점 기본 정보
 ===================================== */
 
 const PHONE = "01023277653";
@@ -27,7 +27,6 @@ const MAP =
 
 /* =====================================
    포트폴리오 8개
-   개별 시술 페이지 연결
 ===================================== */
 
 const portfolio = [
@@ -176,7 +175,8 @@ const awards = [
 ];
 
 /* =====================================
-   고객 평가 및 스타일 소개
+   네이버 고객 평가
+   2026년 10월 10일 확인 기준
 ===================================== */
 
 const feedback = [
@@ -272,6 +272,10 @@ function InstagramIcon() {
     </svg>
   );
 }
+
+/* =====================================
+   메인 홈페이지
+===================================== */
 
 export default function HomePage() {
   return (
@@ -381,7 +385,7 @@ export default function HomePage() {
           display: flex;
           flex-direction: column;
           color: var(--blue);
-          font-family: Georgia,serif;
+          font-family: Georgia, serif;
           font-size: 26px;
           letter-spacing: 2px;
           line-height: 1;
@@ -389,7 +393,7 @@ export default function HomePage() {
         }
 
         .ha-brand small {
-          font-family: Arial,sans-serif;
+          font-family: Arial, sans-serif;
           font-size: 9px;
           letter-spacing: 3px;
           margin-top: 9px;
@@ -422,9 +426,9 @@ export default function HomePage() {
         }
 
         .ha-hero-brand {
-          font-family: Georgia,serif;
+          font-family: Georgia, serif;
           font-weight: 400;
-          font-size: clamp(39px,9vw,105px);
+          font-size: clamp(39px, 9vw, 105px);
           letter-spacing: -2px;
           white-space: nowrap;
           color: var(--blue);
@@ -453,7 +457,7 @@ export default function HomePage() {
         }
 
         .ha-hero h2 {
-          font-size: clamp(28px,5vw,45px);
+          font-size: clamp(28px, 5vw, 45px);
           font-weight: 400;
           letter-spacing: -1.5px;
           line-height: 1.5;
@@ -518,8 +522,8 @@ export default function HomePage() {
         }
 
         .ha-heading h2 {
-          font-family: Georgia,"Noto Sans KR",serif;
-          font-size: clamp(32px,5vw,48px);
+          font-family: Georgia, "Noto Sans KR", serif;
+          font-size: clamp(32px, 5vw, 48px);
           font-weight: 400;
           margin: 12px 0 17px;
           letter-spacing: -1px;
@@ -538,7 +542,7 @@ export default function HomePage() {
 
         .ha-gallery {
           display: grid;
-          grid-template-columns: repeat(4,minmax(0,1fr));
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 31px 16px;
         }
 
@@ -573,7 +577,7 @@ export default function HomePage() {
           place-items: center;
           background: rgba(255,255,255,.95);
           color: var(--blue);
-          font-family: Georgia,serif;
+          font-family: Georgia, serif;
           font-size: 14px;
         }
 
@@ -655,7 +659,7 @@ export default function HomePage() {
         }
 
         .ha-about h2 {
-          font-size: clamp(31px,4vw,44px);
+          font-size: clamp(31px, 4vw, 44px);
           font-weight: 500;
           line-height: 1.45;
           letter-spacing: -1px;
@@ -727,7 +731,7 @@ export default function HomePage() {
 
         .ha-services {
           display: grid;
-          grid-template-columns: repeat(4,minmax(0,1fr));
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 14px;
         }
 
@@ -743,7 +747,7 @@ export default function HomePage() {
 
         .ha-service-number {
           color: var(--blue);
-          font: 24px Georgia,serif;
+          font: 24px Georgia, serif;
         }
 
         .ha-service h3 {
@@ -810,7 +814,7 @@ export default function HomePage() {
 
         .ha-review-summary strong {
           display: block;
-          font: 400 42px Georgia,serif;
+          font: 400 42px Georgia, serif;
           color: var(--blue);
         }
 
@@ -878,7 +882,7 @@ export default function HomePage() {
 
         .ha-review-card strong {
           color: var(--blue);
-          font: 500 23px Georgia,serif;
+          font: 500 23px Georgia, serif;
         }
 
         .ha-review-card p {
@@ -888,8 +892,12 @@ export default function HomePage() {
         }
 
         @keyframes ha-marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
         }
 
         .ha-review-note {
@@ -913,7 +921,7 @@ export default function HomePage() {
         }
 
         .ha-booking h2 {
-          font-size: clamp(29px,5vw,44px);
+          font-size: clamp(29px, 5vw, 44px);
           font-weight: 400;
           line-height: 1.5;
           margin: 17px 0;
@@ -977,7 +985,7 @@ export default function HomePage() {
 
         .ha-location-map h3 {
           color: var(--blue);
-          font: 400 35px Georgia,serif;
+          font: 400 35px Georgia, serif;
           letter-spacing: 2px;
         }
 
@@ -985,6 +993,34 @@ export default function HomePage() {
           font-size: 12px;
           color: #707681;
           line-height: 2;
+        }
+
+        /* =================================
+           신규 지역별 안내 링크
+           푸터 바로 위에 작은 링크만 표시
+        ================================= */
+
+        .ha-area-link-section {
+          background: var(--cream);
+          border-top: 1px solid var(--line);
+          padding: 20px 15px;
+          text-align: center;
+        }
+
+        .ha-area-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 9px;
+          color: var(--blue);
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1.8;
+        }
+
+        .ha-area-link:hover {
+          text-decoration: underline;
+          text-underline-offset: 4px;
         }
 
         /* =================================
@@ -1021,14 +1057,14 @@ export default function HomePage() {
            RESPONSIVE
         ================================= */
 
-        @media(max-width:950px) {
+        @media (max-width: 950px) {
           .ha-nav {
             display: none;
           }
 
           .ha-gallery {
             grid-template-columns:
-              repeat(2,minmax(0,1fr));
+              repeat(2, minmax(0, 1fr));
           }
 
           .ha-about-grid {
@@ -1044,11 +1080,11 @@ export default function HomePage() {
 
           .ha-services {
             grid-template-columns:
-              repeat(2,minmax(0,1fr));
+              repeat(2, minmax(0, 1fr));
           }
         }
 
-        @media(max-width:600px) {
+        @media (max-width: 600px) {
           .ha-header-inner {
             min-height: 66px;
           }
@@ -1062,7 +1098,7 @@ export default function HomePage() {
           }
 
           .ha-hero-brand {
-            font-size: clamp(36px,10vw,58px);
+            font-size: clamp(36px, 10vw, 58px);
           }
 
           .ha-hero h2 {
@@ -1172,7 +1208,7 @@ export default function HomePage() {
           }
         }
 
-        @media(prefers-reduced-motion:reduce) {
+        @media (prefers-reduced-motion: reduce) {
           .ha-marquee-track {
             animation: none;
           }
@@ -1472,7 +1508,7 @@ export default function HomePage() {
         </section>
 
         {/* =====================================
-            SERVICES - 개별 페이지 연결
+            SERVICES
         ===================================== */}
 
         <section
@@ -1788,6 +1824,23 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+
+      {/* =====================================
+          신규 추가: 지역별 페이지 연결
+
+          /area 안에서 42개 지역별 페이지로 이동
+          큰 버튼 없이 작은 텍스트 링크만 표시
+      ===================================== */}
+
+      <div className="ha-area-link-section">
+        <Link
+          href="/area"
+          className="ha-area-link"
+        >
+          천안 여자머리 · 지역별 시술 안내
+          <span aria-hidden="true">→</span>
+        </Link>
+      </div>
 
       {/* =====================================
           FOOTER
