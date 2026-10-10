@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -7,234 +8,189 @@ const PHONE_VIEW = "010-2327-7653";
 const ADDRESS =
   "충남 천안시 동남구 청수4로 16, 2층 201호";
 
-const NAVER_BOOKING =
+const BOOKING =
   "https://m.booking.naver.com/booking/13/bizes/728358/items/7484787?area=pll&lang=ko&theme=place";
 
-const NAVER_REVIEWS =
+const REVIEWS =
   "https://m.booking.naver.com/booking/13/bizes/728358/items/7484787?area=pll&lang=ko&tab=review&theme=place";
 
-const NAVER_MAP =
+const MAP =
   "https://map.naver.com/p/search/" +
   encodeURIComponent("하이유헤어 청당점");
 
-/* =====================================
-   여성 헤어 시술 카테고리
-===================================== */
-
-const services = [
-  {
-    number: "01",
-    english: "WOMEN'S CUT",
-    name: "여성 커트",
-    desc: "얼굴형과 모발의 흐름을 고려한 커트 디자인",
-  },
-  {
-    number: "02",
-    english: "LAYERED STYLE",
-    name: "레이어드컷",
-    desc: "하이레이어드컷과 자연스러운 C컬",
-  },
-  {
-    number: "03",
-    english: "PERM DESIGN",
-    name: "여성 펌",
-    desc: "빌드펌, 물결펌, 레이어드 빌드펌",
-  },
-  {
-    number: "04",
-    english: "HAIR COLOR",
-    name: "여성 염색",
-    desc: "브라운, 루비레드, 블루, 베이비핑크",
-  },
-  {
-    number: "05",
-    english: "HAIR EXTENSION",
-    name: "붙임머리",
-    desc: "원하는 길이와 분위기를 고려한 디자인 상담",
-  },
-];
-
-/* =====================================
+/* ==================================
    포트폴리오 8개
-===================================== */
+   public 폴더 파일명 그대로 사용
+================================== */
 
 const portfolio = [
   {
-    id: "build-perm",
-    english: "BUILD PERM",
     title: "빌드펌 / 매트브라운",
-    desc: "풍성한 볼륨과 차분한 매트브라운 컬러",
-    image: "/IMG_1424.jpeg",
+    en: "BUILD PERM · MATTE BROWN",
+    desc: "차분한 컬러에 자연스러운 볼륨을 더한 디자인",
+    img: "/IMG_1424.jpeg",
   },
   {
-    id: "high-layered",
-    english: "HIGH LAYERED CUT",
     title: "하이레이어드컷 / C컬",
-    desc: "자연스러운 레이어와 부드러운 C컬",
-    image: "/IMG_1427.jpeg",
+    en: "HIGH LAYERED · C CURL",
+    desc: "가볍게 흐르는 레이어와 우아한 C컬",
+    img: "/IMG_1427.jpeg",
   },
   {
-    id: "wave-perm",
-    english: "WAVE PERM",
     title: "물결펌 / 밀크브라운",
-    desc: "부드러운 물결 웨이브와 밀크브라운",
-    image: "/IMG_1423.jpeg",
+    en: "WAVE PERM · MILK BROWN",
+    desc: "부드러운 웨이브와 따뜻한 브라운 컬러",
+    img: "/IMG_1423.jpeg",
   },
   {
-    id: "beige-brown",
-    english: "BEIGE BROWN",
     title: "베이지브라운",
-    desc: "은은하고 세련된 베이지브라운 컬러",
-    image: "/IMG_1425.jpeg",
+    en: "BEIGE BROWN",
+    desc: "은은한 색감으로 완성하는 세련된 무드",
+    img: "/IMG_1425.jpeg",
   },
   {
-    id: "ruby-red",
-    english: "RUBY RED",
     title: "루비레드컬러",
-    desc: "선명하고 깊이감 있는 루비레드 컬러",
-    image: "/IMG_1433.jpeg",
+    en: "RUBY RED",
+    desc: "깊이감 있는 레드로 표현하는 특별한 분위기",
+    img: "/IMG_1433.jpeg",
   },
   {
-    id: "layered-build",
-    english: "LAYERED BUILD PERM",
     title: "레이어드 빌드펌",
-    desc: "레이어드 커트에 볼륨과 컬을 더한 스타일",
-    image: "/IMG_1444.jpeg",
+    en: "LAYERED BUILD PERM",
+    desc: "레이어드 실루엣에 자연스러운 컬과 볼륨",
+    img: "/IMG_1444.jpeg",
   },
   {
-    id: "blue-color",
-    english: "BLUE HAIR COLOR",
     title: "블루염색",
-    desc: "선명한 블루 컬러로 완성하는 개성 있는 헤어",
-    image: "/IMG_1445.jpeg",
+    en: "BLUE COLOR",
+    desc: "감각적인 블루 컬러의 선명한 존재감",
+    img: "/IMG_1445.jpeg",
   },
   {
-    id: "baby-pink",
-    english: "BABY PINK & EXTENSION",
     title: "베이비핑크염색 / 붙임머리",
-    desc: "사랑스러운 베이비핑크 컬러와 롱헤어 디자인",
-    image: "/IMG_1446.jpeg",
+    en: "BABY PINK · EXTENSION",
+    desc: "화사한 핑크 컬러와 부드러운 롱헤어",
+    img: "/IMG_1446.jpeg",
   },
 ];
 
-/* =====================================
-   네이버 예약 고객 평가 카드
-===================================== */
+/* ==================================
+   시술 메뉴
+================================== */
 
-const reviewCards = [
+const services = [
   {
-    id: "review-1",
-    category: "CUSTOMER FEEDBACK",
-    title: "원하는 스타일로 잘해줘요",
-    count: "259명",
-    desc: "네이버 예약 고객 선택 항목",
+    num: "01",
+    en: "CUT & LAYER",
+    title: "여성 커트",
+    desc: "얼굴형과 모발 흐름을 고려한 스타일 디자인",
   },
   {
-    id: "review-2",
-    category: "CUSTOMER FEEDBACK",
-    title: "친절해요",
-    count: "218명",
-    desc: "네이버 예약 고객 선택 항목",
+    num: "02",
+    en: "PERM & WAVE",
+    title: "여성 펌",
+    desc: "빌드펌 · 물결펌 · 레이어드펌",
   },
   {
-    id: "review-3",
-    category: "CUSTOMER FEEDBACK",
-    title: "시술이 꼼꼼해요",
-    count: "168명",
-    desc: "네이버 예약 고객 선택 항목",
+    num: "03",
+    en: "COLOR DESIGN",
+    title: "여성 염색",
+    desc: "브라운 · 루비레드 · 블루 · 베이비핑크",
   },
   {
-    id: "review-4",
-    category: "CUSTOMER FEEDBACK",
-    title: "스타일 추천을 잘해줘요",
-    count: "146명",
-    desc: "네이버 예약 고객 선택 항목",
-  },
-  {
-    id: "review-5",
-    category: "CUSTOMER FEEDBACK",
-    title: "트렌디해요",
-    count: "73명",
-    desc: "네이버 예약 고객 선택 항목",
-  },
-  {
-    id: "style-1",
-    category: "HAIR STYLE",
-    title: "레이어드컷",
-    count: "LAYERED",
-    desc: "여성 레이어드 스타일",
-  },
-  {
-    id: "style-2",
-    category: "HAIR STYLE",
-    title: "빌드펌",
-    count: "BUILD PERM",
-    desc: "볼륨과 자연스러운 컬 디자인",
-  },
-  {
-    id: "style-3",
-    category: "HAIR STYLE",
-    title: "브라운 컬러",
-    count: "BROWN",
-    desc: "매트브라운과 밀크브라운",
-  },
-  {
-    id: "style-4",
-    category: "HAIR STYLE",
-    title: "블루염색",
-    count: "BLUE",
-    desc: "개성 있는 블루 컬러 디자인",
-  },
-  {
-    id: "style-5",
-    category: "HAIR STYLE",
-    title: "베이비핑크",
-    count: "PINK",
-    desc: "베이비핑크 컬러와 붙임머리",
+    num: "04",
+    en: "HAIR EXTENSION",
+    title: "붙임머리",
+    desc: "원하는 길이와 분위기에 맞춘 헤어 상담",
   },
 ];
 
-/* =====================================
-   경력 / 자격 / 수상
-===================================== */
+/* ==================================
+   경력 정보
+================================== */
 
-const careers = [
+const highlights = [
   "유원대학교 뷰티케어학과 졸업",
   "미용 종합면허증",
-  "헤어 국가자격증",
-  "메이크업 국가자격증",
+  "헤어 · 메이크업 국가자격증",
+  "퍼스널컬러 컨설턴트 자격증",
+];
+
+const certifications = [
   "Makeup 3급 자격증",
   "Makeup 2급 자격증",
   "방송분장사 3급 자격증",
   "Trichologist 자격증",
   "Personal Color Consultant 자격증",
+  "HISTEMO HEAD SPA 수료",
+];
+
+const awards = [
   "전국미용경연대회 Permanent 은상",
   "전국미용경연대회 Haircolor 동상",
   "전국미용경진대회 Hair design perm 우수상",
   "맛과멋창의력경진대회 Permanent 은상",
-  "HISTEMO HEAD SPA 수료",
 ];
 
-/* =====================================
-   네이버 예약 버튼
-===================================== */
+/* ==================================
+   네이버 고객 평가
+   기존 확인된 스냅샷 수치
+================================== */
 
-function NaverBookingButton({
+const feedback = [
+  {
+    title: "원하는 스타일로 잘해줘요",
+    value: "259명",
+    desc: "네이버 고객 선택 평가",
+  },
+  {
+    title: "친절해요",
+    value: "218명",
+    desc: "네이버 고객 선택 평가",
+  },
+  {
+    title: "시술이 꼼꼼해요",
+    value: "168명",
+    desc: "네이버 고객 선택 평가",
+  },
+  {
+    title: "스타일 추천을 잘해줘요",
+    value: "146명",
+    desc: "네이버 고객 선택 평가",
+  },
+  {
+    title: "트렌디해요",
+    value: "73명",
+    desc: "네이버 고객 선택 평가",
+  },
+];
+
+const styles = [
+  "레이어드컷",
+  "빌드펌",
+  "브라운 컬러",
+  "블루염색",
+  "베이비핑크",
+];
+
+/* ==================================
+   버튼
+================================== */
+
+function BookingButton({
   children,
-  outline = false,
+  light = false,
 }: {
   children: React.ReactNode;
-  outline?: boolean;
+  light?: boolean;
 }) {
   return (
     <a
-      href={NAVER_BOOKING}
+      href={BOOKING}
       target="_blank"
       rel="noopener noreferrer"
       className={
-        outline
-          ? "hiu-button hiu-button-outline"
-          : "hiu-button hiu-button-primary"
+        light ? "ha-btn ha-btn-light" : "ha-btn ha-btn-blue"
       }
     >
       {children}
@@ -242,1262 +198,1422 @@ function NaverBookingButton({
   );
 }
 
-/* =====================================
-   홈페이지
-===================================== */
-
 export default function HomePage() {
   return (
-    <>
+    <div className="ha-page">
       <style>{`
-        .hiu-page {
-          --hiu-blue: #173b72;
-          --hiu-ink: #242730;
-          --hiu-muted: #777b83;
-          --hiu-cream: #f5f2ed;
-          overflow-x: hidden;
+        .ha-page {
+          --blue: #193b71;
+          --ink: #25272b;
+          --soft: #777983;
+          --cream: #f6f4f0;
+          --line: #e8e4de;
+          background: #fff;
+          color: var(--ink);
+          overflow-x: clip;
         }
 
-        .hiu-page * {
+        .ha-page * {
           box-sizing: border-box;
         }
 
-        .hiu-container {
-          width: min(1150px, calc(100% - 40px));
+        .ha-wrap {
+          width: min(1120px, calc(100% - 40px));
           margin: 0 auto;
         }
 
-        .hiu-header {
+        .ha-page a {
+          text-decoration: none;
+        }
+
+        .ha-eyebrow {
+          color: var(--blue);
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 2.5px;
+          line-height: 1.8;
+        }
+
+        .ha-btn {
+          min-height: 50px;
+          padding: 15px 24px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid var(--blue);
+          border-radius: 3px;
+          font-size: 12px;
+          font-weight: 600;
+          transition: .25s ease;
+          text-align: center;
+        }
+
+        .ha-btn:hover {
+          transform: translateY(-2px);
+        }
+
+        .ha-btn-blue {
+          background: var(--blue);
+          color: white;
+        }
+
+        .ha-btn-light {
+          background: white;
+          color: var(--blue);
+          border-color: white;
+        }
+
+        .ha-btn-outline {
+          color: var(--blue);
+          background: transparent;
+        }
+
+        .ha-actions {
+          display: flex;
+          gap: 11px;
+          flex-wrap: wrap;
+          align-items: center;
+          margin-top: 28px;
+        }
+
+        .ha-actions-center {
+          justify-content: center;
+        }
+
+        /* Header */
+
+        .ha-header {
           position: sticky;
           top: 0;
           z-index: 50;
           background: rgba(255,255,255,.97);
-          border-bottom: 1px solid #ece8e2;
+          border-bottom: 1px solid var(--line);
+          backdrop-filter: blur(12px);
         }
 
-        .hiu-header-inner {
-          min-height: 77px;
+        .ha-header-inner {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 20px;
+          min-height: 76px;
+          gap: 25px;
         }
 
-        .hiu-brand {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
+        .ha-brand {
+          color: var(--blue);
           font-family: Georgia, serif;
           font-size: 27px;
           letter-spacing: 2px;
-          line-height: 1.1;
-          color: var(--hiu-blue);
+          line-height: 1;
+          display: flex;
+          flex-direction: column;
           white-space: nowrap;
         }
 
-        .hiu-brand span {
+        .ha-brand small {
+          margin-top: 9px;
           font-family: Arial, sans-serif;
           font-size: 9px;
-          letter-spacing: 3px;
-          margin-top: 8px;
+          letter-spacing: 4px;
         }
 
-        .hiu-nav {
+        .ha-nav {
           display: flex;
           align-items: center;
-          gap: 23px;
-          font-size: 12px;
-          font-weight: 600;
-        }
-
-        .hiu-button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          min-height: 49px;
-          padding: 14px 21px;
-          font-size: 12px;
-          font-weight: 600;
-          border: 1px solid var(--hiu-blue);
-          border-radius: 3px;
-          transition: .2s;
-          cursor: pointer;
-        }
-
-        .hiu-button-primary {
-          background: var(--hiu-blue);
-          color: #fff;
-        }
-
-        .hiu-button-outline {
-          background: transparent;
-          color: var(--hiu-blue);
-        }
-
-        .hiu-button:hover {
-          transform: translateY(-2px);
-        }
-
-        .hiu-hero {
-          background: #fff;
-          text-align: center;
-          padding: 85px 20px 85px;
-        }
-
-        .hiu-eyebrow {
-          display: block;
-          color: var(--hiu-blue);
+          gap: 25px;
           font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 2px;
-          line-height: 1.6;
+          font-weight: 600;
+          letter-spacing: .4px;
         }
 
-        .hiu-hero h1 {
+        .ha-nav a:hover {
+          color: var(--blue);
+        }
+
+        .ha-nav .ha-btn {
+          color: white;
+        }
+
+        /* Hero */
+
+        .ha-hero {
+          position: relative;
+          overflow: hidden;
+          text-align: center;
+          background:
+            radial-gradient(
+              ellipse at 50% 0%,
+              #fff 0%,
+              #f6f4f0 82%
+            );
+          padding: 100px 20px 96px;
+        }
+
+        .ha-hero:before {
+          content: "";
+          position: absolute;
+          top: 24px;
+          left: 50%;
+          height: 410px;
+          width: 410px;
+          transform: translateX(-50%);
+          border: 1px solid rgba(25,59,113,.08);
+          border-radius: 50%;
+          pointer-events: none;
+        }
+
+        .ha-hero-inner {
+          position: relative;
+          z-index: 1;
+        }
+
+        .ha-hero-brand {
           font-family: Georgia, serif;
-          font-size: clamp(42px, 9vw, 108px);
-          color: var(--hiu-blue);
+          font-size: clamp(45px, 9vw, 105px);
           font-weight: 400;
           letter-spacing: -2px;
+          line-height: 1.2;
           white-space: nowrap;
-          line-height: 1.15;
-          margin: 34px 0 20px;
+          color: var(--blue);
+          margin: 27px 0 12px;
         }
 
-        .hiu-hero-line {
+        .ha-hero-sub {
           display: flex;
           align-items: center;
-          justify-content: center;
           gap: 15px;
-          max-width: 350px;
-          margin: auto;
-          color: var(--hiu-blue);
-          letter-spacing: 3px;
-          font-size: 11px;
+          max-width: 320px;
+          margin: 0 auto 60px;
+          font-size: 10px;
+          color: var(--blue);
+          letter-spacing: 4px;
         }
 
-        .hiu-hero-line::before,
-        .hiu-hero-line::after {
+        .ha-hero-sub:before,
+        .ha-hero-sub:after {
           content: "";
           flex: 1;
           height: 1px;
-          background: var(--hiu-blue);
+          background: #b3becf;
         }
 
-        .hiu-hero h2 {
-          font-size: clamp(26px, 5vw, 38px);
-          font-weight: 500;
-          margin: 50px 0 15px;
-        }
-
-        .hiu-desc {
-          color: var(--hiu-muted);
-          font-size: 13px;
-          line-height: 2.1;
+        .ha-hero h2 {
+          font-size: clamp(28px, 5vw, 46px);
+          letter-spacing: -1.8px;
+          font-weight: 400;
+          line-height: 1.5;
+          margin: 0 0 17px;
           word-break: keep-all;
         }
 
-        .hiu-actions {
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-          gap: 10px;
-          margin-top: 29px;
+        .ha-hero h2 strong {
+          font-weight: 600;
+          color: var(--blue);
         }
 
-        .hiu-strip {
-          background: var(--hiu-blue);
-          color: #fff;
-          padding: 24px 16px;
+        .ha-hero-desc {
+          font-size: 13px;
+          line-height: 2.1;
+          color: var(--soft);
+          word-break: keep-all;
+        }
+
+        .ha-hero-scroll {
+          display: block;
+          color: var(--blue);
+          font-size: 10px;
+          letter-spacing: 2px;
+          margin-top: 55px;
+        }
+
+        .ha-strip {
+          padding: 21px 15px;
+          color: white;
+          background: var(--blue);
+          font-size: 10px;
+          letter-spacing: 4px;
           text-align: center;
-          font-size: 11px;
-          letter-spacing: 3px;
         }
 
-        .hiu-section {
-          padding: 95px 0;
+        /* Sections */
+
+        .ha-section {
+          padding: 100px 0;
           scroll-margin-top: 85px;
         }
 
-        .hiu-section-white {
-          background: #fff;
+        .ha-cream {
+          background: var(--cream);
         }
 
-        .hiu-section-cream {
-          background: var(--hiu-cream);
-        }
-
-        .hiu-heading {
+        .ha-heading {
           text-align: center;
-          margin-bottom: 43px;
+          margin-bottom: 48px;
         }
 
-        .hiu-heading h2 {
-          font-size: clamp(30px, 4vw, 44px);
-          font-weight: 500;
-          margin: 12px 0;
-          letter-spacing: -1.5px;
+        .ha-heading h2 {
+          font-family: Georgia, "Noto Sans KR", serif;
+          font-size: clamp(34px, 5vw, 51px);
+          font-weight: 400;
+          letter-spacing: -1.3px;
+          margin: 12px 0 18px;
+          line-height: 1.3;
         }
 
-        .hiu-heading p {
-          color: var(--hiu-muted);
+        .ha-heading p {
           font-size: 13px;
           line-height: 1.9;
-        }
-
-        .hiu-profile {
-          display: grid;
-          grid-template-columns: 0.9fr 1.1fr;
-          gap: 55px;
-          align-items: start;
-        }
-
-        .hiu-profile-photo {
-          position: relative;
-          min-height: 620px;
-          border-radius: 4px;
-          overflow: hidden;
-          background: #e8e4de;
-        }
-
-        .hiu-profile-photo img {
-          object-fit: cover;
-        }
-
-        .hiu-profile-text h2 {
-          font-size: 36px;
-          font-weight: 500;
-          margin: 14px 0 24px;
-        }
-
-        .hiu-profile-text h2 b {
-          color: var(--hiu-blue);
-        }
-
-        .hiu-profile-text p {
-          font-size: 14px;
-          line-height: 2.15;
-          color: #70747c;
-          word-break: keep-all;
-        }
-
-        .hiu-signature {
-          border-top: 1px solid #e6e0d8;
-          padding-top: 23px;
-          margin-top: 28px;
-          font-size: 12px;
-          line-height: 2;
-          font-weight: 600;
-          color: var(--hiu-blue);
-        }
-
-        .hiu-career-box {
-          margin-top: 24px;
-          background: #faf8f4;
-          border: 1px solid #ebe5dc;
-          padding: 24px 22px;
-        }
-
-        .hiu-career-box h3 {
-          margin: 0 0 16px;
-          font-size: 18px;
-          color: var(--hiu-blue);
-          font-weight: 700;
-        }
-
-        .hiu-career-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 8px 18px;
-          padding: 0;
+          color: var(--soft);
           margin: 0;
-          list-style: none;
         }
 
-        .hiu-career-grid li {
-          position: relative;
-          padding-left: 14px;
-          color: #5f646d;
-          font-size: 13px;
-          line-height: 1.9;
-          word-break: keep-all;
-        }
+        /* Portfolio */
 
-        .hiu-career-grid li::before {
-          content: "•";
-          position: absolute;
-          left: 0;
-          top: 0;
-          color: var(--hiu-blue);
-          font-weight: 700;
-        }
-
-        .hiu-services {
-          display: grid;
-          grid-template-columns: repeat(5, minmax(0,1fr));
-          gap: 12px;
-        }
-
-        .hiu-service {
-          background: white;
-          border: 1px solid #e9e4dc;
-          padding: 28px 19px;
-          min-height: 215px;
-        }
-
-        .hiu-service small {
-          color: var(--hiu-blue);
-          font-size: 10px;
-          font-weight: 600;
-          letter-spacing: 1px;
-        }
-
-        .hiu-service h3 {
-          font-size: 19px;
-          margin: 28px 0 12px;
-        }
-
-        .hiu-service p {
-          font-size: 12px;
-          color: var(--hiu-muted);
-          line-height: 1.8;
-          word-break: keep-all;
-        }
-
-        .hiu-portfolio-grid {
+        .ha-gallery {
           display: grid;
           grid-template-columns: repeat(4, minmax(0,1fr));
-          gap: 24px 16px;
+          gap: 32px 17px;
         }
 
-        .hiu-portfolio-item {
+        .ha-work {
           min-width: 0;
         }
 
-        .hiu-portfolio-image {
+        .ha-work-photo {
           position: relative;
-          aspect-ratio: 4 / 5;
+          aspect-ratio: 4 / 5.1;
           overflow: hidden;
-          background: #e9e4dd;
           border-radius: 4px;
+          background: #e8e2dc;
         }
 
-        .hiu-portfolio-image img {
+        .ha-work-photo img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform .4s;
+          transition: transform .5s ease;
         }
 
-        .hiu-portfolio-item:hover img {
+        .ha-work:hover img {
           transform: scale(1.045);
         }
 
-        .hiu-portfolio-number {
+        .ha-work-index {
           position: absolute;
-          top: 12px;
           left: 12px;
-          padding: 7px 10px;
-          background: rgba(255,255,255,.90);
-          color: var(--hiu-blue);
-          font-size: 10px;
-          font-weight: 700;
-        }
-
-        .hiu-portfolio-english {
-          font-size: 10px;
-          color: var(--hiu-blue);
-          font-weight: 700;
-          letter-spacing: 1px;
-          margin-top: 18px;
-        }
-
-        .hiu-portfolio-item h3 {
-          font-size: 17px;
-          margin: 8px 0;
-          word-break: keep-all;
-        }
-
-        .hiu-portfolio-item p {
-          color: var(--hiu-muted);
-          font-size: 12px;
-          line-height: 1.8;
-          min-height: 40px;
-          margin: 0 0 12px;
-        }
-
-        .hiu-portfolio-link {
-          color: var(--hiu-blue);
-          font-size: 12px;
-          font-weight: 600;
-        }
-
-        .hiu-review-section {
-          background: #f1eee8;
-          padding: 95px 0;
-          overflow: hidden;
-          scroll-margin-top: 85px;
-        }
-
-        .hiu-review-summary {
+          top: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 25px;
-          margin: 10px auto 43px;
-          text-align: center;
-        }
-
-        .hiu-review-summary strong {
-          color: var(--hiu-blue);
+          width: 34px;
+          height: 34px;
+          background: rgba(255,255,255,.94);
           font-family: Georgia, serif;
-          font-size: 41px;
-          font-weight: 400;
-          display: block;
+          font-size: 14px;
+          color: var(--blue);
         }
 
-        .hiu-review-summary span {
-          font-size: 11px;
-          color: var(--hiu-muted);
-        }
-
-        .hiu-review-divider {
-          width: 1px;
-          height: 45px;
-          background: #d3cfc8;
-        }
-
-        .hiu-review-window {
-          width: 100%;
-          overflow: hidden;
-          padding: 5px 0 22px;
-          -webkit-mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 4%,
-            black 96%,
-            transparent
-          );
-          mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 4%,
-            black 96%,
-            transparent
-          );
-        }
-
-        .hiu-review-track {
-          display: flex;
-          width: max-content;
-          animation: hiu-marquee 65s linear infinite;
-          will-change: transform;
-        }
-
-        .hiu-review-window:hover .hiu-review-track,
-        .hiu-review-window:focus-within .hiu-review-track {
-          animation-play-state: paused;
-        }
-
-        .hiu-review-set {
-          display: flex;
-          flex-shrink: 0;
-          gap: 16px;
-          padding-right: 16px;
-        }
-
-        .hiu-review-card {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          flex-shrink: 0;
-          width: 265px;
-          min-height: 225px;
-          padding: 25px;
-          background: #fff;
-          border: 1px solid #e8e2da;
-          border-radius: 7px;
-          white-space: normal;
-        }
-
-        .hiu-review-card small {
-          color: var(--hiu-blue);
+        .ha-work-en {
+          margin-top: 17px;
           font-size: 10px;
+          color: var(--blue);
           font-weight: 700;
-          letter-spacing: 1.5px;
+          letter-spacing: 1px;
+          line-height: 1.7;
         }
 
-        .hiu-review-card h3 {
-          font-size: 19px;
+        .ha-work h3 {
+          font-size: 16px;
           font-weight: 600;
           line-height: 1.6;
-          margin: 17px 0;
+          word-break: keep-all;
+          margin: 8px 0;
+        }
+
+        .ha-work p {
+          font-size: 12px;
+          line-height: 1.8;
+          color: var(--soft);
+          margin: 0 0 14px;
           word-break: keep-all;
         }
 
-        .hiu-review-card strong {
-          color: var(--hiu-blue);
-          font-size: 24px;
+        .ha-text-link {
+          color: var(--blue);
+          font-size: 12px;
+          font-weight: 700;
+        }
+
+        /* Profile */
+
+        .ha-about-grid {
+          display: grid;
+          grid-template-columns: .92fr 1.08fr;
+          align-items: center;
+          gap: 80px;
+        }
+
+        .ha-portrait {
+          position: relative;
+          aspect-ratio: 4 / 5.2;
+          overflow: hidden;
+          background: #dedbd8;
+          border-radius: 4px;
+        }
+
+        .ha-portrait img {
+          object-fit: cover;
+          object-position: center 35%;
+        }
+
+        .ha-about h2 {
+          font-size: clamp(33px, 4vw, 48px);
+          font-weight: 500;
+          letter-spacing: -1.4px;
+          margin: 15px 0 23px;
+          line-height: 1.4;
+        }
+
+        .ha-about h2 strong {
+          color: var(--blue);
+        }
+
+        .ha-about p {
+          color: #72757c;
+          font-size: 14px;
+          line-height: 2.15;
+          word-break: keep-all;
+        }
+
+        .ha-credentials {
+          margin-top: 29px;
+          padding-top: 25px;
+          border-top: 1px solid #dedad4;
+        }
+
+        .ha-credentials-title {
+          color: var(--blue);
+          font-weight: 700;
+          font-size: 11px;
+          letter-spacing: 1px;
+          margin-bottom: 16px;
+        }
+
+        .ha-highlights {
+          padding: 0;
+          list-style: none;
+          margin: 0;
+        }
+
+        .ha-highlights li {
+          color: #5d6169;
+          font-size: 12px;
+          line-height: 2;
+          padding-left: 15px;
+          position: relative;
+        }
+
+        .ha-highlights li:before {
+          content: "·";
+          position: absolute;
+          top: 0;
+          left: 1px;
+          color: var(--blue);
+          font-weight: 700;
+        }
+
+        .ha-details {
+          margin-top: 22px;
+          border-top: 1px solid #e2ddd6;
+        }
+
+        .ha-details summary {
+          padding: 18px 0;
+          color: var(--blue);
+          font-weight: 700;
+          font-size: 12px;
+          cursor: pointer;
+          list-style-position: inside;
+        }
+
+        .ha-details-content {
+          padding-bottom: 19px;
+          color: #6d717a;
+          font-size: 12px;
+          line-height: 2;
+        }
+
+        .ha-details-content strong {
+          display: block;
+          color: var(--ink);
+          margin-top: 12px;
+        }
+
+        .ha-details-content ul {
+          padding-left: 18px;
+          margin: 5px 0 0;
+        }
+
+        /* Services */
+
+        .ha-services {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0,1fr));
+          gap: 14px;
+        }
+
+        .ha-service {
+          padding: 27px 22px;
+          background: #fff;
+          border: 1px solid #e8e3dc;
+          border-radius: 3px;
+          min-height: 178px;
+        }
+
+        .ha-service-num {
+          font-family: Georgia, serif;
+          font-size: 22px;
+          color: var(--blue);
+        }
+
+        .ha-service h3 {
+          font-size: 18px;
+          margin: 20px 0 9px;
+          font-weight: 600;
+        }
+
+        .ha-service small {
+          display: block;
+          font-size: 9px;
+          letter-spacing: 1px;
+          color: var(--blue);
+          font-weight: 700;
+        }
+
+        .ha-service p {
+          font-size: 12px;
+          color: var(--soft);
+          line-height: 1.8;
+          margin: 12px 0 0;
+        }
+
+        /* Reviews */
+
+        .ha-reviews {
+          overflow: hidden;
+          background: #fff;
+        }
+
+        .ha-review-summary {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 34px;
+          margin-bottom: 41px;
+          text-align: center;
+        }
+
+        .ha-review-summary strong {
+          display: block;
+          color: var(--blue);
+          font-family: Georgia, serif;
+          font-size: 43px;
+          font-weight: 400;
+        }
+
+        .ha-review-summary span {
+          color: var(--soft);
+          font-size: 11px;
+        }
+
+        .ha-review-separator {
+          height: 44px;
+          width: 1px;
+          background: var(--line);
+        }
+
+        .ha-marquee-window {
+          overflow: hidden;
+          width: 100%;
+          padding: 5px 0 15px;
+        }
+
+        .ha-marquee-track {
+          display: flex;
+          width: max-content;
+          animation: ha-slide 62s linear infinite;
+          will-change: transform;
+        }
+
+        .ha-marquee-window:hover .ha-marquee-track,
+        .ha-marquee-window:focus-within .ha-marquee-track {
+          animation-play-state: paused;
+        }
+
+        .ha-marquee-set {
+          display: flex;
+          flex-shrink: 0;
+          gap: 14px;
+          padding-right: 14px;
+        }
+
+        .ha-review-card {
+          width: 270px;
+          min-height: 218px;
+          background: var(--cream);
+          border: 1px solid var(--line);
+          border-radius: 5px;
+          padding: 24px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .ha-review-card small {
+          color: var(--blue);
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 1px;
+        }
+
+        .ha-review-card h3 {
+          font-size: 18px;
+          line-height: 1.55;
+          margin: 16px 0;
+          word-break: keep-all;
+        }
+
+        .ha-review-card strong {
+          color: var(--blue);
+          font-size: 23px;
           font-family: Georgia, serif;
           font-weight: 500;
         }
 
-        .hiu-review-card p {
-          color: #858891;
+        .ha-review-card p {
+          color: var(--soft);
           font-size: 11px;
-          margin: 9px 0 0;
+          line-height: 1.6;
+          margin: 8px 0 0;
         }
 
-        @keyframes hiu-marquee {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-50%);
-          }
+        @keyframes ha-slide {
+          from {transform: translateX(0)}
+          to {transform: translateX(-50%)}
         }
 
-        .hiu-review-note {
+        .ha-note {
           text-align: center;
-          color: #777b83;
+          color: #898a8e;
           font-size: 11px;
           line-height: 1.9;
+          margin-top: 20px;
           padding: 0 20px;
-          margin-top: 18px;
         }
 
-        .hiu-booking-banner {
-          background: var(--hiu-blue);
+        /* Booking */
+
+        .ha-booking {
+          background: var(--blue);
           color: white;
-          padding: 80px 20px;
           text-align: center;
+          padding: 88px 20px;
         }
 
-        .hiu-booking-banner h2 {
-          font-size: clamp(27px, 4vw, 44px);
+        .ha-booking .ha-eyebrow {
+          color: #d9e5f7;
+        }
+
+        .ha-booking h2 {
+          font-size: clamp(29px, 5vw, 46px);
+          line-height: 1.5;
           font-weight: 400;
-          margin: 16px 0;
+          letter-spacing: -1px;
+          margin: 15px 0;
         }
 
-        .hiu-booking-banner p {
-          color: #e3e8f1;
+        .ha-booking p {
           font-size: 13px;
           line-height: 2;
+          color: #dce4ef;
         }
 
-        .hiu-booking-banner .hiu-button-primary {
-          background: white;
-          color: var(--hiu-blue);
-          border-color: white;
+        .ha-booking .ha-btn-outline {
+          color: #fff;
+          border-color: #c5d4e7;
         }
 
-        .hiu-booking-banner .hiu-button-outline {
-          color: white;
-          border-color: white;
-        }
+        /* Location */
 
-        .hiu-location-grid {
+        .ha-location {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 25px;
+          gap: 23px;
         }
 
-        .hiu-location-card {
-          background: white;
+        .ha-location-info,
+        .ha-location-map {
           padding: 40px;
-          border: 1px solid #e8e4df;
+          min-height: 340px;
+          background: white;
+          border: 1px solid var(--line);
         }
 
-        .hiu-location-card h3 {
-          font-size: 23px;
-          margin: 0 0 25px;
+        .ha-location-info h3 {
+          font-size: 24px;
+          font-weight: 600;
+          margin: 0 0 28px;
         }
 
-        .hiu-location-card dt {
-          color: var(--hiu-blue);
+        .ha-location-info dt {
+          font-size: 10px;
+          letter-spacing: 1px;
           font-weight: 700;
-          font-size: 11px;
-          margin-top: 23px;
+          color: var(--blue);
+          margin-top: 21px;
         }
 
-        .hiu-location-card dd {
-          font-size: 14px;
-          line-height: 1.8;
+        .ha-location-info dd {
           margin: 7px 0;
+          font-size: 13px;
+          line-height: 1.9;
         }
 
-        .hiu-map-card {
-          background: #e6e4de;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        .ha-location-map {
+          background: #ebe8e2;
           text-align: center;
-          padding: 40px 20px;
-          min-height: 350px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .hiu-map-card h3 {
+        .ha-location-map h3 {
           font-family: Georgia, serif;
-          font-size: 35px;
-          color: var(--hiu-blue);
+          color: var(--blue);
+          font-size: 34px;
           letter-spacing: 2px;
         }
 
-        .hiu-map-card p {
-          font-size: 13px;
+        .ha-location-map p {
+          font-size: 12px;
+          color: #737680;
           line-height: 2;
-          color: #686c73;
         }
 
-        .hiu-footer {
-          background: #1b2230;
-          color: #fff;
-          padding: 50px 0 105px;
+        /* Footer */
+
+        .ha-footer {
+          background: #1c2432;
+          color: white;
+          padding: 50px 0 100px;
         }
 
-        .hiu-footer-inner {
+        .ha-footer-inner {
           display: flex;
           justify-content: space-between;
           gap: 30px;
         }
 
-        .hiu-footer p {
-          color: #bec4cf;
+        .ha-footer .ha-brand {
+          color: white;
+        }
+
+        .ha-footer p {
+          color: #bfc6d2;
           font-size: 11px;
           line-height: 2;
         }
 
-        .hiu-bottom-bar {
+        .ha-mobile-bar {
           display: none;
         }
 
-        @media(max-width: 950px) {
-          .hiu-nav {
+        @media(max-width: 960px) {
+          .ha-nav {
             display: none;
           }
 
-          .hiu-profile {
+          .ha-gallery {
+            grid-template-columns: repeat(2,minmax(0,1fr));
+          }
+
+          .ha-about-grid {
             grid-template-columns: 1fr;
             gap: 35px;
           }
 
-          .hiu-profile-photo {
-            min-height: 500px;
+          .ha-portrait {
+            max-width: 600px;
+            width: 100%;
+            margin: auto;
           }
 
-          .hiu-services {
+          .ha-services {
             grid-template-columns: repeat(2,minmax(0,1fr));
-          }
-
-          .hiu-portfolio-grid {
-            grid-template-columns: repeat(2,minmax(0,1fr));
-          }
-
-          .hiu-career-grid {
-            grid-template-columns: 1fr;
           }
         }
 
-        @media(max-width: 650px) {
-          .hiu-header-inner {
-            min-height: 68px;
+        @media(max-width: 600px) {
+          .ha-header-inner {
+            min-height: 67px;
           }
 
-          .hiu-hero {
-            padding: 76px 13px 68px;
+          .ha-brand {
+            font-size: 23px;
           }
 
-          .hiu-hero h1 {
-            font-size: clamp(37px, 10vw, 64px);
+          .ha-hero {
+            padding: 80px 18px 68px;
           }
 
-          .hiu-section {
-            padding: 68px 0;
+          .ha-hero:before {
+            width: 310px;
+            height: 310px;
           }
 
-          .hiu-profile-photo {
-            min-height: 420px;
+          .ha-hero-brand {
+            font-size: clamp(37px, 10.2vw, 60px);
           }
 
-          .hiu-service {
-            min-height: 185px;
-            padding: 24px 17px;
+          .ha-hero-sub {
+            margin-bottom: 48px;
           }
 
-          .hiu-service h3 {
-            font-size: 17px;
+          .ha-hero h2 {
+            font-size: 28px;
           }
 
-          .hiu-portfolio-grid {
-            gap: 28px 12px;
+          .ha-hero-scroll {
+            margin-top: 43px;
           }
 
-          .hiu-portfolio-item h3 {
-            font-size: 14px;
-          }
-
-          .hiu-portfolio-item p {
-            font-size: 11px;
-          }
-
-          .hiu-portfolio-english {
-            font-size: 9px;
-          }
-
-          .hiu-review-section {
+          .ha-section {
             padding: 70px 0;
           }
 
-          .hiu-review-card {
+          .ha-heading {
+            margin-bottom: 32px;
+          }
+
+          .ha-heading h2 {
+            font-size: 36px;
+          }
+
+          .ha-gallery {
+            gap: 27px 12px;
+          }
+
+          .ha-work-en {
+            font-size: 9px;
+          }
+
+          .ha-work h3 {
+            font-size: 14px;
+          }
+
+          .ha-work p {
+            font-size: 11px;
+          }
+
+          .ha-services {
+            gap: 10px;
+          }
+
+          .ha-service {
+            min-height: 170px;
+            padding: 22px 17px;
+          }
+
+          .ha-service h3 {
+            font-size: 16px;
+          }
+
+          .ha-review-card {
             width: 255px;
           }
 
-          .hiu-location-grid {
+          .ha-location {
             grid-template-columns: 1fr;
           }
 
-          .hiu-location-card {
+          .ha-location-info,
+          .ha-location-map {
             padding: 30px;
           }
 
-          .hiu-footer-inner {
+          .ha-footer-inner {
             flex-direction: column;
           }
 
-          .hiu-bottom-bar {
+          .ha-mobile-bar {
+            display: grid;
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            display: grid;
+            z-index: 100;
             grid-template-columns: 1fr 1fr 1.5fr;
             gap: 8px;
-            z-index: 100;
             background: white;
-            border-top: 1px solid #e5e2de;
-            padding: 10px 12px calc(
-              10px + env(safe-area-inset-bottom)
-            );
+            border-top: 1px solid #eae7e1;
+            padding:
+              10px 12px
+              calc(10px + env(safe-area-inset-bottom));
           }
 
-          .hiu-bottom-bar a {
+          .ha-mobile-bar a {
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 14px 5px;
-            background: #f0eee9;
-            color: var(--hiu-blue);
+            align-items: center;
+            min-height: 47px;
+            border-radius: 3px;
+            text-align: center;
             font-size: 12px;
             font-weight: 700;
-            text-align: center;
-            border-radius: 3px;
+            color: var(--blue);
+            background: #f1efeb;
           }
 
-          .hiu-bottom-bar a:last-child {
-            background: var(--hiu-blue);
+          .ha-mobile-bar a:last-child {
+            background: var(--blue);
             color: white;
           }
         }
 
         @media(prefers-reduced-motion: reduce) {
-          .hiu-review-track {
+          .ha-marquee-track {
             animation: none;
           }
 
-          .hiu-review-window {
+          .ha-marquee-window {
             overflow-x: auto;
-            mask-image: none;
-            -webkit-mask-image: none;
+          }
+
+          .ha-work-photo img,
+          .ha-btn {
+            transition: none;
           }
         }
       `}</style>
 
-      <div className="hiu-page">
-        {/* 헤더 */}
-        <header className="hiu-header">
-          <div className="hiu-container hiu-header-inner">
-            <Link href="/" className="hiu-brand">
-              HI U HAIR
-              <span>CHEONGDANG</span>
-            </Link>
+      {/* 상단 헤더 */}
+      <header className="ha-header">
+        <div className="ha-wrap ha-header-inner">
+          <Link href="/" className="ha-brand">
+            HI U HAIR
+            <small>CHEONGDANG</small>
+          </Link>
 
-            <nav className="hiu-nav">
-              <a href="#about">DESIGNER</a>
-              <a href="#services">SPECIALTY</a>
-              <a href="#portfolio">PORTFOLIO</a>
-              <a href="#reviews">REVIEWS</a>
-              <a href="#location">LOCATION</a>
-              <NaverBookingButton>
-                네이버 예약
-              </NaverBookingButton>
-            </nav>
-          </div>
-        </header>
+          <nav className="ha-nav">
+            <a href="#portfolio">PORTFOLIO</a>
+            <a href="#about">DESIGNER</a>
+            <a href="#services">SERVICES</a>
+            <a href="#reviews">REVIEWS</a>
+            <a href="#location">LOCATION</a>
+            <BookingButton>예약하기</BookingButton>
+          </nav>
+        </div>
+      </header>
 
-        <main>
-          {/* 첫 화면 */}
-          <section className="hiu-hero">
-            <span className="hiu-eyebrow">
-              CHEONGDANG · PERSONAL HAIR DESIGNER
+      <main>
+        {/* 메인 */}
+        <section className="ha-hero">
+          <div className="ha-hero-inner">
+            <span className="ha-eyebrow">
+              PERSONAL HAIR ATELIER · CHEONGDANG
             </span>
 
-            <h1>HI U HAIR</h1>
+            <h1 className="ha-hero-brand">
+              HI U HAIR
+            </h1>
 
-            <div className="hiu-hero-line">
+            <div className="ha-hero-sub">
               CHEONGDANG
             </div>
 
-            <h2>이해린 디자이너</h2>
-
-            <p className="hiu-desc">
-              당신에게 어울리는 아름다움을 디자인합니다.
-              <br />
-              여성 커트 · 레이어드컷 · 펌 · 염색
-            </p>
-
-            <div className="hiu-actions">
-              <NaverBookingButton>
-                네이버 예약하기 ↗
-              </NaverBookingButton>
-
-              <Link
-                href="/reservation"
-                className="hiu-button hiu-button-outline"
-              >
-                문자 예약 신청
-              </Link>
-            </div>
-          </section>
-
-          <div className="hiu-strip">
-            HAIR DESIGN BY HAERIN LEE
-          </div>
-
-          {/* 디자이너 소개 */}
-          <section
-            id="about"
-            className="hiu-section hiu-section-white"
-          >
-            <div className="hiu-container hiu-profile">
-              <div className="hiu-profile-photo">
-                <Image
-                  src="/IMG_1443.jpeg"
-                  alt="이해린 디자이너 프로필 사진"
-                  fill
-                  sizes="(max-width: 950px) 100vw, 45vw"
-                  priority
-                />
-              </div>
-
-              <div className="hiu-profile-text">
-                <span className="hiu-eyebrow">
-                  PERSONAL HAIR DESIGNER
-                </span>
-
-                <h2>
-                  헤어 디자이너
-                  <br />
-                  <b>이해린</b>
-                </h2>
-
-                <p>
-                  안녕하세요.
-                  <br />
-                  하이유헤어 청당점 이해린 디자이너입니다.
-                </p>
-
-                <p>
-                  헤어스타일은 단순한 변화를 넘어
-                  자신만의 분위기와 개성을 표현하는
-                  중요한 요소라고 생각합니다.
-                </p>
-
-                <p>
-                  고객님의 취향과 원하는 분위기를
-                  충분히 듣고, 일상에서도 만족할 수
-                  있는 스타일을 함께 고민하겠습니다.
-                </p>
-
-                <div className="hiu-signature">
-                  HI U HAIR CHEONGDANG
-                  <br />
-                  DESIGNER · 이해린
-                </div>
-
-                <div className="hiu-career-box">
-                  <h3>학력 · 자격 · 수상 경력</h3>
-
-                  <ul className="hiu-career-grid">
-                    {careers.map((career) => (
-                      <li key={career}>{career}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div
-                  className="hiu-actions"
-                  style={{ justifyContent: "flex-start" }}
-                >
-                  <NaverBookingButton>
-                    이해린 디자이너 예약하기
-                  </NaverBookingButton>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* 시술 서비스 */}
-          <section
-            id="services"
-            className="hiu-section hiu-section-cream"
-          >
-            <div className="hiu-container">
-              <div className="hiu-heading">
-                <span className="hiu-eyebrow">
-                  HAIR DESIGN MENU
-                </span>
-
-                <h2>여성 헤어 디자인</h2>
-
-                <p>
-                  당신에게 어울리는 스타일을 찾아가는 시간
-                </p>
-              </div>
-
-              <div className="hiu-services">
-                {services.map((service) => (
-                  <article
-                    className="hiu-service"
-                    key={service.number}
-                  >
-                    <small>
-                      {service.number} / {service.english}
-                    </small>
-
-                    <h3>{service.name}</h3>
-                    <p>{service.desc}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* 포트폴리오 */}
-          <section
-            id="portfolio"
-            className="hiu-section hiu-section-white"
-          >
-            <div className="hiu-container">
-              <div className="hiu-heading">
-                <span className="hiu-eyebrow">
-                  HAIR DESIGN COLLECTION
-                </span>
-
-                <h2>Hair Portfolio</h2>
-
-                <p>
-                  이해린 디자이너 헤어스타일 컬렉션
-                </p>
-              </div>
-
-              <div className="hiu-portfolio-grid">
-                {portfolio.map((item, index) => (
-                  <article
-                    className="hiu-portfolio-item"
-                    key={item.id}
-                  >
-                    <div className="hiu-portfolio-image">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        width={600}
-                        height={750}
-                        sizes="(max-width: 950px) 50vw, 25vw"
-                        priority={index === 0}
-                      />
-
-                      <span className="hiu-portfolio-number">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-
-                    <div className="hiu-portfolio-english">
-                      {item.english}
-                    </div>
-
-                    <h3>{item.title}</h3>
-
-                    <p>{item.desc}</p>
-
-                    <a
-                      className="hiu-portfolio-link"
-                      href={NAVER_BOOKING}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      네이버 예약 문의 ↗
-                    </a>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* 리뷰 */}
-          <section
-            id="reviews"
-            className="hiu-review-section"
-          >
-            <div className="hiu-container">
-              <div className="hiu-heading">
-                <span className="hiu-eyebrow">
-                  NAVER BOOKING FEEDBACK
-                </span>
-
-                <h2>Real Customer Reviews</h2>
-
-                <p>
-                  네이버 예약 고객 평가와
-                  <br />
-                  다양한 헤어스타일을 만나보세요.
-                </p>
-              </div>
-
-              <div className="hiu-review-summary">
-                <div>
-                  <strong>293</strong>
-                  <span>예약자 리뷰</span>
-                </div>
-
-                <div className="hiu-review-divider" />
-
-                <div>
-                  <strong>263</strong>
-                  <span>좋은 점 평가 참여</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="hiu-review-window">
-              <div className="hiu-review-track">
-                {[0, 1].map((copy) => (
-                  <div
-                    className="hiu-review-set"
-                    key={copy}
-                    aria-hidden={copy === 1}
-                  >
-                    {reviewCards.map((review) => (
-                      <a
-                        key={`${copy}-${review.id}`}
-                        href={NAVER_REVIEWS}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hiu-review-card"
-                        tabIndex={copy === 1 ? -1 : 0}
-                      >
-                        <div>
-                          <small>{review.category}</small>
-                          <h3>{review.title}</h3>
-                        </div>
-
-                        <div>
-                          <strong>{review.count}</strong>
-                          <p>{review.desc}</p>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="hiu-actions">
-              <a
-                href={NAVER_REVIEWS}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hiu-button hiu-button-outline"
-              >
-                네이버 고객 리뷰 보기 ↗
-              </a>
-
-              <NaverBookingButton>
-                네이버 예약하기 ↗
-              </NaverBookingButton>
-            </div>
-
-            <p className="hiu-review-note">
-              고객 평가 수치는 2026년 10월 10일
-              확인 기준이며 자동으로 갱신되지 않습니다.
-              <br />
-              첫 5개 카드는 고객 평가 항목,
-              나머지 5개는 헤어스타일 안내입니다.
-              개별 후기 원문은 네이버에서 확인해 주세요.
-            </p>
-          </section>
-
-          {/* 예약 배너 */}
-          <section
-            id="booking"
-            className="hiu-booking-banner"
-          >
-            <span
-              className="hiu-eyebrow"
-              style={{ color: "#dfe8f6" }}
-            >
-              YOUR BEAUTY, YOUR STYLE
-            </span>
-
             <h2>
-              당신만의 스타일을 만나보세요.
+              당신의 분위기를
+              <br />
+              <strong>디자인하다.</strong>
             </h2>
 
-            <p>
-              하이유헤어 청당점 이해린 디자이너
+            <p className="ha-hero-desc">
+              섬세한 손길과 감각적인 스타일
               <br />
-              원하는 헤어스타일을 상담하고 예약해 보세요.
+              이해린 디자이너의 여성 헤어 디자인
             </p>
 
-            <div className="hiu-actions">
-              <NaverBookingButton>
-                네이버 바로 예약하기 ↗
-              </NaverBookingButton>
+            <div className="ha-actions ha-actions-center">
+              <BookingButton>
+                네이버 예약하기 ↗
+              </BookingButton>
 
-              <Link
-                href="/reservation"
-                className="hiu-button hiu-button-outline"
+              <a
+                href="#portfolio"
+                className="ha-btn ha-btn-outline"
               >
-                문자 예약 신청
-              </Link>
+                헤어스타일 보기
+              </a>
             </div>
-          </section>
 
-          {/* 위치 */}
-          <section
-            id="location"
-            className="hiu-section hiu-section-cream"
-          >
-            <div className="hiu-container">
-              <div className="hiu-heading">
-                <span className="hiu-eyebrow">
-                  VISIT HI U HAIR
-                </span>
-                <h2>Location & Contact</h2>
-              </div>
-
-              <div className="hiu-location-grid">
-                <div className="hiu-location-card">
-                  <h3>하이유헤어 청당점</h3>
-
-                  <dl>
-                    <dt>DESIGNER</dt>
-                    <dd>이해린 디자이너</dd>
-
-                    <dt>ADDRESS</dt>
-                    <dd>{ADDRESS}</dd>
-
-                    <dt>CONTACT</dt>
-                    <dd>
-                      <a href={`tel:${PHONE}`}>
-                        {PHONE_VIEW}
-                      </a>
-                    </dd>
-
-                    <dt>RESERVATION</dt>
-                    <dd>
-                      네이버 예약 · 전화 · 문자
-                    </dd>
-                  </dl>
-
-                  <div
-                    className="hiu-actions"
-                    style={{ justifyContent: "flex-start" }}
-                  >
-                    <a
-                      href={`tel:${PHONE}`}
-                      className="hiu-button hiu-button-primary"
-                    >
-                      전화하기
-                    </a>
-
-                    <a
-                      href={`sms:${PHONE}`}
-                      className="hiu-button hiu-button-outline"
-                    >
-                      문자하기
-                    </a>
-                  </div>
-                </div>
-
-                <div className="hiu-map-card">
-                  <div>
-                    <span className="hiu-eyebrow">
-                      FIND OUR SALON
-                    </span>
-
-                    <h3>HI U HAIR</h3>
-
-                    <p>
-                      천안 청당동 하이유헤어 청당점
-                      <br />
-                      {ADDRESS}
-                    </p>
-
-                    <a
-                      href={NAVER_MAP}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hiu-button hiu-button-primary"
-                    >
-                      네이버 지도 보기 ↗
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </main>
-
-        {/* 푸터 */}
-        <footer className="hiu-footer">
-          <div className="hiu-container hiu-footer-inner">
-            <div
-              className="hiu-brand"
-              style={{ color: "#fff" }}
+            <a
+              href="#portfolio"
+              className="ha-hero-scroll"
             >
-              HI U HAIR
-              <span>CHEONGDANG</span>
+              EXPLORE THE COLLECTION ↓
+            </a>
+          </div>
+        </section>
+
+        <div className="ha-strip">
+          HAIR DESIGN BY HAERIN LEE
+        </div>
+
+        {/* 포트폴리오를 앞으로 이동 */}
+        <section
+          id="portfolio"
+          className="ha-section"
+        >
+          <div className="ha-wrap">
+            <div className="ha-heading">
+              <span className="ha-eyebrow">
+                THE HAIR COLLECTION
+              </span>
+
+              <h2>Signature Hair</h2>
+
+              <p>
+                당신의 취향에 맞는 아름다운 변화를 만나보세요.
+              </p>
             </div>
+
+            <div className="ha-gallery">
+              {portfolio.map((item, index) => (
+                <article
+                  className="ha-work"
+                  key={item.img}
+                >
+                  <div className="ha-work-photo">
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      priority={index < 2}
+                      sizes="(max-width: 960px) 50vw, 25vw"
+                    />
+
+                    <span className="ha-work-index">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  <div className="ha-work-en">
+                    {item.en}
+                  </div>
+
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+
+                  <a
+                    href={BOOKING}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ha-text-link"
+                  >
+                    스타일 예약하기 ↗
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 디자이너 소개 */}
+        <section
+          id="about"
+          className="ha-section ha-cream"
+        >
+          <div className="ha-wrap ha-about-grid">
+            <div className="ha-portrait">
+              <Image
+                src="/IMG_1443.jpeg"
+                alt="이해린 디자이너 프로필"
+                fill
+                sizes="(max-width: 960px) 100vw, 45vw"
+              />
+            </div>
+
+            <div className="ha-about">
+              <span className="ha-eyebrow">
+                MEET YOUR DESIGNER
+              </span>
+
+              <h2>
+                아름다움의 디테일을
+                <br />
+                완성하는 <strong>이해린</strong>
+              </h2>
+
+              <p>
+                안녕하세요.
+                <br />
+                하이유헤어 청당점 이해린 디자이너입니다.
+              </p>
+
+              <p>
+                사람마다 어울리는 분위기는 다릅니다.
+                고객님의 취향과 모발의 특성,
+                일상에서의 스타일링까지 함께 고려하여
+                자연스럽고 감각적인 변화를 고민합니다.
+              </p>
+
+              <div className="ha-credentials">
+                <div className="ha-credentials-title">
+                  EDUCATION & QUALIFICATIONS
+                </div>
+
+                <ul className="ha-highlights">
+                  {highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+
+                <details className="ha-details">
+                  <summary>
+                    자격 · 수상 경력 전체 보기
+                  </summary>
+
+                  <div className="ha-details-content">
+                    <strong>자격 및 교육 수료</strong>
+                    <ul>
+                      {certifications.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+
+                    <strong>수상 경력</strong>
+                    <ul>
+                      {awards.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              </div>
+
+              <div className="ha-actions">
+                <BookingButton>
+                  이해린 디자이너 예약 ↗
+                </BookingButton>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 시술 메뉴 */}
+        <section
+          id="services"
+          className="ha-section ha-cream"
+          style={{ paddingTop: 0 }}
+        >
+          <div className="ha-wrap">
+            <div className="ha-heading">
+              <span className="ha-eyebrow">
+                OUR SPECIALTIES
+              </span>
+
+              <h2>Hair Services</h2>
+
+              <p>
+                나에게 어울리는 스타일을 위한 디자인 메뉴
+              </p>
+            </div>
+
+            <div className="ha-services">
+              {services.map((service) => (
+                <article
+                  className="ha-service"
+                  key={service.num}
+                >
+                  <div className="ha-service-num">
+                    {service.num}
+                  </div>
+
+                  <h3>{service.title}</h3>
+                  <small>{service.en}</small>
+                  <p>{service.desc}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 고객 리뷰 자동 슬라이드 */}
+        <section
+          id="reviews"
+          className="ha-section ha-reviews"
+        >
+          <div className="ha-heading ha-wrap">
+            <span className="ha-eyebrow">
+              VOICES FROM OUR CLIENTS
+            </span>
+
+            <h2>Client Feedback</h2>
 
             <p>
-              하이유헤어 청당점 · 이해린 디자이너
+              네이버 예약 고객들이 선택한 좋은 점과
               <br />
-              {ADDRESS}
-              <br />
-              {PHONE_VIEW}
-              <br />
-              © {new Date().getFullYear()} HI U HAIR.
-              All rights reserved.
+              다양한 헤어스타일
             </p>
           </div>
-        </footer>
 
-        {/* 모바일 하단 버튼 */}
-        <div className="hiu-bottom-bar">
-          <a href={`tel:${PHONE}`}>전화</a>
+          <div className="ha-review-summary">
+            <div>
+              <strong>293</strong>
+              <span>예약자 리뷰</span>
+            </div>
 
-          <a href={`sms:${PHONE}`}>문자</a>
+            <div className="ha-review-separator" />
 
-          <a
-            href={NAVER_BOOKING}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            네이버 예약
-          </a>
+            <div>
+              <strong>263</strong>
+              <span>좋은 점 평가 참여</span>
+            </div>
+          </div>
+
+          <div className="ha-marquee-window">
+            <div className="ha-marquee-track">
+              {[0, 1].map((copy) => (
+                <div
+                  className="ha-marquee-set"
+                  key={copy}
+                  aria-hidden={copy === 1}
+                >
+                  {feedback.map((review) => (
+                    <a
+                      href={REVIEWS}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ha-review-card"
+                      key={`${copy}-${review.title}`}
+                      tabIndex={copy === 1 ? -1 : 0}
+                    >
+                      <div>
+                        <small>NAVER CUSTOMER FEEDBACK</small>
+                        <h3>{review.title}</h3>
+                      </div>
+
+                      <div>
+                        <strong>{review.value}</strong>
+                        <p>{review.desc}</p>
+                      </div>
+                    </a>
+                  ))}
+
+                  {styles.map((style) => (
+                    <a
+                      href="#portfolio"
+                      className="ha-review-card"
+                      key={`${copy}-${style}`}
+                      tabIndex={copy === 1 ? -1 : 0}
+                    >
+                      <div>
+                        <small>HAIR DESIGN STYLE</small>
+                        <h3>{style}</h3>
+                      </div>
+
+                      <div>
+                        <strong>HI U HAIR</strong>
+                        <p>포트폴리오 스타일 소개</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="ha-actions ha-actions-center">
+            <a
+              href={REVIEWS}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ha-btn ha-btn-outline"
+            >
+              네이버 고객 리뷰 보기 ↗
+            </a>
+
+            <BookingButton>
+              네이버 예약하기 ↗
+            </BookingButton>
+          </div>
+
+          <p className="ha-note">
+            고객 평가 수치는 2026년 10월 10일 확인 기준이며
+            실시간 갱신되지 않습니다.
+            <br />
+            평가 카드 5개와 스타일 소개 카드 5개로
+            구성되어 있으며 실제 리뷰 원문은 네이버에서 확인할 수 있습니다.
+          </p>
+        </section>
+
+        {/* 예약 배너 */}
+        <section className="ha-booking">
+          <span className="ha-eyebrow">
+            A BEAUTIFUL CHANGE BEGINS HERE
+          </span>
+
+          <h2>
+            당신의 새로운 분위기,
+            <br />
+            여기에서 시작됩니다.
+          </h2>
+
+          <p>
+            HI U HAIR CHEONGDANG
+            <br />
+            Designer Haerin Lee
+          </p>
+
+          <div className="ha-actions ha-actions-center">
+            <BookingButton light>
+              네이버 예약하기 ↗
+            </BookingButton>
+
+            <Link
+              href="/reservation"
+              className="ha-btn ha-btn-outline"
+            >
+              홈페이지 문자 예약
+            </Link>
+          </div>
+        </section>
+
+        {/* 위치 */}
+        <section
+          id="location"
+          className="ha-section ha-cream"
+        >
+          <div className="ha-wrap">
+            <div className="ha-heading">
+              <span className="ha-eyebrow">
+                FIND YOUR SALON
+              </span>
+
+              <h2>Visit HI U HAIR</h2>
+
+              <p>
+                천안 청당동 하이유헤어 청당점
+              </p>
+            </div>
+
+            <div className="ha-location">
+              <div className="ha-location-info">
+                <h3>하이유헤어 청당점</h3>
+
+                <dl>
+                  <dt>DESIGNER</dt>
+                  <dd>이해린 디자이너</dd>
+
+                  <dt>ADDRESS</dt>
+                  <dd>{ADDRESS}</dd>
+
+                  <dt>CONTACT</dt>
+                  <dd>
+                    <a href={`tel:${PHONE}`}>
+                      {PHONE_VIEW}
+                    </a>
+                  </dd>
+
+                  <dt>RESERVATION</dt>
+                  <dd>네이버 예약 · 전화 · 문자</dd>
+                </dl>
+
+                <div className="ha-actions">
+                  <a
+                    href={`tel:${PHONE}`}
+                    className="ha-btn ha-btn-blue"
+                  >
+                    전화 문의
+                  </a>
+
+                  <a
+                    href={`sms:${PHONE}`}
+                    className="ha-btn ha-btn-outline"
+                  >
+                    문자 상담
+                  </a>
+                </div>
+              </div>
+
+              <div className="ha-location-map">
+                <div>
+                  <span className="ha-eyebrow">
+                    CHEONGDANG · CHEONAN
+                  </span>
+
+                  <h3>HI U HAIR</h3>
+
+                  <p>
+                    충남 천안시 동남구 청수4로 16
+                    <br />
+                    2층 201호
+                  </p>
+
+                  <a
+                    href={MAP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ha-btn ha-btn-blue"
+                  >
+                    네이버 지도 보기 ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* 푸터 */}
+      <footer className="ha-footer">
+        <div className="ha-wrap ha-footer-inner">
+          <Link href="/" className="ha-brand">
+            HI U HAIR
+            <small>CHEONGDANG</small>
+          </Link>
+
+          <p>
+            하이유헤어 청당점 · 이해린 디자이너
+            <br />
+            {ADDRESS}
+            <br />
+            {PHONE_VIEW}
+            <br />
+            © {new Date().getFullYear()} HI U HAIR.
+            All rights reserved.
+          </p>
         </div>
+      </footer>
+
+      {/* 모바일 하단 고정 버튼 */}
+      <div className="ha-mobile-bar">
+        <a href={`tel:${PHONE}`}>
+          전화
+        </a>
+
+        <a href={`sms:${PHONE}`}>
+          문자
+        </a>
+
+        <a
+          href={BOOKING}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          네이버 예약
+        </a>
       </div>
-    </>
+    </div>
   );
 }
