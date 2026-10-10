@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 /* =====================================
-   하이유헤어 청당점 기본 정보
+   하이유헤어 청당점 SEO
 ===================================== */
 
 const SITE_URL = "https://www.hiuhair.com";
@@ -11,34 +11,30 @@ const SITE_URL = "https://www.hiuhair.com";
 const SITE_NAME = "하이유헤어 청당점";
 
 const TITLE =
-  "하이유헤어 청당점 이해린 디자이너 | 천안 청당동 미용실";
+  "하이유헤어 청당점 | 천안 청당동 미용실 이해린 디자이너";
 
 const DESCRIPTION =
-  "천안 청당동 하이유헤어 청당점 이해린 디자이너 홈페이지. 여성 레이어드컷, 빌드펌, 물결펌, C컬, 매트브라운, 베이지브라운, 루비레드, 블루염색, 베이비핑크염색, 붙임머리 등 헤어스타일 포트폴리오와 네이버 예약 안내.";
+  "천안 청당동 하이유헤어 이해린 디자이너의 헤어스타일을 만나보세요. 여성 레이어드컷, 펌, 염색, 붙임머리 상담과 네이버 예약을 안내합니다.";
 
 /* =====================================
    네이버 서치어드바이저 소유확인
-
-   등록 주소:
-   https://www.hiuhair.com
-
-   최신 네이버 인증코드
+   www.hiuhair.com 인증코드
 ===================================== */
 
 const NAVER_VERIFICATION =
   "35d40404e679ae214179052c24637b2139714f8a";
 
 /* =====================================
-   파비콘 및 프로필 이미지
+   이미지
 ===================================== */
 
 const FAVICON =
   "/46CDE87F-AF98-43B2-8707-1E1C400F19AC.png";
 
-const PROFILE_IMAGE = "/IMG_1443.jpeg";
+const OG_IMAGE = "/IMG_1443.jpeg";
 
 /* =====================================
-   홈페이지 SEO 메타데이터
+   메타데이터
 ===================================== */
 
 export const metadata: Metadata = {
@@ -54,24 +50,15 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
 
   keywords: [
-    "하이유헤어",
     "하이유헤어 청당점",
     "하이유헤어 이해린",
-    "이해린 디자이너",
     "천안 미용실",
-    "천안미용실",
     "청당동 미용실",
-    "청당동미용실",
-    "천안 여자머리",
+    "이해린 디자이너",
     "천안 레이어드컷",
-    "천안 빌드펌",
-    "천안 물결펌",
-    "천안 C컬펌",
+    "천안 펌",
     "천안 염색",
-    "천안 블루염색",
     "천안 붙임머리",
-    "청당동 펌",
-    "청당동 염색",
   ],
 
   alternates: {
@@ -81,6 +68,21 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+
+  /* =====================================
+     네이버 인증 태그 자동 생성
+  ===================================== */
+
+  verification: {
+    other: {
+      "naver-site-verification":
+        NAVER_VERIFICATION,
+    },
   },
 
   /* =====================================
@@ -106,30 +108,39 @@ export const metadata: Metadata = {
   },
 
   /* =====================================
-     SNS 공유 정보
+     OpenGraph 설명
   ===================================== */
 
   openGraph: {
     type: "website",
+
     locale: "ko_KR",
+
     url: SITE_URL,
+
     siteName: SITE_NAME,
+
     title: TITLE,
+
     description: DESCRIPTION,
 
     images: [
       {
-        url: PROFILE_IMAGE,
+        url: OG_IMAGE,
         alt: "하이유헤어 청당점 이해린 디자이너",
       },
     ],
   },
 
+  /* =====================================
+     SNS 공유
+  ===================================== */
+
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: [PROFILE_IMAGE],
+    images: [OG_IMAGE],
   },
 
   category: "beauty",
@@ -137,9 +148,6 @@ export const metadata: Metadata = {
 
 /* =====================================
    전체 홈페이지 레이아웃
-
-   네이버 소유확인 메타태그
-   head 영역 직접 삽입
 ===================================== */
 
 export default function RootLayout({
@@ -149,13 +157,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <head>
-        <meta
-          name="naver-site-verification"
-          content={NAVER_VERIFICATION}
-        />
-      </head>
-
       <body>{children}</body>
     </html>
   );
