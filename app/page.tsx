@@ -27,6 +27,9 @@ const MAP =
 
 /* =====================================
    포트폴리오 8개
+
+   8번: 붙임머리 → 웨딩염색
+   사진: IMG_1475.jpeg
 ===================================== */
 
 const portfolio = [
@@ -80,16 +83,16 @@ const portfolio = [
     href: "/hair/color",
   },
   {
-    title: "베이비핑크염색 / 붙임머리",
-    en: "BABY PINK · EXTENSION",
-    desc: "화사한 핑크 컬러와 부드러운 롱헤어",
-    image: "/IMG_1446.jpeg",
-    href: "/hair/extensions",
+    title: "웨딩염색",
+    en: "WEDDING HAIR COLOR",
+    desc: "웨딩촬영과 결혼식을 준비하는 특별한 컬러 상담",
+    image: "/IMG_1475.jpeg",
+    href: "/hair/wedding-color",
   },
 ];
 
 /* =====================================
-   메인 시술 카테고리
+   여성 헤어 시술 카테고리
 ===================================== */
 
 const services = [
@@ -111,44 +114,35 @@ const services = [
     title: "여성 펌",
     desc: "자연스러운 볼륨과 부드러운 웨이브 디자인",
     links: [
-      {
-        name: "빌드펌",
-        href: "/hair/build-perm",
-      },
-      {
-        name: "물결펌",
-        href: "/hair/wave-perm",
-      },
+      { name: "빌드펌", href: "/hair/build-perm" },
+      { name: "물결펌", href: "/hair/wave-perm" },
     ],
   },
   {
     number: "03",
     english: "COLOR DESIGN",
     title: "여성 염색",
-    desc: "브라운 · 루비레드 · 블루 · 베이비핑크",
+    desc: "베이지브라운 · 루비레드 · 블루 · 베이비핑크",
     links: [
-      {
-        name: "염색 자세히 보기",
-        href: "/hair/color",
-      },
+      { name: "염색 자세히 보기", href: "/hair/color" },
     ],
   },
   {
     number: "04",
-    english: "HAIR EXTENSIONS",
-    title: "붙임머리",
-    desc: "길이와 볼륨을 더하는 헤어스타일 상담",
+    english: "WEDDING HAIR COLOR",
+    title: "웨딩염색",
+    desc: "웨딩촬영과 결혼식을 위한 헤어 컬러 상담",
     links: [
       {
-        name: "붙임머리 자세히 보기",
-        href: "/hair/extensions",
+        name: "웨딩염색 자세히 보기",
+        href: "/hair/wedding-color",
       },
     ],
   },
 ];
 
 /* =====================================
-   디자이너 학력 및 자격
+   이해린 디자이너 학력 및 자격
 ===================================== */
 
 const qualifications = [
@@ -175,43 +169,27 @@ const awards = [
 ];
 
 /* =====================================
-   네이버 고객 평가
-   2026년 10월 10일 확인 기준
+   기존 네이버 고객 평가 유지
 ===================================== */
 
 const feedback = [
-  {
-    title: "원하는 스타일로 잘해줘요",
-    value: "259명",
-  },
-  {
-    title: "친절해요",
-    value: "218명",
-  },
-  {
-    title: "시술이 꼼꼼해요",
-    value: "168명",
-  },
-  {
-    title: "스타일 추천을 잘해줘요",
-    value: "146명",
-  },
-  {
-    title: "트렌디해요",
-    value: "73명",
-  },
+  { title: "원하는 스타일로 잘해줘요", value: "259명" },
+  { title: "친절해요", value: "218명" },
+  { title: "시술이 꼼꼼해요", value: "168명" },
+  { title: "스타일 추천을 잘해줘요", value: "146명" },
+  { title: "트렌디해요", value: "73명" },
 ];
 
 const styleCards = [
-  "레이어드컷",
-  "빌드펌",
-  "물결펌",
-  "여성 염색",
-  "붙임머리",
+  { title: "레이어드컷", href: "/hair/layered-cut" },
+  { title: "빌드펌", href: "/hair/build-perm" },
+  { title: "물결펌", href: "/hair/wave-perm" },
+  { title: "여성 염색", href: "/hair/color" },
+  { title: "웨딩염색", href: "/hair/wedding-color" },
 ];
 
 /* =====================================
-   공통 예약 버튼
+   공통 컴포넌트
 ===================================== */
 
 function BookingButton({
@@ -237,10 +215,6 @@ function BookingButton({
   );
 }
 
-/* =====================================
-   인스타그램 아이콘
-===================================== */
-
 function InstagramIcon() {
   return (
     <svg
@@ -254,13 +228,7 @@ function InstagramIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <rect
-        x="2"
-        y="2"
-        width="20"
-        height="20"
-        rx="5"
-      />
+      <rect x="2" y="2" width="20" height="20" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <circle
         cx="17.5"
@@ -360,9 +328,7 @@ export default function HomePage() {
           justify-content: center;
         }
 
-        /* =================================
-           HEADER
-        ================================= */
+        /* HEADER */
 
         .ha-header {
           position: sticky;
@@ -411,9 +377,7 @@ export default function HomePage() {
           color: var(--blue);
         }
 
-        /* =================================
-           HERO
-        ================================= */
+        /* HERO */
 
         .ha-hero {
           text-align: center;
@@ -503,9 +467,7 @@ export default function HomePage() {
           letter-spacing: 3px;
         }
 
-        /* =================================
-           SECTIONS
-        ================================= */
+        /* COMMON SECTIONS */
 
         .ha-section {
           padding: 85px 0;
@@ -536,9 +498,7 @@ export default function HomePage() {
           margin: 0;
         }
 
-        /* =================================
-           PORTFOLIO
-        ================================= */
+        /* PORTFOLIO */
 
         .ha-gallery {
           display: grid;
@@ -634,9 +594,7 @@ export default function HomePage() {
           line-height: 1.8;
         }
 
-        /* =================================
-           DESIGNER
-        ================================= */
+        /* DESIGNER */
 
         .ha-about-grid {
           display: grid;
@@ -725,9 +683,7 @@ export default function HomePage() {
           margin: 12px 0;
         }
 
-        /* =================================
-           SERVICE CARDS
-        ================================= */
+        /* SERVICES */
 
         .ha-services {
           display: grid;
@@ -795,9 +751,7 @@ export default function HomePage() {
           color: #fff;
         }
 
-        /* =================================
-           REVIEWS
-        ================================= */
+        /* REVIEWS */
 
         .ha-reviews {
           overflow: hidden;
@@ -892,12 +846,8 @@ export default function HomePage() {
         }
 
         @keyframes ha-marquee {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-50%);
-          }
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
         }
 
         .ha-review-note {
@@ -909,9 +859,7 @@ export default function HomePage() {
           margin-top: 20px;
         }
 
-        /* =================================
-           BOOKING
-        ================================= */
+        /* BOOKING */
 
         .ha-booking {
           background: var(--blue);
@@ -938,9 +886,7 @@ export default function HomePage() {
           border-color: #dce4ef;
         }
 
-        /* =================================
-           LOCATION
-        ================================= */
+        /* LOCATION */
 
         .ha-location {
           display: grid;
@@ -995,10 +941,7 @@ export default function HomePage() {
           line-height: 2;
         }
 
-        /* =================================
-           신규 지역별 안내 링크
-           푸터 바로 위에 작은 링크만 표시
-        ================================= */
+        /* REGIONAL LINK */
 
         .ha-area-link-section {
           background: var(--cream);
@@ -1018,14 +961,7 @@ export default function HomePage() {
           line-height: 1.8;
         }
 
-        .ha-area-link:hover {
-          text-decoration: underline;
-          text-underline-offset: 4px;
-        }
-
-        /* =================================
-           FOOTER
-        ================================= */
+        /* FOOTER */
 
         .ha-footer {
           background: #1c2432;
@@ -1053,14 +989,10 @@ export default function HomePage() {
           display: none;
         }
 
-        /* =================================
-           RESPONSIVE
-        ================================= */
+        /* RESPONSIVE */
 
         @media (max-width: 950px) {
-          .ha-nav {
-            display: none;
-          }
+          .ha-nav { display: none; }
 
           .ha-gallery {
             grid-template-columns:
@@ -1085,49 +1017,21 @@ export default function HomePage() {
         }
 
         @media (max-width: 600px) {
-          .ha-header-inner {
-            min-height: 66px;
-          }
-
-          .ha-brand {
-            font-size: 23px;
-          }
-
-          .ha-hero {
-            padding: 70px 15px 63px;
-          }
+          .ha-header-inner { min-height: 66px; }
+          .ha-brand { font-size: 23px; }
+          .ha-hero { padding: 70px 15px 63px; }
 
           .ha-hero-brand {
             font-size: clamp(36px, 10vw, 58px);
           }
 
-          .ha-hero h2 {
-            font-size: 29px;
-          }
-
-          .ha-section {
-            padding: 65px 0;
-          }
-
-          .ha-heading {
-            margin-bottom: 31px;
-          }
-
-          .ha-heading h2 {
-            font-size: 35px;
-          }
-
-          .ha-gallery {
-            gap: 25px 12px;
-          }
-
-          .ha-work h3 {
-            font-size: 14px;
-          }
-
-          .ha-work p {
-            font-size: 11px;
-          }
+          .ha-hero h2 { font-size: 29px; }
+          .ha-section { padding: 65px 0; }
+          .ha-heading { margin-bottom: 31px; }
+          .ha-heading h2 { font-size: 35px; }
+          .ha-gallery { gap: 25px 12px; }
+          .ha-work h3 { font-size: 14px; }
+          .ha-work p { font-size: 11px; }
 
           .ha-instagram-feature {
             flex-direction: column;
@@ -1139,26 +1043,16 @@ export default function HomePage() {
             width: 100%;
           }
 
-          .ha-services {
-            gap: 10px;
-          }
+          .ha-services { gap: 10px; }
 
           .ha-service {
             padding: 20px 15px;
             min-height: 250px;
           }
 
-          .ha-service h3 {
-            font-size: 17px;
-          }
-
-          .ha-service-link {
-            font-size: 10px;
-          }
-
-          .ha-review-card {
-            width: 250px;
-          }
+          .ha-service h3 { font-size: 17px; }
+          .ha-service-link { font-size: 10px; }
+          .ha-review-card { width: 250px; }
 
           .ha-location {
             grid-template-columns: 1fr;
@@ -1209,24 +1103,14 @@ export default function HomePage() {
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .ha-marquee-track {
-            animation: none;
-          }
-
-          .ha-marquee-window {
-            overflow-x: auto;
-          }
-
+          .ha-marquee-track { animation: none; }
+          .ha-marquee-window { overflow-x: auto; }
           .ha-work-photo img,
-          .ha-btn {
-            transition: none;
-          }
+          .ha-btn { transition: none; }
         }
       `}</style>
 
-      {/* =====================================
-          HEADER
-      ===================================== */}
+      {/* HEADER */}
 
       <header className="ha-header">
         <div className="ha-wrap ha-header-inner">
@@ -1253,22 +1137,15 @@ export default function HomePage() {
       </header>
 
       <main>
-        {/* =====================================
-            HERO
-        ===================================== */}
+        {/* HERO */}
 
         <section className="ha-hero">
           <span className="ha-eyebrow">
             PERSONAL HAIR ATELIER · CHEONGDANG
           </span>
 
-          <h1 className="ha-hero-brand">
-            HI U HAIR
-          </h1>
-
-          <div className="ha-hero-sub">
-            CHEONGDANG
-          </div>
+          <h1 className="ha-hero-brand">HI U HAIR</h1>
+          <div className="ha-hero-sub">CHEONGDANG</div>
 
           <h2>
             당신의 분위기를
@@ -1283,9 +1160,7 @@ export default function HomePage() {
           </p>
 
           <div className="ha-actions ha-center">
-            <BookingButton>
-              네이버 예약하기 ↗
-            </BookingButton>
+            <BookingButton>네이버 예약하기 ↗</BookingButton>
 
             <Link
               href="/hair"
@@ -1305,10 +1180,7 @@ export default function HomePage() {
             Instagram @hiu_haerin ↗
           </a>
 
-          <a
-            href="#portfolio"
-            className="ha-hero-scroll"
-          >
+          <a href="#portfolio" className="ha-hero-scroll">
             EXPLORE THE COLLECTION ↓
           </a>
         </section>
@@ -1317,14 +1189,9 @@ export default function HomePage() {
           HAIR DESIGN BY HAERIN LEE
         </div>
 
-        {/* =====================================
-            PORTFOLIO
-        ===================================== */}
+        {/* PORTFOLIO */}
 
-        <section
-          id="portfolio"
-          className="ha-section"
-        >
+        <section id="portfolio" className="ha-section">
           <div className="ha-wrap">
             <div className="ha-heading">
               <span className="ha-eyebrow">
@@ -1341,18 +1208,19 @@ export default function HomePage() {
 
             <div className="ha-gallery">
               {portfolio.map((item, index) => (
-                <article
-                  className="ha-work"
-                  key={item.image}
-                >
+                <article className="ha-work" key={item.image}>
                   <Link
                     href={item.href}
-                    aria-label={`${item.title} 시술 자세히 보기`}
+                    aria-label={`${item.title} 자세히 보기`}
                   >
                     <div className="ha-work-photo">
                       <Image
                         src={item.image}
-                        alt={item.title}
+                        alt={
+                          item.href === "/hair/wedding-color"
+                            ? "웨딩염색 스타일 상담 대표 이미지"
+                            : item.title
+                        }
                         fill
                         priority={index < 2}
                         sizes="(max-width:950px) 50vw, 25vw"
@@ -1369,13 +1237,9 @@ export default function HomePage() {
                   </div>
 
                   <h3>{item.title}</h3>
-
                   <p>{item.desc}</p>
 
-                  <Link
-                    href={item.href}
-                    className="ha-text-link"
-                  >
+                  <Link href={item.href} className="ha-text-link">
                     시술 자세히 보기 →
                   </Link>
                 </article>
@@ -1391,8 +1255,8 @@ export default function HomePage() {
                 <h3>More Styles on Instagram</h3>
 
                 <p>
-                  이해린 디자이너의 다양한
-                  헤어스타일을 인스타그램에서 만나보세요.
+                  이해린 디자이너의 다양한 헤어스타일을
+                  인스타그램에서 만나보세요.
                 </p>
               </div>
 
@@ -1409,14 +1273,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* =====================================
-            DESIGNER
-        ===================================== */}
+        {/* DESIGNER */}
 
-        <section
-          id="about"
-          className="ha-section ha-cream"
-        >
+        <section id="about" className="ha-section ha-cream">
           <div className="ha-wrap ha-about-grid">
             <div className="ha-portrait">
               <Image
@@ -1480,11 +1339,9 @@ export default function HomePage() {
                     <strong>자격 및 수료</strong>
 
                     <ul>
-                      {extraQualifications.map(
-                        (item) => (
-                          <li key={item}>{item}</li>
-                        )
-                      )}
+                      {extraQualifications.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
                     </ul>
 
                     <strong>수상 경력</strong>
@@ -1507,9 +1364,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* =====================================
-            SERVICES
-        ===================================== */}
+        {/* SERVICES */}
 
         <section
           id="services"
@@ -1541,9 +1396,7 @@ export default function HomePage() {
                   </div>
 
                   <h3>{service.title}</h3>
-
                   <small>{service.english}</small>
-
                   <p>{service.desc}</p>
 
                   <div className="ha-service-links">
@@ -1572,14 +1425,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* =====================================
-            CUSTOMER FEEDBACK
-        ===================================== */}
+        {/* REVIEWS */}
 
-        <section
-          id="reviews"
-          className="ha-section ha-reviews"
-        >
+        <section id="reviews" className="ha-section ha-reviews">
           <div className="ha-wrap ha-heading">
             <span className="ha-eyebrow">
               VOICES FROM OUR CLIENTS
@@ -1629,7 +1477,6 @@ export default function HomePage() {
                         <small>
                           NAVER CUSTOMER FEEDBACK
                         </small>
-
                         <h3>{review.title}</h3>
                       </div>
 
@@ -1642,17 +1489,14 @@ export default function HomePage() {
 
                   {styleCards.map((style) => (
                     <Link
-                      key={`${copy}-${style}`}
-                      href="/hair"
+                      key={`${copy}-${style.title}`}
+                      href={style.href}
                       tabIndex={copy === 1 ? -1 : 0}
                       className="ha-review-card"
                     >
                       <div>
-                        <small>
-                          HAIR DESIGN STYLE
-                        </small>
-
-                        <h3>{style}</h3>
+                        <small>HAIR DESIGN STYLE</small>
+                        <h3>{style.title}</h3>
                       </div>
 
                       <div>
@@ -1682,17 +1526,14 @@ export default function HomePage() {
           </div>
 
           <p className="ha-review-note">
-            고객 평가 수치는 2026년 10월 10일
-            확인 기준이며 자동 갱신되지 않습니다.
+            고객 평가 수치는 2026년 10월 10일 확인 기준이며
+            자동 갱신되지 않습니다.
             <br />
-            고객 평가 5개와 스타일 소개 5개로
-            구성되어 있습니다.
+            고객 평가 5개와 스타일 소개 5개로 구성되어 있습니다.
           </p>
         </section>
 
-        {/* =====================================
-            BOOKING
-        ===================================== */}
+        {/* BOOKING */}
 
         <section className="ha-booking">
           <span
@@ -1728,14 +1569,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* =====================================
-            LOCATION
-        ===================================== */}
+        {/* LOCATION */}
 
-        <section
-          id="location"
-          className="ha-section ha-cream"
-        >
+        <section id="location" className="ha-section ha-cream">
           <div className="ha-wrap">
             <div className="ha-heading">
               <span className="ha-eyebrow">
@@ -1743,10 +1579,7 @@ export default function HomePage() {
               </span>
 
               <h2>Visit HI U HAIR</h2>
-
-              <p>
-                천안 청당동 하이유헤어 청당점
-              </p>
+              <p>천안 청당동 하이유헤어 청당점</p>
             </div>
 
             <div className="ha-location">
@@ -1762,9 +1595,7 @@ export default function HomePage() {
 
                   <dt>CONTACT</dt>
                   <dd>
-                    <a href={`tel:${PHONE}`}>
-                      {PHONE_VIEW}
-                    </a>
+                    <a href={`tel:${PHONE}`}>{PHONE_VIEW}</a>
                   </dd>
 
                   <dt>INSTAGRAM</dt>
@@ -1825,26 +1656,16 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* =====================================
-          신규 추가: 지역별 페이지 연결
-
-          /area 안에서 42개 지역별 페이지로 이동
-          큰 버튼 없이 작은 텍스트 링크만 표시
-      ===================================== */}
+      {/* 지역별 안내 링크 유지 */}
 
       <div className="ha-area-link-section">
-        <Link
-          href="/area"
-          className="ha-area-link"
-        >
+        <Link href="/area" className="ha-area-link">
           천안 여자머리 · 지역별 시술 안내
           <span aria-hidden="true">→</span>
         </Link>
       </div>
 
-      {/* =====================================
-          FOOTER
-      ===================================== */}
+      {/* FOOTER */}
 
       <footer className="ha-footer">
         <div className="ha-wrap ha-footer-inner">
@@ -1879,15 +1700,11 @@ export default function HomePage() {
         </div>
       </footer>
 
-      {/* =====================================
-          MOBILE BOTTOM BAR
-      ===================================== */}
+      {/* MOBILE BAR */}
 
       <div className="ha-mobile-bar">
         <a href={`tel:${PHONE}`}>전화</a>
-
         <a href={`sms:${PHONE}`}>문자</a>
-
         <a
           href={BOOKING}
           target="_blank"
