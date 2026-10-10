@@ -3,6 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+/* =====================================
+   HI U HAIR · PREMIUM HOME
+===================================== */
+
 const PHONE = "01023277653";
 const PHONE_VIEW = "010-2327-7653";
 
@@ -22,42 +26,46 @@ const MAP =
   "https://map.naver.com/p/search/" +
   encodeURIComponent("하이유헤어 청당점");
 
-/* 자동 슬라이드 - 4초 간격, 20초 순환 */
+/* =====================================
+   사진 자동 슬라이드
+===================================== */
 
 const heroSlides = [
   {
     title: "빌드펌",
-    english: "BUILD PERM",
+    en: "BUILD PERM",
     image: "/IMG_1424.jpeg",
     href: "/hair/build-perm",
   },
   {
     title: "레이어드컷",
-    english: "LAYERED CUT",
+    en: "LAYERED CUT",
     image: "/IMG_1427.jpeg",
     href: "/hair/layered-cut",
   },
   {
     title: "물결펌",
-    english: "WAVE PERM",
+    en: "WAVE PERM",
     image: "/IMG_1423.jpeg",
     href: "/hair/wave-perm",
   },
   {
     title: "여성 염색",
-    english: "HAIR COLOR",
+    en: "HAIR COLOR",
     image: "/IMG_1433.jpeg",
     href: "/hair/color",
   },
   {
     title: "웨딩염색",
-    english: "WEDDING COLOR",
+    en: "WEDDING COLOR",
     image: "/IMG_1475.jpeg",
     href: "/hair/wedding-color",
   },
 ];
 
-/* 기존 포트폴리오 */
+/* =====================================
+   기존 포트폴리오 8개
+===================================== */
 
 const portfolio = [
   {
@@ -118,12 +126,14 @@ const portfolio = [
   },
 ];
 
-/* 기존 시술 카테고리 */
+/* =====================================
+   기존 시술 카테고리
+===================================== */
 
 const services = [
   {
     number: "01",
-    english: "CUT & LAYER",
+    en: "CUT & LAYER",
     title: "여성 커트",
     desc: "얼굴형과 모발의 흐름을 고려한 레이어드 디자인",
     image: "/IMG_1427.jpeg",
@@ -136,7 +146,7 @@ const services = [
   },
   {
     number: "02",
-    english: "PERM & WAVE",
+    en: "PERM & WAVE",
     title: "여성 펌",
     desc: "자연스러운 볼륨과 부드러운 웨이브 디자인",
     image: "/IMG_1423.jpeg",
@@ -147,7 +157,7 @@ const services = [
   },
   {
     number: "03",
-    english: "COLOR DESIGN",
+    en: "COLOR DESIGN",
     title: "여성 염색",
     desc: "베이지브라운 · 루비레드 · 블루 · 베이비핑크",
     image: "/IMG_1433.jpeg",
@@ -160,7 +170,7 @@ const services = [
   },
   {
     number: "04",
-    english: "WEDDING HAIR COLOR",
+    en: "WEDDING HAIR COLOR",
     title: "웨딩염색",
     desc: "웨딩촬영과 결혼식을 위한 헤어 컬러 상담",
     image: "/IMG_1475.jpeg",
@@ -172,6 +182,10 @@ const services = [
     ],
   },
 ];
+
+/* =====================================
+   디자이너 자격 및 수상 경력
+===================================== */
 
 const qualifications = [
   "유원대학교 뷰티케어학과 졸업",
@@ -196,6 +210,11 @@ const awards = [
   "맛과멋창의력경진대회 Permanent 은상",
 ];
 
+/* =====================================
+   네이버 고객 선택 평가
+   실제 리뷰 원문과 구별
+===================================== */
+
 const feedback = [
   { title: "원하는 스타일로 잘해줘요", value: "259명" },
   { title: "친절해요", value: "218명" },
@@ -204,13 +223,9 @@ const feedback = [
   { title: "트렌디해요", value: "73명" },
 ];
 
-const styleCards = [
-  { title: "레이어드컷", href: "/hair/layered-cut" },
-  { title: "빌드펌", href: "/hair/build-perm" },
-  { title: "물결펌", href: "/hair/wave-perm" },
-  { title: "여성 염색", href: "/hair/color" },
-  { title: "웨딩염색", href: "/hair/wedding-color" },
-];
+/* =====================================
+   공통 컴포넌트
+===================================== */
 
 function ArrowIcon() {
   return (
@@ -220,7 +235,7 @@ function ArrowIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.6"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -246,7 +261,13 @@ function InstagramIcon() {
     >
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+      <circle
+        cx="17.5"
+        cy="6.5"
+        r="1"
+        fill="currentColor"
+        stroke="none"
+      />
     </svg>
   );
 }
@@ -265,8 +286,8 @@ function BookingButton({
       rel="noopener noreferrer"
       className={
         light
-          ? "ha-button ha-button-light"
-          : "ha-button ha-button-primary"
+          ? "ha-btn ha-btn-light"
+          : "ha-btn ha-btn-primary"
       }
     >
       {children}
@@ -287,8 +308,8 @@ function SectionHeading({
   description: string;
 }) {
   return (
-    <div className="ha-section-heading">
-      <div className="ha-section-label">
+    <div className="ha-heading">
+      <div className="ha-heading-label">
         <span>{number}</span>
         <span>{eyebrow}</span>
       </div>
@@ -297,6 +318,10 @@ function SectionHeading({
     </div>
   );
 }
+
+/* =====================================
+   메인 홈페이지
+===================================== */
 
 export default function HomePage() {
   return (
@@ -311,22 +336,34 @@ export default function HomePage() {
           --warm:#f0ede7;
           --line:#e8e3dc;
           --gold:#b39c7b;
+          background:white;
           color:var(--ink);
-          background:#fff;
-          font-family:-apple-system,BlinkMacSystemFont,
-            "Apple SD Gothic Neo","Noto Sans KR",Arial,sans-serif;
+          min-height:100vh;
+          font-family:-apple-system,
+            BlinkMacSystemFont,
+            "Apple SD Gothic Neo",
+            "Noto Sans KR",Arial,sans-serif;
           word-break:keep-all;
           overflow-x:clip;
           -webkit-font-smoothing:antialiased;
         }
+
         .ha-page *,
         .ha-page *:before,
-        .ha-page *:after {box-sizing:border-box}
-        .ha-page a {text-decoration:none;color:inherit}
-        .ha-container {
+        .ha-page *:after {
+          box-sizing:border-box;
+        }
+
+        .ha-page a {
+          text-decoration:none;
+          color:inherit;
+        }
+
+        .ha-wrap {
           width:min(1240px,calc(100% - 72px));
           margin:0 auto;
         }
+
         .ha-eyebrow {
           color:var(--navy);
           font-size:10px;
@@ -334,36 +371,47 @@ export default function HomePage() {
           letter-spacing:2.4px;
           line-height:1.9;
         }
-        .ha-button {
-          min-height:53px;
-          padding:15px 23px;
+
+        .ha-btn {
           display:inline-flex;
           justify-content:center;
           align-items:center;
-          gap:20px;
+          gap:17px;
+          min-height:52px;
+          padding:14px 22px;
           font-size:12px;
           font-weight:700;
-          border:1px solid transparent;
-          transition:transform .25s,background .25s;
+          text-align:center;
+          border:1px solid var(--navy);
+          transition:
+            transform .25s,
+            background .25s;
         }
-        .ha-button:hover{transform:translateY(-2px)}
-        .ha-button-primary {
-          background:var(--navy);
+
+        .ha-btn:hover {
+          transform:translateY(-2px);
+        }
+
+        .ha-btn-primary {
           color:white!important;
-          border-color:var(--navy);
+          background:var(--navy);
         }
-        .ha-button-outline {
+
+        .ha-btn-outline {
           color:var(--navy)!important;
-          border-color:#b9c1cc;
+          background:transparent;
         }
-        .ha-button-light {
-          color:var(--navy)!important;
+
+        .ha-btn-light {
           background:white;
           border-color:white;
+          color:var(--navy)!important;
         }
-        .ha-button-white-outline {
+
+        .ha-btn-white-outline {
           color:white!important;
-          border-color:rgba(255,255,255,.55);
+          border-color:rgba(255,255,255,.6);
+          background:transparent;
         }
 
         /* HEADER */
@@ -373,205 +421,197 @@ export default function HomePage() {
           top:0;
           z-index:80;
           background:rgba(255,255,255,.97);
-          backdrop-filter:blur(18px);
+          backdrop-filter:blur(16px);
           border-bottom:1px solid var(--line);
         }
+
         .ha-header-inner {
-          min-height:83px;
           display:flex;
-          align-items:center;
           justify-content:space-between;
+          align-items:center;
           gap:25px;
+          min-height:82px;
         }
+
         .ha-brand {
           display:inline-flex;
           flex-direction:column;
           color:var(--navy)!important;
           font:29px Georgia,serif;
           letter-spacing:2px;
-          white-space:nowrap;
           line-height:1;
+          white-space:nowrap;
         }
+
         .ha-brand small {
           font:600 8px Arial,sans-serif;
+          margin-top:9px;
           letter-spacing:4px;
-          margin-top:8px;
         }
+
         .ha-nav {
           display:flex;
-          gap:25px;
           align-items:center;
+          gap:24px;
           font-size:11px;
           font-weight:700;
         }
+
+        .ha-nav a:hover {
+          color:var(--navy);
+        }
+
         .ha-header-booking {
           display:flex;
           align-items:center;
-          gap:14px;
-          background:var(--navy);
-          color:white!important;
+          gap:12px;
+          padding:15px 20px;
           font-size:11px;
           font-weight:700;
-          padding:15px 20px;
+          background:var(--navy);
+          color:white!important;
           white-space:nowrap;
         }
 
         /* HERO */
 
-        .ha-hero {background:var(--ivory)}
+        .ha-hero {
+          background:var(--ivory);
+        }
+
         .ha-hero-grid {
           display:grid;
           grid-template-columns:1fr .96fr;
-          min-height:690px;
+          min-height:680px;
         }
+
         .ha-hero-content {
-          padding:80px 60px 85px 0;
           display:flex;
           flex-direction:column;
           align-items:flex-start;
           justify-content:center;
+          padding:70px 55px 75px 0;
         }
+
         .ha-hero-brand {
           font:400 clamp(57px,7vw,105px) Georgia,serif;
           color:var(--navy);
           letter-spacing:-4px;
           white-space:nowrap;
-          line-height:1.07;
-          margin:26px 0 10px;
+          line-height:1.1;
+          margin:25px 0 10px;
         }
+
         .ha-hero-location {
           color:var(--navy);
+          letter-spacing:5px;
           font-size:10px;
           font-weight:700;
-          letter-spacing:5px;
         }
+
         .ha-hero-divider {
-          width:58px;
+          width:55px;
           height:1px;
           background:var(--gold);
-          margin:42px 0 32px;
+          margin:39px 0 30px;
         }
+
         .ha-hero h2 {
-          font-size:clamp(34px,3.7vw,53px);
+          font-size:clamp(34px,3.7vw,52px);
           font-weight:450;
-          line-height:1.44;
-          letter-spacing:-2px;
+          line-height:1.45;
+          letter-spacing:-1.7px;
           margin:0;
         }
-        .ha-hero h2 strong{color:var(--navy);font-weight:600}
+
+        .ha-hero h2 strong {
+          color:var(--navy);
+          font-weight:600;
+        }
+
         .ha-hero-desc {
-          color:#74777d;
           font-size:14px;
-          line-height:2.15;
+          color:var(--muted);
+          line-height:2.1;
           margin:25px 0 0;
         }
+
         .ha-hero-actions {
           display:flex;
-          flex-wrap:wrap;
           gap:10px;
-          margin-top:32px;
+          flex-wrap:wrap;
+          margin-top:29px;
         }
+
         .ha-hero-social {
           display:inline-flex;
-          gap:9px;
           align-items:center;
+          gap:9px;
           color:var(--navy)!important;
           font-size:12px;
-          font-weight:600;
-          margin-top:28px;
+          font-weight:700;
+          margin-top:27px;
         }
 
-        /* AUTOMATIC FADE SLIDESHOW */
+        /* 자동 페이드 슬라이드 */
 
-        .ha-hero-image-side {
+        .ha-slider {
           position:relative;
-          min-height:690px;
-          background:#ddd6ce;
+          min-height:680px;
+          background:#ded8d0;
           overflow:hidden;
           isolation:isolate;
         }
+
         .ha-slide {
           position:absolute;
           inset:0;
-          display:block;
           opacity:0;
           visibility:hidden;
           pointer-events:none;
-          animation:ha-crossfade 20s linear infinite;
-          animation-delay:var(--slide-delay);
-          will-change:opacity;
+          animation:ha-fade 20s linear infinite;
+          animation-delay:var(--delay);
         }
+
         .ha-slide img {
           object-fit:cover;
           object-position:center 28%;
-          transition:transform 7s ease;
         }
+
         .ha-slide:after {
           content:"";
           position:absolute;
-          inset:48% 0 0;
+          inset:52% 0 0;
           background:linear-gradient(
-            180deg,
             transparent,
-            rgba(18,29,44,.43)
+            rgba(12,24,41,.45)
           );
-        }
-        .ha-slide-label {
-          position:absolute;
-          z-index:3;
-          left:38px;
-          right:38px;
-          bottom:38px;
-          color:white;
-          display:flex;
-          align-items:flex-end;
-          justify-content:space-between;
-          gap:20px;
-        }
-        .ha-slide-label strong {
-          font:25px Georgia,serif;
-          letter-spacing:.5px;
-        }
-        .ha-slide-label small {
-          display:block;
-          margin-top:8px;
-          font-size:10px;
-          letter-spacing:2px;
-          font-weight:600;
-        }
-        .ha-slide-label em {
-          font:10px Arial,sans-serif;
-          letter-spacing:2px;
-          font-style:normal;
-          text-align:right;
-          line-height:2;
+          pointer-events:none;
         }
 
-        @keyframes ha-crossfade {
+        @keyframes ha-fade {
           0% {
             opacity:0;
             visibility:visible;
-            pointer-events:auto;
           }
           3% {
             opacity:1;
             visibility:visible;
-            pointer-events:auto;
           }
           17% {
             opacity:1;
             visibility:visible;
-            pointer-events:auto;
           }
           20% {
             opacity:0;
+            visibility:visible;
+          }
+          20.01% {
             visibility:hidden;
-            pointer-events:none;
           }
           100% {
             opacity:0;
             visibility:hidden;
-            pointer-events:none;
           }
         }
 
@@ -580,96 +620,141 @@ export default function HomePage() {
           visibility:visible;
         }
 
+        .ha-slide-label {
+          position:absolute;
+          z-index:2;
+          bottom:33px;
+          left:33px;
+          right:33px;
+          display:flex;
+          justify-content:space-between;
+          align-items:flex-end;
+          gap:15px;
+          color:white;
+        }
+
+        .ha-slide-label strong {
+          font:25px Georgia,serif;
+        }
+
+        .ha-slide-label small {
+          display:block;
+          font-size:10px;
+          letter-spacing:1.6px;
+          margin-top:10px;
+        }
+
+        .ha-slide-label em {
+          font-size:9px;
+          font-style:normal;
+          text-align:right;
+          letter-spacing:2px;
+          line-height:2;
+        }
+
         .ha-slide-counter {
           position:absolute;
-          top:30px;
-          right:30px;
-          z-index:6;
-          padding:10px 13px;
+          z-index:10;
+          top:23px;
+          right:23px;
           color:white;
-          background:rgba(17,29,47,.35);
-          backdrop-filter:blur(8px);
+          background:rgba(15,30,50,.45);
+          padding:11px 15px;
           font-size:10px;
-          letter-spacing:1.4px;
+          letter-spacing:1px;
           pointer-events:none;
         }
 
         .ha-slide-progress {
           position:absolute;
-          z-index:7;
+          z-index:10;
           left:0;
+          right:0;
           bottom:0;
           height:3px;
-          width:100%;
-          background:rgba(255,255,255,.3);
+          background:rgba(255,255,255,.35);
           pointer-events:none;
         }
+
         .ha-slide-progress:after {
           content:"";
           display:block;
-          background:#fff;
-          width:20%;
+          width:100%;
           height:100%;
+          background:white;
           transform-origin:left;
           animation:ha-progress 4s linear infinite;
         }
+
         @keyframes ha-progress {
           from {transform:scaleX(0)}
-          to {transform:scaleX(5)}
+          to {transform:scaleX(1)}
         }
 
         .ha-hero-bottom {
           background:var(--deep);
-          color:#fff;
+          color:white;
         }
+
         .ha-hero-bottom-inner {
-          min-height:67px;
+          min-height:66px;
           display:flex;
-          align-items:center;
           justify-content:space-between;
+          align-items:center;
           gap:20px;
         }
-        .ha-hero-bottom span {
+
+        .ha-hero-bottom span,
+        .ha-hero-bottom a {
           font-size:10px;
-          letter-spacing:2px;
+          letter-spacing:1.6px;
         }
+
         .ha-hero-bottom a {
           display:inline-flex;
           align-items:center;
-          gap:12px;
-          font-size:10px;
+          gap:10px;
           font-weight:700;
-          letter-spacing:1px;
         }
 
-        /* SECTIONS */
+        /* SECTION */
 
         .ha-section {
-          padding:112px 0;
+          padding:105px 0;
           scroll-margin-top:90px;
         }
-        .ha-section-ivory{background:var(--ivory)}
-        .ha-section-heading{margin-bottom:52px}
-        .ha-section-label {
+
+        .ha-ivory {
+          background:var(--ivory);
+        }
+
+        .ha-heading {
+          margin-bottom:45px;
+        }
+
+        .ha-heading-label {
           display:flex;
           gap:15px;
           align-items:center;
+          color:var(--navy);
           font-size:10px;
           font-weight:700;
           letter-spacing:2px;
-          color:var(--navy);
         }
-        .ha-section-label span:first-child {
-          font:19px Georgia,serif;
+
+        .ha-heading-label span:first-child {
           color:var(--gold);
+          font:19px Georgia,serif;
         }
-        .ha-section-heading h2 {
-          font:400 clamp(36px,5vw,59px) Georgia,serif;
-          letter-spacing:-1px;
+
+        .ha-heading h2 {
+          font:400 clamp(36px,5vw,58px) Georgia,serif;
           line-height:1.3;
+          letter-spacing:-1px;
           margin:17px 0 15px;
         }
-        .ha-section-heading p {
+
+        .ha-heading p {
           color:var(--muted);
           font-size:14px;
           line-height:2;
@@ -681,343 +766,420 @@ export default function HomePage() {
         .ha-gallery {
           display:grid;
           grid-template-columns:repeat(4,minmax(0,1fr));
-          gap:47px 18px;
+          gap:38px 17px;
         }
-        .ha-work{min-width:0}
+
+        .ha-work {
+          min-width:0;
+        }
+
         .ha-work-photo {
           position:relative;
-          aspect-ratio:4/5.2;
+          aspect-ratio:4/5;
           overflow:hidden;
-          background:#eae5dc;
+          background:#ebe5dd;
         }
+
         .ha-work-photo img {
           object-fit:cover;
-          transition:transform .5s;
+          transition:transform .4s;
         }
-        .ha-work:hover img{transform:scale(1.05)}
+
+        .ha-work:hover img {
+          transform:scale(1.045);
+        }
+
         .ha-work-index {
           position:absolute;
-          top:15px;
-          left:15px;
-          z-index:2;
+          top:12px;
+          left:12px;
           display:grid;
           place-items:center;
-          width:35px;
-          height:35px;
+          width:34px;
+          height:34px;
           background:white;
           color:var(--navy);
           font:15px Georgia,serif;
         }
-        .ha-work-english {
-          margin:19px 0 8px;
+
+        .ha-work-en {
+          color:var(--navy);
           font-size:9px;
           font-weight:700;
           letter-spacing:1px;
-          color:var(--navy);
           line-height:1.7;
+          margin:16px 0 8px;
         }
+
         .ha-work h3 {
-          font-size:17px;
+          font-size:16px;
           margin:0 0 8px;
           line-height:1.5;
         }
+
         .ha-work p {
           color:var(--muted);
           font-size:12px;
-          line-height:1.9;
-          margin:0 0 15px;
+          line-height:1.8;
+          margin:0 0 13px;
         }
+
         .ha-text-link {
+          display:inline-block;
           color:var(--navy)!important;
           font-size:11px;
           font-weight:700;
-          border-bottom:1px solid #c6cdd5;
-          padding-bottom:7px;
-        }
-        .ha-instagram-feature {
-          display:flex;
-          align-items:center;
-          justify-content:space-between;
-          gap:30px;
-          padding:38px 43px;
-          background:var(--ivory);
-          border-left:3px solid var(--navy);
-          margin-top:65px;
-        }
-        .ha-instagram-feature h3 {
-          font:30px Georgia,serif;
-          margin:10px 0;
-        }
-        .ha-instagram-feature p {
-          font-size:13px;
-          color:var(--muted);
-          line-height:1.9;
+          border-bottom:1px solid #c8cfd9;
+          padding-bottom:6px;
         }
 
-        /* DESIGNER */
+        .ha-instagram-feature {
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          gap:30px;
+          background:var(--ivory);
+          border-left:3px solid var(--navy);
+          padding:35px 38px;
+          margin-top:50px;
+        }
+
+        .ha-instagram-feature h3 {
+          font:29px Georgia,serif;
+          margin:11px 0;
+        }
+
+        .ha-instagram-feature p {
+          font-size:13px;
+          line-height:1.9;
+          color:var(--muted);
+        }
+
+        /* DESIGNER PROFILE */
 
         .ha-about-grid {
           display:grid;
           grid-template-columns:.9fr 1.1fr;
-          gap:9%;
           align-items:center;
+          gap:8%;
         }
+
         .ha-portrait-shell {
+          min-width:0;
           position:relative;
-          padding:0 35px 36px 0;
+          padding:0 30px 32px 0;
         }
+
         .ha-portrait-shell:before {
           content:"";
           position:absolute;
-          top:35px;
-          left:35px;
+          top:30px;
+          left:30px;
           right:0;
           bottom:0;
-          border:1px solid #c6b69e;
+          border:1px solid #c5b596;
         }
+
         .ha-portrait {
           position:relative;
+          display:block;
+          width:100%;
           aspect-ratio:4/5;
-          background:#e5dfd7;
+          min-height:390px;
           overflow:hidden;
+          background:#e6ded8;
         }
+
         .ha-portrait img {
           object-fit:cover;
-          object-position:center 35%;
+          object-position:center 30%;
         }
+
         .ha-portrait-tag {
           position:absolute;
-          bottom:22px;
-          left:22px;
-          background:white;
-          padding:13px 17px;
+          bottom:18px;
+          left:18px;
+          z-index:2;
+          padding:12px 15px;
+          background:rgba(255,255,255,.95);
           color:var(--navy);
           font:16px Georgia,serif;
         }
+
         .ha-about-intro {
-          font-size:clamp(29px,3.7vw,47px);
-          font-weight:450;
+          font-size:clamp(30px,3.6vw,46px);
           line-height:1.5;
+          font-weight:450;
           letter-spacing:-1px;
-          margin:20px 0 30px;
+          margin:18px 0 28px;
         }
-        .ha-about-intro strong{color:var(--navy)}
+
+        .ha-about-intro strong {
+          color:var(--navy);
+        }
+
         .ha-about-text {
           color:#6f737b;
           font-size:14px;
           line-height:2.1;
         }
+
         .ha-about-social {
           display:inline-flex;
-          gap:9px;
           align-items:center;
+          gap:9px;
           color:var(--navy)!important;
           font-size:12px;
           font-weight:700;
           margin:14px 0;
         }
+
         .ha-credentials {
-          margin-top:26px;
-          padding-top:25px;
-          border-top:1px solid #dad5cd;
+          margin-top:24px;
+          border-top:1px solid #dcd6ce;
+          padding-top:23px;
         }
+
         .ha-credentials-title {
           font-size:10px;
-          color:var(--navy);
-          letter-spacing:1.8px;
           font-weight:700;
-          margin-bottom:14px;
+          letter-spacing:1.5px;
+          color:var(--navy);
+          margin-bottom:13px;
         }
+
         .ha-credentials ul {
           padding-left:18px;
           margin:0;
         }
+
         .ha-credentials li {
           font-size:12px;
-          color:#656b73;
+          color:#626973;
           line-height:2.1;
         }
+
         .ha-details {
-          border-top:1px solid #dedad3;
-          margin-top:20px;
+          margin-top:19px;
+          border-top:1px solid var(--line);
         }
+
         .ha-details summary {
           cursor:pointer;
-          color:var(--navy);
+          padding:16px 0;
           font-size:12px;
           font-weight:700;
-          padding:18px 0;
+          color:var(--navy);
         }
-        .ha-details-content{padding-bottom:20px}
+
+        .ha-details-content {
+          padding-bottom:15px;
+        }
+
         .ha-details-content strong {
           display:block;
+          margin:14px 0 8px;
           font-size:12px;
-          margin:15px 0 8px;
         }
 
         /* SERVICES */
 
-        .ha-services-grid {
+        .ha-services {
           display:grid;
           grid-template-columns:repeat(4,minmax(0,1fr));
-          gap:18px;
+          gap:16px;
         }
-        .ha-service-card {
+
+        .ha-service {
           display:flex;
           flex-direction:column;
           background:white;
           border:1px solid var(--line);
           min-width:0;
         }
-        .ha-service-image {
+
+        .ha-service-photo {
           position:relative;
-          aspect-ratio:4/4.3;
+          aspect-ratio:4/4;
           overflow:hidden;
+          background:#ebe5dd;
         }
-        .ha-service-image img{object-fit:cover}
-        .ha-service-image span {
+
+        .ha-service-photo img {
+          object-fit:cover;
+        }
+
+        .ha-service-number {
           position:absolute;
-          top:15px;
-          left:15px;
-          background:white;
-          color:var(--navy);
+          top:12px;
+          left:12px;
           padding:10px;
-          font:17px Georgia,serif;
+          background:white;
+          font:16px Georgia,serif;
+          color:var(--navy);
         }
+
         .ha-service-body {
           display:flex;
           flex-direction:column;
-          padding:27px 22px;
           flex:1;
+          padding:23px 19px;
         }
-        .ha-service-english {
-          font-size:9px;
-          letter-spacing:1px;
+
+        .ha-service-body small {
           color:var(--navy);
+          font-size:9px;
           font-weight:700;
+          letter-spacing:1px;
         }
+
         .ha-service-body h3 {
-          font-size:22px;
-          margin:13px 0 10px;
+          font-size:20px;
+          margin:12px 0 9px;
         }
+
         .ha-service-body p {
           font-size:12px;
           color:var(--muted);
           line-height:1.9;
         }
+
         .ha-service-links {
-          display:flex;
-          flex-direction:column;
           margin-top:auto;
-          padding-top:14px;
+          padding-top:12px;
         }
+
         .ha-service-links a {
-          border-top:1px solid var(--line);
-          padding:13px 0;
           display:flex;
           justify-content:space-between;
           gap:8px;
+          border-top:1px solid var(--line);
+          padding:13px 0;
           color:var(--navy);
           font-size:11px;
           font-weight:700;
         }
+
         .ha-services-more {
           display:flex;
           justify-content:center;
-          margin-top:40px;
+          margin-top:35px;
         }
 
-        /* REVIEWS */
+        /* REVIEW REDESIGN */
 
-        .ha-review-summary {
+        .ha-review-overview {
           display:flex;
-          justify-content:center;
           align-items:center;
-          gap:55px;
+          justify-content:center;
+          gap:45px;
           margin-bottom:40px;
         }
-        .ha-review-number{text-align:center}
-        .ha-review-number strong {
+
+        .ha-review-stat {
+          text-align:center;
+        }
+
+        .ha-review-stat strong {
           display:block;
-          font:54px Georgia,serif;
           color:var(--navy);
+          font:52px Georgia,serif;
         }
-        .ha-review-number span {
-          font-size:12px;
+
+        .ha-review-stat span {
           color:var(--muted);
+          font-size:11px;
         }
+
         .ha-review-divider {
-          width:1px;
-          height:55px;
           background:var(--line);
+          width:1px;
+          height:50px;
         }
-        .ha-marquee-window {
-          overflow:hidden;
-          padding:5px 0 20px;
-        }
-        .ha-marquee-track {
-          display:flex;
-          width:max-content;
-          animation:ha-review-slide 65s linear infinite;
-        }
-        .ha-marquee-window:hover .ha-marquee-track,
-        .ha-marquee-window:focus-within .ha-marquee-track {
-          animation-play-state:paused;
-        }
-        .ha-marquee-set {
-          display:flex;
-          flex-shrink:0;
+
+        .ha-feedback-grid {
+          display:grid;
+          grid-template-columns:repeat(3,minmax(0,1fr));
           gap:15px;
-          padding-right:15px;
         }
-        .ha-review-card {
-          width:270px;
-          min-height:205px;
-          padding:26px;
-          background:var(--ivory);
-          border:1px solid var(--line);
+
+        .ha-feedback-card {
           display:flex;
           flex-direction:column;
           justify-content:space-between;
+          min-height:205px;
+          padding:27px;
+          border:1px solid var(--line);
+          background:var(--ivory);
+          transition:transform .2s,border-color .2s;
         }
-        .ha-review-card small {
+
+        .ha-feedback-card:hover {
+          transform:translateY(-3px);
+          border-color:#c3cedb;
+        }
+
+        .ha-feedback-card small {
           color:var(--navy);
           font-size:9px;
           font-weight:700;
           letter-spacing:1.4px;
         }
-        .ha-review-card h3 {
+
+        .ha-feedback-card h3 {
           font-size:19px;
           line-height:1.6;
-          margin:18px 0;
+          margin:15px 0;
+          font-weight:550;
         }
-        .ha-review-card strong {
+
+        .ha-feedback-card strong {
           display:block;
-          color:var(--navy);
           font:27px Georgia,serif;
+          color:var(--navy);
         }
-        .ha-review-card p {
+
+        .ha-feedback-card p {
           font-size:11px;
           color:var(--muted);
           margin:8px 0 0;
         }
-        @keyframes ha-review-slide {
-          from{transform:translateX(0)}
-          to{transform:translateX(-50%)}
-        }
-        .ha-review-actions {
+
+        .ha-real-review-link {
           display:flex;
-          justify-content:center;
-          flex-wrap:wrap;
-          gap:12px;
-          margin-top:32px;
+          justify-content:space-between;
+          align-items:center;
+          gap:25px;
+          background:var(--deep);
+          padding:30px 35px;
+          color:white;
+          margin-top:22px;
         }
+
+        .ha-real-review-link small {
+          color:#c9d6e7;
+          font-size:10px;
+          letter-spacing:1.5px;
+        }
+
+        .ha-real-review-link h3 {
+          margin:10px 0;
+          font-size:22px;
+          font-weight:500;
+        }
+
+        .ha-real-review-link p {
+          color:#d5dfed;
+          font-size:12px;
+          line-height:1.9;
+          margin:0;
+        }
+
         .ha-review-note {
           font-size:11px;
-          line-height:2;
-          text-align:center;
           color:var(--muted);
-          margin-top:25px;
+          line-height:1.9;
+          margin-top:22px;
         }
 
         /* BOOKING */
@@ -1026,338 +1188,605 @@ export default function HomePage() {
           background:var(--navy);
           color:white;
           text-align:center;
-          padding:110px 20px;
+          padding:93px 20px;
         }
+
         .ha-booking h2 {
-          font-size:clamp(32px,4.4vw,51px);
+          font-size:clamp(31px,4vw,48px);
           font-weight:450;
           line-height:1.5;
-          margin:25px 0;
+          margin:22px 0;
         }
+
         .ha-booking p {
-          color:#dbe4ef;
+          color:#dce4ef;
           font-size:13px;
           line-height:2;
         }
+
         .ha-booking-actions {
           display:flex;
           justify-content:center;
           flex-wrap:wrap;
-          gap:12px;
-          margin-top:32px;
+          gap:11px;
+          margin-top:28px;
         }
 
         /* LOCATION */
 
-        .ha-location-grid {
+        .ha-location {
           display:grid;
           grid-template-columns:1fr 1fr;
           gap:20px;
         }
+
         .ha-location-info {
-          padding:45px;
           background:white;
           border:1px solid var(--line);
+          padding:40px;
         }
+
         .ha-location-info h3 {
-          font-size:29px;
-          margin:0 0 30px;
+          font-size:26px;
+          margin:0 0 28px;
         }
+
         .ha-location-info dt {
           color:var(--navy);
           font-size:10px;
           font-weight:700;
-          letter-spacing:1.8px;
-          margin-top:23px;
+          letter-spacing:1.5px;
+          margin-top:20px;
         }
+
         .ha-location-info dd {
-          color:#474d55;
+          color:#454c55;
           font-size:13px;
           line-height:2;
           margin:7px 0;
         }
+
         .ha-location-actions {
           display:flex;
           flex-wrap:wrap;
-          gap:10px;
-          margin-top:29px;
-        }
-        .ha-location-visual {
-          min-height:430px;
-          background:#e9e4dc;
-          padding:40px;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          text-align:center;
-          position:relative;
-        }
-        .ha-location-visual:before {
-          content:"";
-          position:absolute;
-          inset:20px;
-          border:1px solid rgba(25,59,113,.18);
-          pointer-events:none;
-        }
-        .ha-location-visual-content {
-          position:relative;
-          z-index:1;
-        }
-        .ha-location-visual h3 {
-          color:var(--navy);
-          font:clamp(38px,5vw,64px) Georgia,serif;
-          margin:20px 0;
-        }
-        .ha-location-visual p {
-          color:#686f78;
-          font-size:13px;
-          line-height:2;
-          margin-bottom:26px;
+          gap:9px;
+          margin-top:25px;
         }
 
-        /* FOOTER */
+        .ha-location-visual {
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          min-height:390px;
+          padding:30px;
+          background:#eae5de;
+          text-align:center;
+        }
+
+        .ha-location-visual h3 {
+          font:50px Georgia,serif;
+          color:var(--navy);
+          margin:20px 0;
+        }
+
+        .ha-location-visual p {
+          font-size:13px;
+          line-height:2;
+          color:#66717c;
+          margin-bottom:25px;
+        }
+
+        /* AREA */
 
         .ha-area-section {
           background:var(--ivory);
           border-top:1px solid var(--line);
         }
+
         .ha-area-inner {
-          min-height:96px;
           display:flex;
-          justify-content:space-between;
           align-items:center;
+          justify-content:space-between;
           gap:20px;
+          padding:30px 0;
         }
+
         .ha-area-inner span {
-          font-size:12px;
           color:var(--muted);
+          font-size:11px;
         }
+
         .ha-area-inner a {
           color:var(--navy);
           font-size:12px;
           font-weight:700;
         }
+
+        /* FOOTER */
+
         .ha-footer {
           background:#17263b;
           color:white;
-          padding:65px 0 110px;
+          padding:60px 0 110px;
         }
+
         .ha-footer-inner {
           display:flex;
           justify-content:space-between;
-          gap:40px;
+          gap:35px;
         }
-        .ha-footer .ha-brand{color:white!important}
+
+        .ha-footer .ha-brand {
+          color:white!important;
+        }
+
         .ha-footer-social {
           display:inline-flex;
           align-items:center;
           gap:9px;
-          margin-top:26px;
+          margin-top:25px;
           font-size:12px;
         }
-        .ha-footer-info{text-align:right}
+
+        .ha-footer-info {
+          text-align:right;
+        }
+
         .ha-footer-info p {
-          font-size:12px;
-          line-height:2.1;
+          font-size:11px;
           color:#c6cedb;
+          line-height:2.1;
         }
+
         .ha-footer-links {
           display:flex;
-          flex-wrap:wrap;
           justify-content:flex-end;
+          flex-wrap:wrap;
           gap:18px;
           font-size:11px;
           font-weight:600;
         }
-        .ha-mobile-bar{display:none}
 
-        /* RESPONSIVE */
+        .ha-mobile-bar {
+          display:none;
+        }
 
-        @media(max-width:1100px) {
-          .ha-nav{gap:14px}
-          .ha-header-booking{display:none}
-          .ha-services-grid {
+        /* TABLET */
+
+        @media(max-width:1050px) {
+          .ha-nav {
+            display:none;
+          }
+          .ha-services {
             grid-template-columns:repeat(2,minmax(0,1fr));
           }
-        }
-        @media(max-width:850px) {
-          .ha-container{width:calc(100% - 40px)}
-          .ha-nav{display:none}
-          .ha-header-booking{display:flex}
           .ha-gallery {
             grid-template-columns:repeat(2,minmax(0,1fr));
           }
+        }
+
+        @media(max-width:850px) {
+          .ha-wrap {
+            width:calc(100% - 40px);
+          }
+
+          .ha-hero-grid {
+            grid-template-columns:1fr 1fr;
+          }
+
+          .ha-hero-content {
+            padding-right:25px;
+          }
+
           .ha-about-grid {
             grid-template-columns:1fr;
-            gap:55px;
+            gap:45px;
           }
+
           .ha-portrait-shell {
+            width:100%;
             max-width:570px;
-            margin:auto;
+            margin:0 auto;
           }
-          .ha-location-grid{grid-template-columns:1fr}
+
+          .ha-feedback-grid {
+            grid-template-columns:repeat(2,minmax(0,1fr));
+          }
+
+          .ha-location {
+            grid-template-columns:1fr;
+          }
         }
+
+        /* MOBILE */
+
         @media(max-width:600px) {
-          .ha-container{width:calc(100% - 36px)}
-          .ha-header-inner{min-height:68px}
-          .ha-brand{font-size:24px}
-          .ha-header-booking{padding:12px 14px;font-size:10px}
-          .ha-hero-grid{
+          .ha-wrap {
+            width:calc(100% - 36px);
+          }
+
+          .ha-header-inner {
+            min-height:67px;
+          }
+
+          .ha-brand {
+            font-size:24px;
+          }
+
+          .ha-header-booking {
+            padding:12px;
+            font-size:10px;
+          }
+
+          .ha-hero-grid {
             display:flex;
             flex-direction:column;
           }
+
           .ha-hero-content {
-            padding:50px 0 42px;
-            align-items:center;
+            padding:47px 0 40px;
             text-align:center;
+            align-items:center;
           }
+
           .ha-hero-brand {
-            font-size:clamp(57px,14vw,85px);
+            font-size:clamp(55px,14vw,82px);
             letter-spacing:-3px;
-            margin:20px 0 9px;
+            margin:18px 0 9px;
           }
-          .ha-hero-location{font-size:9px}
-          .ha-hero-divider{margin:26px 0}
-          .ha-hero h2{font-size:32px;letter-spacing:-1px}
-          .ha-hero-desc{font-size:12px;margin-top:18px}
+
+          .ha-hero-location {
+            font-size:9px;
+          }
+
+          .ha-hero-divider {
+            margin:25px 0;
+          }
+
+          .ha-hero h2 {
+            font-size:32px;
+            letter-spacing:-1px;
+          }
+
+          .ha-hero-desc {
+            font-size:12px;
+            margin-top:17px;
+          }
+
           .ha-hero-actions {
             width:100%;
-            justify-content:center;
             margin-top:24px;
+            justify-content:center;
           }
-          .ha-hero-actions .ha-button {
+
+          .ha-hero-actions .ha-btn {
             flex:1;
-            padding:12px 9px;
             font-size:11px;
+            padding:12px 9px;
             gap:8px;
           }
-          .ha-hero-social{font-size:11px;margin-top:25px}
-          .ha-hero-image-side {
+
+          .ha-hero-social {
+            margin-top:24px;
+            font-size:11px;
+          }
+
+          .ha-slider {
             min-height:0;
-            aspect-ratio:4/3.5;
+            height:auto;
+            aspect-ratio:4/4.3;
             margin:0 -18px;
           }
+
           .ha-slide-label {
             left:23px;
             right:23px;
             bottom:23px;
           }
-          .ha-slide-label strong{font-size:20px}
-          .ha-slide-label small{font-size:9px}
-          .ha-slide-label em{font-size:8px}
-          .ha-slide-counter{top:18px;right:18px}
-          .ha-hero-bottom-inner{min-height:65px}
-          .ha-hero-bottom span{font-size:9px;letter-spacing:1px}
-          .ha-hero-bottom a{font-size:9px}
-          .ha-section{padding:73px 0}
-          .ha-section-heading{margin-bottom:34px}
-          .ha-section-heading h2{font-size:39px}
-          .ha-section-heading p{font-size:12px}
-          .ha-gallery{gap:29px 12px}
-          .ha-work-photo{aspect-ratio:4/5}
-          .ha-work-index {
-            width:29px;
-            height:29px;
+
+          .ha-slide-label strong {
+            font-size:20px;
+          }
+
+          .ha-slide-label small {
+            font-size:9px;
+          }
+
+          .ha-slide-label em {
+            font-size:8px;
+          }
+
+          .ha-slide-counter {
+            top:18px;
+            right:18px;
+            font-size:9px;
+          }
+
+          .ha-hero-bottom-inner {
+            min-height:65px;
+          }
+
+          .ha-hero-bottom span,
+          .ha-hero-bottom a {
+            font-size:9px;
+            letter-spacing:.5px;
+          }
+
+          .ha-section {
+            padding:72px 0;
+            scroll-margin-top:70px;
+          }
+
+          .ha-heading {
+            margin-bottom:33px;
+          }
+
+          .ha-heading h2 {
+            font-size:39px;
+          }
+
+          .ha-heading p {
             font-size:12px;
+          }
+
+          .ha-gallery {
+            gap:28px 12px;
+          }
+
+          .ha-work-en {
+            font-size:8px;
+          }
+
+          .ha-work h3 {
+            font-size:14px;
+          }
+
+          .ha-work p {
+            font-size:11px;
+          }
+
+          .ha-work-index {
+            width:28px;
+            height:28px;
             top:10px;
             left:10px;
+            font-size:12px;
           }
-          .ha-work-english{font-size:8px;letter-spacing:.5px}
-          .ha-work h3{font-size:14px}
-          .ha-work p{font-size:11px}
-          .ha-text-link{font-size:10px}
+
           .ha-instagram-feature {
             flex-direction:column;
             align-items:flex-start;
-            padding:27px 23px;
-            gap:20px;
-            margin-top:43px;
+            padding:25px 22px;
           }
-          .ha-instagram-feature h3{font-size:26px}
-          .ha-instagram-feature p{font-size:12px}
-          .ha-instagram-feature .ha-button{width:100%}
-          .ha-portrait-shell{padding:0 25px 27px 0}
-          .ha-portrait-shell:before{top:27px;left:25px}
-          .ha-about-intro{font-size:32px}
-          .ha-about-text{font-size:13px}
-          .ha-services-grid{gap:11px}
-          .ha-service-image{aspect-ratio:4/4}
-          .ha-service-body{padding:19px 13px}
-          .ha-service-body h3{font-size:17px}
-          .ha-service-body p{font-size:11px}
-          .ha-service-english{font-size:8px}
-          .ha-service-links a{font-size:10px}
-          .ha-review-summary{gap:32px}
-          .ha-review-number strong{font-size:43px}
-          .ha-review-number span{font-size:10px}
-          .ha-review-card{width:245px;min-height:190px;padding:22px}
-          .ha-review-card h3{font-size:17px}
-          .ha-review-actions{padding:0 18px}
-          .ha-review-actions .ha-button{font-size:11px;padding:12px}
-          .ha-booking{padding:78px 19px}
-          .ha-booking h2{font-size:32px}
-          .ha-booking-actions .ha-button{font-size:11px;padding:12px}
-          .ha-location-info{padding:30px 25px}
-          .ha-location-info h3{font-size:24px}
-          .ha-location-visual{min-height:310px;padding:30px}
-          .ha-location-visual h3{font-size:48px}
-          .ha-area-inner{
-            min-height:0;
-            padding:25px 0;
+
+          .ha-instagram-feature .ha-btn {
+            width:100%;
+          }
+
+          /* 프로필 사진 모바일 복구 */
+
+          .ha-about-grid {
+            display:flex;
+            flex-direction:column;
+            gap:35px;
+            align-items:stretch;
+          }
+
+          .ha-portrait-shell {
+            width:100%;
+            max-width:none;
+            padding:0 20px 24px 0;
+            margin:0;
+            flex:none;
+          }
+
+          .ha-portrait-shell:before {
+            top:24px;
+            left:20px;
+          }
+
+          .ha-portrait {
+            width:100%;
+            aspect-ratio:4/5;
+            min-height:360px;
+          }
+
+          .ha-portrait img {
+            object-fit:cover;
+            object-position:center 30%;
+          }
+
+          .ha-portrait-tag {
+            font-size:14px;
+          }
+
+          .ha-about-intro {
+            font-size:32px;
+          }
+
+          .ha-about-text {
+            font-size:13px;
+          }
+
+          .ha-services {
+            gap:11px;
+          }
+
+          .ha-service-body {
+            padding:18px 13px;
+          }
+
+          .ha-service-body h3 {
+            font-size:17px;
+          }
+
+          .ha-service-body p {
+            font-size:11px;
+          }
+
+          .ha-service-links a {
+            font-size:10px;
+          }
+
+          .ha-review-overview {
+            gap:30px;
+            margin-bottom:29px;
+          }
+
+          .ha-review-stat strong {
+            font-size:42px;
+          }
+
+          .ha-review-stat span {
+            font-size:10px;
+          }
+
+          .ha-feedback-grid {
+            grid-template-columns:repeat(2,minmax(0,1fr));
+            gap:10px;
+          }
+
+          .ha-feedback-card {
+            min-height:175px;
+            padding:20px 15px;
+          }
+
+          .ha-feedback-card h3 {
+            font-size:15px;
+          }
+
+          .ha-feedback-card strong {
+            font-size:24px;
+          }
+
+          .ha-real-review-link {
+            flex-direction:column;
+            align-items:flex-start;
+            padding:27px 23px;
+          }
+
+          .ha-real-review-link .ha-btn {
+            width:100%;
+          }
+
+          .ha-real-review-link h3 {
+            font-size:20px;
+          }
+
+          .ha-booking {
+            padding:76px 18px;
+          }
+
+          .ha-booking h2 {
+            font-size:31px;
+          }
+
+          .ha-booking-actions .ha-btn {
+            padding:12px;
+            font-size:11px;
+          }
+
+          .ha-location-info {
+            padding:29px 24px;
+          }
+
+          .ha-location-info h3 {
+            font-size:24px;
+          }
+
+          .ha-location-visual {
+            min-height:300px;
+          }
+
+          .ha-location-visual h3 {
+            font-size:44px;
+          }
+
+          .ha-area-inner {
             flex-direction:column;
             align-items:flex-start;
             gap:10px;
           }
-          .ha-footer{
-            padding:53px 0 calc(115px + env(safe-area-inset-bottom));
+
+          .ha-footer {
+            padding:50px 0
+              calc(115px + env(safe-area-inset-bottom));
           }
-          .ha-footer-inner{flex-direction:column;gap:35px}
-          .ha-footer-info{text-align:left}
-          .ha-footer-links{justify-content:flex-start}
-          .ha-mobile-bar{
+
+          .ha-footer-inner {
+            flex-direction:column;
+            gap:35px;
+          }
+
+          .ha-footer-info {
+            text-align:left;
+          }
+
+          .ha-footer-links {
+            justify-content:flex-start;
+          }
+
+          .ha-mobile-bar {
+            display:grid;
             position:fixed;
             left:0;
             right:0;
             bottom:0;
             z-index:100;
-            display:grid;
             grid-template-columns:1fr 1fr 1.5fr;
             gap:8px;
-            padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-            background:#fff;
+            padding:10px 12px
+              calc(10px + env(safe-area-inset-bottom));
+            background:white;
             border-top:1px solid var(--line);
           }
-          .ha-mobile-bar a{
+
+          .ha-mobile-bar a {
+            min-height:47px;
             display:flex;
             justify-content:center;
             align-items:center;
-            min-height:48px;
-            color:var(--navy);
             background:var(--warm);
+            color:var(--navy);
             font-size:12px;
             font-weight:700;
           }
-          .ha-mobile-bar a:last-child{
-            color:white;
+
+          .ha-mobile-bar a:last-child {
             background:var(--navy);
+            color:white;
           }
         }
+
         @media(prefers-reduced-motion:reduce) {
-          .ha-slide{animation:none;opacity:0;visibility:hidden}
-          .ha-slide:first-child{
+          .ha-slide {
+            animation:none;
+            opacity:0;
+            visibility:hidden;
+          }
+
+          .ha-slide:first-child {
             opacity:1;
             visibility:visible;
             pointer-events:auto;
           }
-          .ha-slide-progress:after{animation:none;transform:scaleX(5)}
-          .ha-marquee-track{animation:none}
-          .ha-marquee-window{overflow-x:auto}
-          .ha-work-photo img,.ha-button{transition:none}
+
+          .ha-slide-progress:after {
+            animation:none;
+          }
+
+          .ha-work-photo img,
+          .ha-btn {
+            transition:none;
+          }
         }
       `}</style>
 
+      {/* HEADER */}
+
       <header className="ha-header">
-        <div className="ha-container ha-header-inner">
+        <div className="ha-wrap ha-header-inner">
           <Link href="/" className="ha-brand">
             HI U HAIR
             <small>CHEONGDANG</small>
@@ -1392,8 +1821,9 @@ export default function HomePage() {
 
       <main>
         {/* HERO */}
+
         <section className="ha-hero">
-          <div className="ha-container ha-hero-grid">
+          <div className="ha-wrap ha-hero-grid">
             <div className="ha-hero-content">
               <span className="ha-eyebrow">
                 PERSONAL HAIR ATELIER · CHEONGDANG
@@ -1428,7 +1858,7 @@ export default function HomePage() {
 
                 <Link
                   href="/hair"
-                  className="ha-button ha-button-outline"
+                  className="ha-btn ha-btn-outline"
                 >
                   헤어 시술 알아보기
                   <ArrowIcon />
@@ -1447,8 +1877,9 @@ export default function HomePage() {
             </div>
 
             {/* 자동 무한 슬라이드 */}
+
             <div
-              className="ha-hero-image-side"
+              className="ha-slider"
               aria-label="하이유헤어 시술 사진 자동 슬라이드"
             >
               {heroSlides.map((slide, index) => (
@@ -1457,14 +1888,14 @@ export default function HomePage() {
                   href={slide.href}
                   className="ha-slide"
                   style={{
-                    animationDelay: `${index * -4}s`,
-                    zIndex: heroSlides.length - index,
+                    ["--delay" as string]:
+                      `${index * 4}s`,
                   }}
                   aria-label={`${slide.title} 자세히 보기`}
                 >
                   <Image
                     src={slide.image}
-                    alt={`${slide.title} 하이유헤어 시술 사진`}
+                    alt={`${slide.title} 시술 사진`}
                     fill
                     priority={index === 0}
                     sizes="(max-width:600px) 100vw, 50vw"
@@ -1476,7 +1907,7 @@ export default function HomePage() {
                         Hair by Haerin
                       </strong>
                       <small>
-                        {slide.english} · {slide.title}
+                        {slide.en} · {slide.title}
                       </small>
                     </div>
 
@@ -1490,7 +1921,7 @@ export default function HomePage() {
               ))}
 
               <div className="ha-slide-counter">
-                01 — 05 · HAIR COLLECTION
+                HAIR COLLECTION · 05 STYLES
               </div>
 
               <div className="ha-slide-progress" />
@@ -1499,8 +1930,11 @@ export default function HomePage() {
         </section>
 
         <div className="ha-hero-bottom">
-          <div className="ha-container ha-hero-bottom-inner">
-            <span>HAIR DESIGN BY HAERIN LEE</span>
+          <div className="ha-wrap ha-hero-bottom-inner">
+            <span>
+              HAIR DESIGN BY HAERIN LEE
+            </span>
+
             <a href="#portfolio">
               EXPLORE THE COLLECTION
               <ArrowIcon />
@@ -1509,8 +1943,12 @@ export default function HomePage() {
         </div>
 
         {/* PORTFOLIO */}
-        <section id="portfolio" className="ha-section">
-          <div className="ha-container">
+
+        <section
+          id="portfolio"
+          className="ha-section"
+        >
+          <div className="ha-wrap">
             <SectionHeading
               number="01"
               eyebrow="THE HAIR COLLECTION"
@@ -1520,7 +1958,10 @@ export default function HomePage() {
 
             <div className="ha-gallery">
               {portfolio.map((item, index) => (
-                <article className="ha-work" key={item.image}>
+                <article
+                  className="ha-work"
+                  key={item.image}
+                >
                   <Link
                     href={item.href}
                     aria-label={`${item.title} 자세히 보기`}
@@ -1529,27 +1970,35 @@ export default function HomePage() {
                       <Image
                         src={item.image}
                         alt={
-                          item.href === "/hair/wedding-color"
+                          item.href ===
+                          "/hair/wedding-color"
                             ? "웨딩염색 스타일 상담 대표 이미지"
                             : item.title
                         }
                         fill
                         sizes="(max-width:850px) 50vw, 25vw"
                       />
+
                       <span className="ha-work-index">
-                        {String(index + 1).padStart(2, "0")}
+                        {String(index + 1).padStart(
+                          2,
+                          "0"
+                        )}
                       </span>
                     </div>
                   </Link>
 
-                  <div className="ha-work-english">
+                  <div className="ha-work-en">
                     {item.en}
                   </div>
 
                   <h3>{item.title}</h3>
                   <p>{item.desc}</p>
 
-                  <Link href={item.href} className="ha-text-link">
+                  <Link
+                    href={item.href}
+                    className="ha-text-link"
+                  >
                     시술 자세히 보기 →
                   </Link>
                 </article>
@@ -1561,7 +2010,11 @@ export default function HomePage() {
                 <span className="ha-eyebrow">
                   FOLLOW THE HAIR JOURNEY
                 </span>
-                <h3>More Styles on Instagram</h3>
+
+                <h3>
+                  More Styles on Instagram
+                </h3>
+
                 <p>
                   이해린 디자이너의 다양한 헤어스타일을
                   <br />
@@ -1573,7 +2026,7 @@ export default function HomePage() {
                 href={INSTAGRAM}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ha-button ha-button-primary"
+                className="ha-btn ha-btn-primary"
               >
                 <InstagramIcon />
                 @hiu_haerin
@@ -1583,9 +2036,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* DESIGNER */}
-        <section id="about" className="ha-section ha-section-ivory">
-          <div className="ha-container ha-about-grid">
+        {/* DESIGNER - 프로필 사진 복구 */}
+
+        <section
+          id="about"
+          className="ha-section ha-ivory"
+        >
+          <div className="ha-wrap ha-about-grid">
             <div className="ha-portrait-shell">
               <div className="ha-portrait">
                 <Image
@@ -1593,7 +2050,12 @@ export default function HomePage() {
                   alt="하이유헤어 청당점 이해린 디자이너 프로필"
                   fill
                   sizes="(max-width:850px) 100vw, 45vw"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center 30%",
+                  }}
                 />
+
                 <span className="ha-portrait-tag">
                   Designer Haerin Lee
                 </span>
@@ -1601,7 +2063,7 @@ export default function HomePage() {
             </div>
 
             <div>
-              <div className="ha-section-label">
+              <div className="ha-heading-label">
                 <span>02</span>
                 <span>MEET YOUR DESIGNER</span>
               </div>
@@ -1638,32 +2100,47 @@ export default function HomePage() {
                 <div className="ha-credentials-title">
                   EDUCATION & QUALIFICATIONS
                 </div>
+
                 <ul>
                   {qualifications.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item}>
+                      {item}
+                    </li>
                   ))}
                 </ul>
 
                 <details className="ha-details">
-                  <summary>자격 · 수상 경력 전체 보기</summary>
+                  <summary>
+                    자격 · 수상 경력 전체 보기
+                  </summary>
+
                   <div className="ha-details-content">
                     <strong>자격 및 수료</strong>
+
                     <ul>
-                      {extraQualifications.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
+                      {extraQualifications.map(
+                        (item) => (
+                          <li key={item}>
+                            {item}
+                          </li>
+                        )
+                      )}
                     </ul>
+
                     <strong>수상 경력</strong>
+
                     <ul>
                       {awards.map((item) => (
-                        <li key={item}>{item}</li>
+                        <li key={item}>
+                          {item}
+                        </li>
                       ))}
                     </ul>
                   </div>
                 </details>
               </div>
 
-              <div style={{ marginTop: 27 }}>
+              <div style={{ marginTop: 25 }}>
                 <BookingButton>
                   이해린 디자이너 예약
                 </BookingButton>
@@ -1673,12 +2150,13 @@ export default function HomePage() {
         </section>
 
         {/* SERVICES */}
+
         <section
           id="services"
-          className="ha-section ha-section-ivory"
+          className="ha-section ha-ivory"
           style={{ paddingTop: 0 }}
         >
-          <div className="ha-container">
+          <div className="ha-wrap">
             <SectionHeading
               number="03"
               eyebrow="OUR SPECIALTIES"
@@ -1686,32 +2164,39 @@ export default function HomePage() {
               description="원하는 시술을 선택하면 스타일별 상세 안내로 이동합니다."
             />
 
-            <div className="ha-services-grid">
+            <div className="ha-services">
               {services.map((service) => (
                 <article
                   key={service.number}
-                  className="ha-service-card"
+                  className="ha-service"
                 >
-                  <div className="ha-service-image">
+                  <div className="ha-service-photo">
                     <Image
                       src={service.image}
                       alt={`${service.title} 시술 대표 이미지`}
                       fill
                       sizes="(max-width:850px) 50vw, 25vw"
                     />
-                    <span>{service.number}</span>
+
+                    <span className="ha-service-number">
+                      {service.number}
+                    </span>
                   </div>
 
                   <div className="ha-service-body">
-                    <small className="ha-service-english">
-                      {service.english}
+                    <small>
+                      {service.en}
                     </small>
+
                     <h3>{service.title}</h3>
                     <p>{service.desc}</p>
 
                     <div className="ha-service-links">
                       {service.links.map((link) => (
-                        <Link key={link.href} href={link.href}>
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                        >
                           {link.name}
                           <ArrowIcon />
                         </Link>
@@ -1725,7 +2210,7 @@ export default function HomePage() {
             <div className="ha-services-more">
               <Link
                 href="/hair"
-                className="ha-button ha-button-outline"
+                className="ha-btn ha-btn-outline"
               >
                 전체 헤어 시술 보기
                 <ArrowIcon />
@@ -1734,102 +2219,101 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* REVIEWS */}
-        <section id="reviews" className="ha-section">
-          <div className="ha-container">
+        {/* CLIENT FEEDBACK */}
+
+        <section
+          id="reviews"
+          className="ha-section"
+        >
+          <div className="ha-wrap">
             <SectionHeading
               number="04"
               eyebrow="VOICES FROM OUR CLIENTS"
               title="Client Feedback"
-              description="네이버 예약 고객들이 선택한 좋은 점과 다양한 헤어스타일"
+              description="네이버 예약 고객들이 선택한 좋은 점"
             />
 
-            <div className="ha-review-summary">
-              <div className="ha-review-number">
+            <div className="ha-review-overview">
+              <div className="ha-review-stat">
                 <strong>293</strong>
                 <span>예약자 리뷰</span>
               </div>
+
               <div className="ha-review-divider" />
-              <div className="ha-review-number">
+
+              <div className="ha-review-stat">
                 <strong>263</strong>
                 <span>좋은 점 평가 참여</span>
               </div>
             </div>
-          </div>
 
-          <div className="ha-marquee-window">
-            <div className="ha-marquee-track">
-              {[0, 1].map((copy) => (
-                <div
-                  className="ha-marquee-set"
-                  key={copy}
-                  aria-hidden={copy === 1}
+            <div className="ha-feedback-grid">
+              {feedback.map((review) => (
+                <a
+                  key={review.title}
+                  className="ha-feedback-card"
+                  href={REVIEWS}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {feedback.map((review) => (
-                    <a
-                      key={`${copy}-${review.title}`}
-                      href={REVIEWS}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      tabIndex={copy === 1 ? -1 : 0}
-                      className="ha-review-card"
-                    >
-                      <div>
-                        <small>NAVER CUSTOMER FEEDBACK</small>
-                        <h3>{review.title}</h3>
-                      </div>
-                      <div>
-                        <strong>{review.value}</strong>
-                        <p>네이버 고객 선택 평가</p>
-                      </div>
-                    </a>
-                  ))}
+                  <div>
+                    <small>
+                      NAVER CUSTOMER FEEDBACK
+                    </small>
 
-                  {styleCards.map((style) => (
-                    <Link
-                      key={`${copy}-${style.title}`}
-                      href={style.href}
-                      tabIndex={copy === 1 ? -1 : 0}
-                      className="ha-review-card"
-                    >
-                      <div>
-                        <small>HAIR DESIGN STYLE</small>
-                        <h3>{style.title}</h3>
-                      </div>
-                      <div>
-                        <strong>HI U HAIR</strong>
-                        <p>시술 스타일 소개</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+                    <h3>{review.title}</h3>
+                  </div>
+
+                  <div>
+                    <strong>
+                      {review.value}
+                    </strong>
+
+                    <p>
+                      네이버 고객 선택 평가
+                    </p>
+                  </div>
+                </a>
               ))}
             </div>
+
+            <div className="ha-real-review-link">
+              <div>
+                <small>
+                  REAL NAVER VISITOR REVIEWS
+                </small>
+
+                <h3>
+                  실제 방문 고객의 이야기를 확인하세요.
+                </h3>
+
+                <p>
+                  네이버 예약 페이지에서 고객이 작성한
+                  방문 후기와 시술 경험을 직접 확인할 수 있습니다.
+                </p>
+              </div>
+
+              <a
+                href={REVIEWS}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ha-btn ha-btn-light"
+              >
+                네이버 실제 리뷰 보기
+                <ArrowIcon />
+              </a>
+            </div>
+
+            <p className="ha-review-note">
+              고객 평가 수치는 2026년 10월 10일 확인 기준이며
+              자동 갱신되지 않습니다.
+              실제 리뷰 원문과 고객 선택 평가 항목은 구분하여 표시합니다.
+            </p>
           </div>
-
-          <div className="ha-review-actions">
-            <a
-              href={REVIEWS}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ha-button ha-button-outline"
-            >
-              네이버 고객 리뷰 보기
-              <ArrowIcon />
-            </a>
-
-            <BookingButton>네이버 예약하기</BookingButton>
-          </div>
-
-          <p className="ha-review-note">
-            고객 평가 수치는 2026년 10월 10일 확인 기준이며
-            자동 갱신되지 않습니다.
-            <br />
-            고객 평가 5개와 스타일 소개 5개로 구성되어 있습니다.
-          </p>
         </section>
 
         {/* BOOKING */}
+
         <section className="ha-booking">
           <span
             className="ha-eyebrow"
@@ -1857,7 +2341,7 @@ export default function HomePage() {
 
             <Link
               href="/reservation"
-              className="ha-button ha-button-white-outline"
+              className="ha-btn ha-btn-white-outline"
             >
               홈페이지 문자 예약
               <ArrowIcon />
@@ -1866,8 +2350,12 @@ export default function HomePage() {
         </section>
 
         {/* LOCATION */}
-        <section id="location" className="ha-section ha-section-ivory">
-          <div className="ha-container">
+
+        <section
+          id="location"
+          className="ha-section ha-ivory"
+        >
+          <div className="ha-wrap">
             <SectionHeading
               number="05"
               eyebrow="FIND YOUR SALON"
@@ -1875,7 +2363,7 @@ export default function HomePage() {
               description="천안 청당동 하이유헤어 청당점"
             />
 
-            <div className="ha-location-grid">
+            <div className="ha-location">
               <div className="ha-location-info">
                 <h3>하이유헤어 청당점</h3>
 
@@ -1888,7 +2376,9 @@ export default function HomePage() {
 
                   <dt>CONTACT</dt>
                   <dd>
-                    <a href={`tel:${PHONE}`}>{PHONE_VIEW}</a>
+                    <a href={`tel:${PHONE}`}>
+                      {PHONE_VIEW}
+                    </a>
                   </dd>
 
                   <dt>INSTAGRAM</dt>
@@ -1906,7 +2396,7 @@ export default function HomePage() {
                 <div className="ha-location-actions">
                   <a
                     href={`tel:${PHONE}`}
-                    className="ha-button ha-button-primary"
+                    className="ha-btn ha-btn-primary"
                   >
                     전화 문의
                     <ArrowIcon />
@@ -1914,7 +2404,7 @@ export default function HomePage() {
 
                   <a
                     href={`sms:${PHONE}`}
-                    className="ha-button ha-button-outline"
+                    className="ha-btn ha-btn-outline"
                   >
                     문자 상담
                     <ArrowIcon />
@@ -1923,29 +2413,27 @@ export default function HomePage() {
               </div>
 
               <div className="ha-location-visual">
-                <div className="ha-location-visual-content">
-                  <span className="ha-eyebrow">
-                    CHEONGDANG · CHEONAN
-                  </span>
+                <span className="ha-eyebrow">
+                  CHEONGDANG · CHEONAN
+                </span>
 
-                  <h3>HI U HAIR</h3>
+                <h3>HI U HAIR</h3>
 
-                  <p>
-                    충남 천안시 동남구 청수4로 16
-                    <br />
-                    2층 201호
-                  </p>
+                <p>
+                  충남 천안시 동남구 청수4로 16
+                  <br />
+                  2층 201호
+                </p>
 
-                  <a
-                    href={MAP}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ha-button ha-button-primary"
-                  >
-                    네이버 지도 보기
-                    <ArrowIcon />
-                  </a>
-                </div>
+                <a
+                  href={MAP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ha-btn ha-btn-primary"
+                >
+                  네이버 지도 보기
+                  <ArrowIcon />
+                </a>
               </div>
             </div>
           </div>
@@ -1953,8 +2441,9 @@ export default function HomePage() {
       </main>
 
       {/* REGIONAL GUIDE */}
+
       <div className="ha-area-section">
-        <div className="ha-container ha-area-inner">
+        <div className="ha-wrap ha-area-inner">
           <span>
             HI U HAIR · REGIONAL STYLE GUIDE
           </span>
@@ -1966,8 +2455,9 @@ export default function HomePage() {
       </div>
 
       {/* FOOTER */}
+
       <footer className="ha-footer">
-        <div className="ha-container ha-footer-inner">
+        <div className="ha-wrap ha-footer-inner">
           <div>
             <Link href="/" className="ha-brand">
               HI U HAIR
@@ -2006,13 +2496,20 @@ export default function HomePage() {
         </div>
       </footer>
 
-      {/* MOBILE BOOKING */}
+      {/* MOBILE BAR */}
+
       <nav
         className="ha-mobile-bar"
         aria-label="빠른 상담 및 예약"
       >
-        <a href={`tel:${PHONE}`}>전화</a>
-        <a href={`sms:${PHONE}`}>문자</a>
+        <a href={`tel:${PHONE}`}>
+          전화
+        </a>
+
+        <a href={`sms:${PHONE}`}>
+          문자
+        </a>
+
         <a
           href={BOOKING}
           target="_blank"
