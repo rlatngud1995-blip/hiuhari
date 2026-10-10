@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const PHONE = "01023277653";
 const PHONE_VIEW = "010-2327-7653";
+const ADDRESS = "충남 천안시 동남구 청수4로 16, 2층 201호";
 
-const ADDRESS =
-  "충남 천안시 동남구 청수4로 16, 2층 201호";
+const INSTAGRAM = "https://www.instagram.com/hiu_haerin/";
 
 const BOOKING =
   "https://m.booking.naver.com/booking/13/bizes/728358/items/7484787?area=pll&lang=ko&theme=place";
@@ -17,11 +17,6 @@ const REVIEWS =
 const MAP =
   "https://map.naver.com/p/search/" +
   encodeURIComponent("하이유헤어 청당점");
-
-/* ==================================
-   포트폴리오 8개
-   public 폴더 파일명 그대로 사용
-================================== */
 
 const portfolio = [
   {
@@ -74,46 +69,38 @@ const portfolio = [
   },
 ];
 
-/* ==================================
-   시술 메뉴
-================================== */
-
 const services = [
   {
     num: "01",
     en: "CUT & LAYER",
-    title: "여성 커트",
-    desc: "얼굴형과 모발 흐름을 고려한 스타일 디자인",
+    name: "여성 커트",
+    desc: "얼굴형과 모발 흐름을 고려한 스타일",
   },
   {
     num: "02",
     en: "PERM & WAVE",
-    title: "여성 펌",
+    name: "여성 펌",
     desc: "빌드펌 · 물결펌 · 레이어드펌",
   },
   {
     num: "03",
     en: "COLOR DESIGN",
-    title: "여성 염색",
+    name: "여성 염색",
     desc: "브라운 · 루비레드 · 블루 · 베이비핑크",
   },
   {
     num: "04",
     en: "HAIR EXTENSION",
-    title: "붙임머리",
-    desc: "원하는 길이와 분위기에 맞춘 헤어 상담",
+    name: "붙임머리",
+    desc: "원하는 길이와 분위기에 맞춘 스타일",
   },
 ];
-
-/* ==================================
-   경력 정보
-================================== */
 
 const highlights = [
   "유원대학교 뷰티케어학과 졸업",
   "미용 종합면허증",
   "헤어 · 메이크업 국가자격증",
-  "퍼스널컬러 컨설턴트 자격증",
+  "Personal Color Consultant 자격증",
 ];
 
 const certifications = [
@@ -132,40 +119,15 @@ const awards = [
   "맛과멋창의력경진대회 Permanent 은상",
 ];
 
-/* ==================================
-   네이버 고객 평가
-   기존 확인된 스냅샷 수치
-================================== */
-
 const feedback = [
-  {
-    title: "원하는 스타일로 잘해줘요",
-    value: "259명",
-    desc: "네이버 고객 선택 평가",
-  },
-  {
-    title: "친절해요",
-    value: "218명",
-    desc: "네이버 고객 선택 평가",
-  },
-  {
-    title: "시술이 꼼꼼해요",
-    value: "168명",
-    desc: "네이버 고객 선택 평가",
-  },
-  {
-    title: "스타일 추천을 잘해줘요",
-    value: "146명",
-    desc: "네이버 고객 선택 평가",
-  },
-  {
-    title: "트렌디해요",
-    value: "73명",
-    desc: "네이버 고객 선택 평가",
-  },
+  ["원하는 스타일로 잘해줘요", "259명"],
+  ["친절해요", "218명"],
+  ["시술이 꼼꼼해요", "168명"],
+  ["스타일 추천을 잘해줘요", "146명"],
+  ["트렌디해요", "73명"],
 ];
 
-const styles = [
+const styleCards = [
   "레이어드컷",
   "빌드펌",
   "브라운 컬러",
@@ -173,28 +135,48 @@ const styles = [
   "베이비핑크",
 ];
 
-/* ==================================
-   버튼
-================================== */
-
-function BookingButton({
+function SocialLink({
+  className = "",
   children,
-  light = false,
 }: {
+  className?: string;
   children: React.ReactNode;
-  light?: boolean;
 }) {
   return (
     <a
-      href={BOOKING}
+      href={INSTAGRAM}
       target="_blank"
       rel="noopener noreferrer"
-      className={
-        light ? "ha-btn ha-btn-light" : "ha-btn ha-btn-blue"
-      }
+      className={className}
     >
       {children}
     </a>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect
+        x="2"
+        y="2"
+        width="20"
+        height="20"
+        rx="5"
+      />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+    </svg>
   );
 }
 
@@ -203,900 +185,647 @@ export default function HomePage() {
     <div className="ha-page">
       <style>{`
         .ha-page {
-          --blue: #193b71;
-          --ink: #25272b;
-          --soft: #777983;
-          --cream: #f6f4f0;
-          --line: #e8e4de;
-          background: #fff;
-          color: var(--ink);
-          overflow-x: clip;
+          --blue:#193b71;
+          --ink:#25272b;
+          --muted:#797c83;
+          --cream:#f6f4f0;
+          --line:#e8e4de;
+          background:#fff;
+          color:var(--ink);
+          overflow-x:clip;
         }
-
-        .ha-page * {
-          box-sizing: border-box;
+        .ha-page *{box-sizing:border-box}
+        .ha-wrap{
+          width:min(1120px,calc(100% - 40px));
+          margin:0 auto;
         }
-
-        .ha-wrap {
-          width: min(1120px, calc(100% - 40px));
-          margin: 0 auto;
+        .ha-page a{text-decoration:none}
+        .ha-eyebrow{
+          color:var(--blue);
+          font-size:10px;
+          font-weight:700;
+          letter-spacing:2.5px;
+          line-height:1.8;
         }
-
-        .ha-page a {
-          text-decoration: none;
+        .ha-btn{
+          min-height:49px;
+          padding:14px 23px;
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          gap:9px;
+          border:1px solid var(--blue);
+          border-radius:3px;
+          font-size:12px;
+          font-weight:600;
+          text-align:center;
+          transition:transform .2s;
         }
-
-        .ha-eyebrow {
-          color: var(--blue);
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 2.5px;
-          line-height: 1.8;
+        .ha-btn:hover{transform:translateY(-2px)}
+        .ha-btn-blue{background:var(--blue);color:#fff}
+        .ha-btn-outline{background:transparent;color:var(--blue)}
+        .ha-btn-light{background:#fff;color:var(--blue);border-color:#fff}
+        .ha-actions{
+          display:flex;
+          flex-wrap:wrap;
+          align-items:center;
+          gap:10px;
+          margin-top:27px;
         }
-
-        .ha-btn {
-          min-height: 50px;
-          padding: 15px 24px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid var(--blue);
-          border-radius: 3px;
-          font-size: 12px;
-          font-weight: 600;
-          transition: .25s ease;
-          text-align: center;
-        }
-
-        .ha-btn:hover {
-          transform: translateY(-2px);
-        }
-
-        .ha-btn-blue {
-          background: var(--blue);
-          color: white;
-        }
-
-        .ha-btn-light {
-          background: white;
-          color: var(--blue);
-          border-color: white;
-        }
-
-        .ha-btn-outline {
-          color: var(--blue);
-          background: transparent;
-        }
-
-        .ha-actions {
-          display: flex;
-          gap: 11px;
-          flex-wrap: wrap;
-          align-items: center;
-          margin-top: 28px;
-        }
-
-        .ha-actions-center {
-          justify-content: center;
-        }
+        .ha-center{justify-content:center}
 
         /* Header */
-
-        .ha-header {
-          position: sticky;
-          top: 0;
-          z-index: 50;
-          background: rgba(255,255,255,.97);
-          border-bottom: 1px solid var(--line);
-          backdrop-filter: blur(12px);
+        .ha-header{
+          position:sticky;
+          top:0;
+          z-index:50;
+          background:rgba(255,255,255,.97);
+          border-bottom:1px solid var(--line);
+          backdrop-filter:blur(12px);
         }
-
-        .ha-header-inner {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          min-height: 76px;
-          gap: 25px;
+        .ha-header-inner{
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          min-height:75px;
+          gap:20px;
         }
-
-        .ha-brand {
-          color: var(--blue);
-          font-family: Georgia, serif;
-          font-size: 27px;
-          letter-spacing: 2px;
-          line-height: 1;
-          display: flex;
-          flex-direction: column;
-          white-space: nowrap;
+        .ha-brand{
+          display:flex;
+          flex-direction:column;
+          color:var(--blue);
+          font-family:Georgia,serif;
+          font-size:26px;
+          letter-spacing:2px;
+          line-height:1;
+          white-space:nowrap;
         }
-
-        .ha-brand small {
-          margin-top: 9px;
-          font-family: Arial, sans-serif;
-          font-size: 9px;
-          letter-spacing: 4px;
+        .ha-brand small{
+          margin-top:9px;
+          font-family:Arial,sans-serif;
+          font-size:9px;
+          letter-spacing:4px;
         }
-
-        .ha-nav {
-          display: flex;
-          align-items: center;
-          gap: 25px;
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: .4px;
+        .ha-nav{
+          display:flex;
+          align-items:center;
+          gap:20px;
+          font-size:11px;
+          font-weight:600;
         }
-
-        .ha-nav a:hover {
-          color: var(--blue);
-        }
-
-        .ha-nav .ha-btn {
-          color: white;
-        }
+        .ha-nav a:hover{color:var(--blue)}
 
         /* Hero */
-
-        .ha-hero {
-          position: relative;
-          overflow: hidden;
-          text-align: center;
-          background:
-            radial-gradient(
-              ellipse at 50% 0%,
-              #fff 0%,
-              #f6f4f0 82%
-            );
-          padding: 100px 20px 96px;
+        .ha-hero{
+          position:relative;
+          overflow:hidden;
+          background:radial-gradient(
+            ellipse at 50% 0%,
+            #fff 0%,#f6f4f0 83%
+          );
+          text-align:center;
+          padding:94px 18px 83px;
+        }
+        .ha-hero-inner{position:relative;z-index:1}
+        .ha-hero-brand{
+          font-family:Georgia,serif;
+          font-size:clamp(42px,9vw,105px);
+          font-weight:400;
+          letter-spacing:-2px;
+          color:var(--blue);
+          white-space:nowrap;
+          margin:27px 0 13px;
+          line-height:1.2;
+        }
+        .ha-hero-sub{
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          gap:15px;
+          max-width:320px;
+          margin:0 auto 54px;
+          color:var(--blue);
+          font-size:10px;
+          letter-spacing:4px;
+        }
+        .ha-hero-sub:before,.ha-hero-sub:after{
+          content:"";
+          flex:1;
+          height:1px;
+          background:#b3becf;
+        }
+        .ha-hero h2{
+          font-size:clamp(29px,5vw,45px);
+          font-weight:400;
+          letter-spacing:-1.4px;
+          line-height:1.5;
+          margin:0 0 17px;
+          word-break:keep-all;
+        }
+        .ha-hero h2 strong{color:var(--blue);font-weight:600}
+        .ha-hero-desc{
+          font-size:13px;
+          line-height:2.1;
+          color:var(--muted);
+        }
+        .ha-hero-social{
+          margin-top:24px;
+          display:inline-flex;
+          align-items:center;
+          gap:8px;
+          color:var(--blue);
+          font-size:12px;
+          font-weight:600;
+          letter-spacing:.3px;
+        }
+        .ha-scroll{
+          display:block;
+          margin-top:42px;
+          color:var(--blue);
+          font-size:10px;
+          letter-spacing:2px;
+        }
+        .ha-strip{
+          background:var(--blue);
+          color:#fff;
+          padding:21px 15px;
+          text-align:center;
+          font-size:10px;
+          letter-spacing:4px;
         }
 
-        .ha-hero:before {
-          content: "";
-          position: absolute;
-          top: 24px;
-          left: 50%;
-          height: 410px;
-          width: 410px;
-          transform: translateX(-50%);
-          border: 1px solid rgba(25,59,113,.08);
-          border-radius: 50%;
-          pointer-events: none;
+        /* Headings */
+        .ha-section{padding:93px 0;scroll-margin-top:85px}
+        .ha-cream{background:var(--cream)}
+        .ha-heading{text-align:center;margin-bottom:43px}
+        .ha-heading h2{
+          font-family:Georgia,"Noto Sans KR",serif;
+          font-size:clamp(33px,5vw,50px);
+          font-weight:400;
+          letter-spacing:-1px;
+          margin:12px 0 17px;
         }
-
-        .ha-hero-inner {
-          position: relative;
-          z-index: 1;
-        }
-
-        .ha-hero-brand {
-          font-family: Georgia, serif;
-          font-size: clamp(45px, 9vw, 105px);
-          font-weight: 400;
-          letter-spacing: -2px;
-          line-height: 1.2;
-          white-space: nowrap;
-          color: var(--blue);
-          margin: 27px 0 12px;
-        }
-
-        .ha-hero-sub {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          max-width: 320px;
-          margin: 0 auto 60px;
-          font-size: 10px;
-          color: var(--blue);
-          letter-spacing: 4px;
-        }
-
-        .ha-hero-sub:before,
-        .ha-hero-sub:after {
-          content: "";
-          flex: 1;
-          height: 1px;
-          background: #b3becf;
-        }
-
-        .ha-hero h2 {
-          font-size: clamp(28px, 5vw, 46px);
-          letter-spacing: -1.8px;
-          font-weight: 400;
-          line-height: 1.5;
-          margin: 0 0 17px;
-          word-break: keep-all;
-        }
-
-        .ha-hero h2 strong {
-          font-weight: 600;
-          color: var(--blue);
-        }
-
-        .ha-hero-desc {
-          font-size: 13px;
-          line-height: 2.1;
-          color: var(--soft);
-          word-break: keep-all;
-        }
-
-        .ha-hero-scroll {
-          display: block;
-          color: var(--blue);
-          font-size: 10px;
-          letter-spacing: 2px;
-          margin-top: 55px;
-        }
-
-        .ha-strip {
-          padding: 21px 15px;
-          color: white;
-          background: var(--blue);
-          font-size: 10px;
-          letter-spacing: 4px;
-          text-align: center;
-        }
-
-        /* Sections */
-
-        .ha-section {
-          padding: 100px 0;
-          scroll-margin-top: 85px;
-        }
-
-        .ha-cream {
-          background: var(--cream);
-        }
-
-        .ha-heading {
-          text-align: center;
-          margin-bottom: 48px;
-        }
-
-        .ha-heading h2 {
-          font-family: Georgia, "Noto Sans KR", serif;
-          font-size: clamp(34px, 5vw, 51px);
-          font-weight: 400;
-          letter-spacing: -1.3px;
-          margin: 12px 0 18px;
-          line-height: 1.3;
-        }
-
-        .ha-heading p {
-          font-size: 13px;
-          line-height: 1.9;
-          color: var(--soft);
-          margin: 0;
+        .ha-heading p{
+          font-size:13px;
+          line-height:1.9;
+          color:var(--muted);
+          margin:0;
         }
 
         /* Portfolio */
-
-        .ha-gallery {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0,1fr));
-          gap: 32px 17px;
+        .ha-gallery{
+          display:grid;
+          grid-template-columns:repeat(4,minmax(0,1fr));
+          gap:32px 16px;
+        }
+        .ha-work{min-width:0}
+        .ha-work-photo{
+          position:relative;
+          aspect-ratio:4/5.1;
+          overflow:hidden;
+          background:#e7e2dc;
+          border-radius:4px;
+        }
+        .ha-work-photo img{
+          object-fit:cover;
+          transition:transform .45s;
+        }
+        .ha-work:hover img{transform:scale(1.045)}
+        .ha-work-number{
+          position:absolute;
+          top:12px;
+          left:12px;
+          background:rgba(255,255,255,.95);
+          color:var(--blue);
+          width:34px;
+          height:34px;
+          display:grid;
+          place-items:center;
+          font-size:13px;
+          font-family:Georgia,serif;
+        }
+        .ha-work-en{
+          color:var(--blue);
+          font-size:9px;
+          font-weight:700;
+          letter-spacing:1px;
+          margin-top:17px;
+          line-height:1.7;
+        }
+        .ha-work h3{
+          font-size:16px;
+          font-weight:600;
+          margin:8px 0;
+          line-height:1.6;
+          word-break:keep-all;
+        }
+        .ha-work p{
+          color:var(--muted);
+          font-size:12px;
+          line-height:1.8;
+          margin:0 0 14px;
+          word-break:keep-all;
+        }
+        .ha-text-link{
+          font-size:12px;
+          font-weight:700;
+          color:var(--blue);
+        }
+        .ha-instagram-feature{
+          background:var(--cream);
+          border:1px solid var(--line);
+          margin-top:55px;
+          padding:32px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap:22px;
+        }
+        .ha-instagram-feature h3{
+          margin:10px 0 6px;
+          font-size:23px;
+          font-weight:500;
+        }
+        .ha-instagram-feature p{
+          color:var(--muted);
+          font-size:12px;
+          line-height:1.8;
+          margin:0;
         }
 
-        .ha-work {
-          min-width: 0;
+        /* Designer */
+        .ha-about-grid{
+          display:grid;
+          grid-template-columns:.92fr 1.08fr;
+          align-items:center;
+          gap:74px;
         }
-
-        .ha-work-photo {
-          position: relative;
-          aspect-ratio: 4 / 5.1;
-          overflow: hidden;
-          border-radius: 4px;
-          background: #e8e2dc;
+        .ha-portrait{
+          position:relative;
+          aspect-ratio:4/5.2;
+          background:#e0dcda;
+          overflow:hidden;
+          border-radius:4px;
         }
-
-        .ha-work-photo img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform .5s ease;
+        .ha-portrait img{
+          object-fit:cover;
+          object-position:center 35%;
         }
-
-        .ha-work:hover img {
-          transform: scale(1.045);
+        .ha-about h2{
+          font-size:clamp(32px,4vw,46px);
+          font-weight:500;
+          line-height:1.45;
+          letter-spacing:-1.3px;
+          margin:15px 0 24px;
         }
-
-        .ha-work-index {
-          position: absolute;
-          left: 12px;
-          top: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 34px;
-          height: 34px;
-          background: rgba(255,255,255,.94);
-          font-family: Georgia, serif;
-          font-size: 14px;
-          color: var(--blue);
+        .ha-about h2 strong{color:var(--blue)}
+        .ha-about p{
+          font-size:14px;
+          line-height:2.1;
+          color:#72757c;
+          word-break:keep-all;
         }
-
-        .ha-work-en {
-          margin-top: 17px;
-          font-size: 10px;
-          color: var(--blue);
-          font-weight: 700;
-          letter-spacing: 1px;
-          line-height: 1.7;
+        .ha-profile-social{
+          display:inline-flex;
+          align-items:center;
+          gap:8px;
+          color:var(--blue);
+          font-size:13px;
+          font-weight:700;
+          margin:14px 0 5px;
         }
-
-        .ha-work h3 {
-          font-size: 16px;
-          font-weight: 600;
-          line-height: 1.6;
-          word-break: keep-all;
-          margin: 8px 0;
+        .ha-credentials{
+          border-top:1px solid #dedad4;
+          margin-top:25px;
+          padding-top:23px;
         }
-
-        .ha-work p {
-          font-size: 12px;
-          line-height: 1.8;
-          color: var(--soft);
-          margin: 0 0 14px;
-          word-break: keep-all;
+        .ha-credentials-title{
+          font-size:11px;
+          font-weight:700;
+          letter-spacing:1px;
+          color:var(--blue);
+          margin-bottom:13px;
         }
-
-        .ha-text-link {
-          color: var(--blue);
-          font-size: 12px;
-          font-weight: 700;
+        .ha-credentials ul{padding-left:18px;margin:0}
+        .ha-credentials li{
+          font-size:12px;
+          color:#63666e;
+          line-height:2.1;
         }
-
-        /* Profile */
-
-        .ha-about-grid {
-          display: grid;
-          grid-template-columns: .92fr 1.08fr;
-          align-items: center;
-          gap: 80px;
+        .ha-details{
+          border-top:1px solid #e2ddd6;
+          margin-top:19px;
         }
-
-        .ha-portrait {
-          position: relative;
-          aspect-ratio: 4 / 5.2;
-          overflow: hidden;
-          background: #dedbd8;
-          border-radius: 4px;
+        .ha-details summary{
+          cursor:pointer;
+          color:var(--blue);
+          font-size:12px;
+          font-weight:700;
+          padding:18px 0;
         }
-
-        .ha-portrait img {
-          object-fit: cover;
-          object-position: center 35%;
+        .ha-details-content{
+          padding-bottom:17px;
+          font-size:12px;
+          line-height:2;
+          color:#686c74;
         }
-
-        .ha-about h2 {
-          font-size: clamp(33px, 4vw, 48px);
-          font-weight: 500;
-          letter-spacing: -1.4px;
-          margin: 15px 0 23px;
-          line-height: 1.4;
-        }
-
-        .ha-about h2 strong {
-          color: var(--blue);
-        }
-
-        .ha-about p {
-          color: #72757c;
-          font-size: 14px;
-          line-height: 2.15;
-          word-break: keep-all;
-        }
-
-        .ha-credentials {
-          margin-top: 29px;
-          padding-top: 25px;
-          border-top: 1px solid #dedad4;
-        }
-
-        .ha-credentials-title {
-          color: var(--blue);
-          font-weight: 700;
-          font-size: 11px;
-          letter-spacing: 1px;
-          margin-bottom: 16px;
-        }
-
-        .ha-highlights {
-          padding: 0;
-          list-style: none;
-          margin: 0;
-        }
-
-        .ha-highlights li {
-          color: #5d6169;
-          font-size: 12px;
-          line-height: 2;
-          padding-left: 15px;
-          position: relative;
-        }
-
-        .ha-highlights li:before {
-          content: "·";
-          position: absolute;
-          top: 0;
-          left: 1px;
-          color: var(--blue);
-          font-weight: 700;
-        }
-
-        .ha-details {
-          margin-top: 22px;
-          border-top: 1px solid #e2ddd6;
-        }
-
-        .ha-details summary {
-          padding: 18px 0;
-          color: var(--blue);
-          font-weight: 700;
-          font-size: 12px;
-          cursor: pointer;
-          list-style-position: inside;
-        }
-
-        .ha-details-content {
-          padding-bottom: 19px;
-          color: #6d717a;
-          font-size: 12px;
-          line-height: 2;
-        }
-
-        .ha-details-content strong {
-          display: block;
-          color: var(--ink);
-          margin-top: 12px;
-        }
-
-        .ha-details-content ul {
-          padding-left: 18px;
-          margin: 5px 0 0;
+        .ha-details-content strong{
+          display:block;
+          margin:12px 0 6px;
         }
 
         /* Services */
-
-        .ha-services {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0,1fr));
-          gap: 14px;
+        .ha-services{
+          display:grid;
+          grid-template-columns:repeat(4,minmax(0,1fr));
+          gap:14px;
+        }
+        .ha-service{
+          background:#fff;
+          border:1px solid var(--line);
+          padding:26px 21px;
+          min-height:185px;
+        }
+        .ha-service-num{
+          font-family:Georgia,serif;
+          color:var(--blue);
+          font-size:23px;
+        }
+        .ha-service h3{
+          font-size:18px;
+          margin:17px 0 9px;
+        }
+        .ha-service small{
+          color:var(--blue);
+          font-weight:700;
+          font-size:9px;
+          letter-spacing:1px;
+        }
+        .ha-service p{
+          font-size:12px;
+          line-height:1.8;
+          color:var(--muted);
         }
 
-        .ha-service {
-          padding: 27px 22px;
-          background: #fff;
-          border: 1px solid #e8e3dc;
-          border-radius: 3px;
-          min-height: 178px;
+        /* Review marquee */
+        .ha-reviews{overflow:hidden}
+        .ha-review-summary{
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          gap:34px;
+          margin-bottom:38px;
+          text-align:center;
         }
-
-        .ha-service-num {
-          font-family: Georgia, serif;
-          font-size: 22px;
-          color: var(--blue);
+        .ha-review-summary strong{
+          font:400 43px Georgia,serif;
+          color:var(--blue);
+          display:block;
         }
-
-        .ha-service h3 {
-          font-size: 18px;
-          margin: 20px 0 9px;
-          font-weight: 600;
+        .ha-review-summary span{
+          font-size:11px;
+          color:var(--muted);
         }
-
-        .ha-service small {
-          display: block;
-          font-size: 9px;
-          letter-spacing: 1px;
-          color: var(--blue);
-          font-weight: 700;
+        .ha-review-separator{
+          width:1px;
+          height:45px;
+          background:var(--line);
         }
-
-        .ha-service p {
-          font-size: 12px;
-          color: var(--soft);
-          line-height: 1.8;
-          margin: 12px 0 0;
+        .ha-marquee-window{
+          width:100%;
+          overflow:hidden;
+          padding:5px 0 20px;
         }
-
-        /* Reviews */
-
-        .ha-reviews {
-          overflow: hidden;
-          background: #fff;
+        .ha-marquee-track{
+          display:flex;
+          width:max-content;
+          animation:ha-marquee 64s linear infinite;
         }
-
-        .ha-review-summary {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 34px;
-          margin-bottom: 41px;
-          text-align: center;
-        }
-
-        .ha-review-summary strong {
-          display: block;
-          color: var(--blue);
-          font-family: Georgia, serif;
-          font-size: 43px;
-          font-weight: 400;
-        }
-
-        .ha-review-summary span {
-          color: var(--soft);
-          font-size: 11px;
-        }
-
-        .ha-review-separator {
-          height: 44px;
-          width: 1px;
-          background: var(--line);
-        }
-
-        .ha-marquee-window {
-          overflow: hidden;
-          width: 100%;
-          padding: 5px 0 15px;
-        }
-
-        .ha-marquee-track {
-          display: flex;
-          width: max-content;
-          animation: ha-slide 62s linear infinite;
-          will-change: transform;
-        }
-
         .ha-marquee-window:hover .ha-marquee-track,
-        .ha-marquee-window:focus-within .ha-marquee-track {
-          animation-play-state: paused;
+        .ha-marquee-window:focus-within .ha-marquee-track{
+          animation-play-state:paused;
+        }
+        .ha-marquee-set{
+          display:flex;
+          gap:14px;
+          flex-shrink:0;
+          padding-right:14px;
+        }
+        .ha-review-card{
+          width:265px;
+          min-height:211px;
+          border:1px solid var(--line);
+          background:var(--cream);
+          padding:24px;
+          border-radius:5px;
+          display:flex;
+          flex-direction:column;
+          justify-content:space-between;
+          flex-shrink:0;
+        }
+        .ha-review-card small{
+          color:var(--blue);
+          font-size:10px;
+          font-weight:700;
+          letter-spacing:1px;
+        }
+        .ha-review-card h3{
+          font-size:18px;
+          line-height:1.6;
+          margin:15px 0;
+          word-break:keep-all;
+        }
+        .ha-review-card strong{
+          color:var(--blue);
+          font:500 23px Georgia,serif;
+        }
+        .ha-review-card p{
+          font-size:11px;
+          color:var(--muted);
+          margin:8px 0 0;
+        }
+        @keyframes ha-marquee {
+          from{transform:translateX(0)}
+          to{transform:translateX(-50%)}
+        }
+        .ha-review-note{
+          text-align:center;
+          font-size:11px;
+          color:var(--muted);
+          line-height:1.9;
+          margin-top:20px;
+          padding:0 20px;
         }
 
-        .ha-marquee-set {
-          display: flex;
-          flex-shrink: 0;
-          gap: 14px;
-          padding-right: 14px;
+        /* Booking and location */
+        .ha-booking{
+          background:var(--blue);
+          color:#fff;
+          text-align:center;
+          padding:82px 20px;
         }
-
-        .ha-review-card {
-          width: 270px;
-          min-height: 218px;
-          background: var(--cream);
-          border: 1px solid var(--line);
-          border-radius: 5px;
-          padding: 24px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
+        .ha-booking h2{
+          font-size:clamp(29px,5vw,45px);
+          font-weight:400;
+          line-height:1.5;
+          margin:17px 0;
         }
-
-        .ha-review-card small {
-          color: var(--blue);
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 1px;
+        .ha-booking p{
+          color:#dce4ef;
+          font-size:13px;
+          line-height:2;
         }
-
-        .ha-review-card h3 {
-          font-size: 18px;
-          line-height: 1.55;
-          margin: 16px 0;
-          word-break: keep-all;
+        .ha-booking .ha-btn-outline{
+          border-color:#d1dced;
+          color:#fff;
         }
-
-        .ha-review-card strong {
-          color: var(--blue);
-          font-size: 23px;
-          font-family: Georgia, serif;
-          font-weight: 500;
+        .ha-location{
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:22px;
         }
-
-        .ha-review-card p {
-          color: var(--soft);
-          font-size: 11px;
-          line-height: 1.6;
-          margin: 8px 0 0;
+        .ha-location-info,.ha-location-map{
+          min-height:340px;
+          padding:38px;
+          border:1px solid var(--line);
+          background:#fff;
         }
-
-        @keyframes ha-slide {
-          from {transform: translateX(0)}
-          to {transform: translateX(-50%)}
+        .ha-location-info h3{
+          margin:0 0 27px;
+          font-size:24px;
         }
-
-        .ha-note {
-          text-align: center;
-          color: #898a8e;
-          font-size: 11px;
-          line-height: 1.9;
-          margin-top: 20px;
-          padding: 0 20px;
+        .ha-location-info dt{
+          color:var(--blue);
+          font-size:10px;
+          letter-spacing:1px;
+          font-weight:700;
+          margin-top:20px;
         }
-
-        /* Booking */
-
-        .ha-booking {
-          background: var(--blue);
-          color: white;
-          text-align: center;
-          padding: 88px 20px;
+        .ha-location-info dd{
+          margin:7px 0;
+          font-size:13px;
+          line-height:1.9;
         }
-
-        .ha-booking .ha-eyebrow {
-          color: #d9e5f7;
+        .ha-location-map{
+          background:#eae7e1;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          text-align:center;
         }
-
-        .ha-booking h2 {
-          font-size: clamp(29px, 5vw, 46px);
-          line-height: 1.5;
-          font-weight: 400;
-          letter-spacing: -1px;
-          margin: 15px 0;
+        .ha-location-map h3{
+          color:var(--blue);
+          font:400 35px Georgia,serif;
+          letter-spacing:2px;
         }
-
-        .ha-booking p {
-          font-size: 13px;
-          line-height: 2;
-          color: #dce4ef;
-        }
-
-        .ha-booking .ha-btn-outline {
-          color: #fff;
-          border-color: #c5d4e7;
-        }
-
-        /* Location */
-
-        .ha-location {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 23px;
-        }
-
-        .ha-location-info,
-        .ha-location-map {
-          padding: 40px;
-          min-height: 340px;
-          background: white;
-          border: 1px solid var(--line);
-        }
-
-        .ha-location-info h3 {
-          font-size: 24px;
-          font-weight: 600;
-          margin: 0 0 28px;
-        }
-
-        .ha-location-info dt {
-          font-size: 10px;
-          letter-spacing: 1px;
-          font-weight: 700;
-          color: var(--blue);
-          margin-top: 21px;
-        }
-
-        .ha-location-info dd {
-          margin: 7px 0;
-          font-size: 13px;
-          line-height: 1.9;
-        }
-
-        .ha-location-map {
-          background: #ebe8e2;
-          text-align: center;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .ha-location-map h3 {
-          font-family: Georgia, serif;
-          color: var(--blue);
-          font-size: 34px;
-          letter-spacing: 2px;
-        }
-
-        .ha-location-map p {
-          font-size: 12px;
-          color: #737680;
-          line-height: 2;
+        .ha-location-map p{
+          font-size:12px;
+          color:#737680;
+          line-height:2;
         }
 
         /* Footer */
-
-        .ha-footer {
-          background: #1c2432;
-          color: white;
-          padding: 50px 0 100px;
+        .ha-footer{
+          background:#1c2432;
+          color:#fff;
+          padding:52px 0 110px;
         }
-
-        .ha-footer-inner {
-          display: flex;
-          justify-content: space-between;
-          gap: 30px;
+        .ha-footer-inner{
+          display:flex;
+          justify-content:space-between;
+          gap:30px;
         }
-
-        .ha-footer .ha-brand {
-          color: white;
+        .ha-footer .ha-brand{color:#fff}
+        .ha-footer p{
+          font-size:11px;
+          line-height:2;
+          color:#bfc6d2;
         }
-
-        .ha-footer p {
-          color: #bfc6d2;
-          font-size: 11px;
-          line-height: 2;
+        .ha-footer-social{
+          display:inline-flex;
+          gap:9px;
+          align-items:center;
+          margin-top:15px;
+          font-size:13px;
+          color:#fff;
         }
+        .ha-mobile-bar{display:none}
 
-        .ha-mobile-bar {
-          display: none;
+        @media(max-width:950px){
+          .ha-nav{display:none}
+          .ha-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+          .ha-about-grid{grid-template-columns:1fr;gap:36px}
+          .ha-portrait{width:100%;max-width:570px;margin:auto}
+          .ha-services{grid-template-columns:repeat(2,minmax(0,1fr))}
         }
-
-        @media(max-width: 960px) {
-          .ha-nav {
-            display: none;
+        @media(max-width:600px){
+          .ha-header-inner{min-height:67px}
+          .ha-brand{font-size:23px}
+          .ha-hero{padding:73px 15px 64px}
+          .ha-hero-brand{font-size:clamp(36px,10.1vw,59px)}
+          .ha-hero-sub{margin-bottom:46px}
+          .ha-hero h2{font-size:29px}
+          .ha-section{padding:68px 0}
+          .ha-heading{margin-bottom:32px}
+          .ha-heading h2{font-size:35px}
+          .ha-gallery{gap:27px 12px}
+          .ha-work h3{font-size:14px}
+          .ha-work p{font-size:11px}
+          .ha-work-en{font-size:9px}
+          .ha-instagram-feature{
+            flex-direction:column;
+            align-items:flex-start;
+            padding:23px;
+            margin-top:38px;
           }
-
-          .ha-gallery {
-            grid-template-columns: repeat(2,minmax(0,1fr));
+          .ha-instagram-feature .ha-btn{width:100%}
+          .ha-services{gap:10px}
+          .ha-service{padding:22px 17px;min-height:171px}
+          .ha-service h3{font-size:16px}
+          .ha-review-card{width:252px}
+          .ha-location{grid-template-columns:1fr}
+          .ha-location-info,.ha-location-map{padding:29px}
+          .ha-footer-inner{flex-direction:column}
+          .ha-mobile-bar{
+            display:grid;
+            position:fixed;
+            bottom:0;
+            left:0;
+            right:0;
+            z-index:100;
+            grid-template-columns:1fr 1fr 1.5fr;
+            gap:8px;
+            background:#fff;
+            border-top:1px solid var(--line);
+            padding:10px 12px calc(
+              10px + env(safe-area-inset-bottom)
+            );
           }
-
-          .ha-about-grid {
-            grid-template-columns: 1fr;
-            gap: 35px;
+          .ha-mobile-bar a{
+            min-height:47px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            color:var(--blue);
+            background:#f1efeb;
+            font-size:12px;
+            font-weight:700;
+            border-radius:3px;
           }
-
-          .ha-portrait {
-            max-width: 600px;
-            width: 100%;
-            margin: auto;
-          }
-
-          .ha-services {
-            grid-template-columns: repeat(2,minmax(0,1fr));
-          }
-        }
-
-        @media(max-width: 600px) {
-          .ha-header-inner {
-            min-height: 67px;
-          }
-
-          .ha-brand {
-            font-size: 23px;
-          }
-
-          .ha-hero {
-            padding: 80px 18px 68px;
-          }
-
-          .ha-hero:before {
-            width: 310px;
-            height: 310px;
-          }
-
-          .ha-hero-brand {
-            font-size: clamp(37px, 10.2vw, 60px);
-          }
-
-          .ha-hero-sub {
-            margin-bottom: 48px;
-          }
-
-          .ha-hero h2 {
-            font-size: 28px;
-          }
-
-          .ha-hero-scroll {
-            margin-top: 43px;
-          }
-
-          .ha-section {
-            padding: 70px 0;
-          }
-
-          .ha-heading {
-            margin-bottom: 32px;
-          }
-
-          .ha-heading h2 {
-            font-size: 36px;
-          }
-
-          .ha-gallery {
-            gap: 27px 12px;
-          }
-
-          .ha-work-en {
-            font-size: 9px;
-          }
-
-          .ha-work h3 {
-            font-size: 14px;
-          }
-
-          .ha-work p {
-            font-size: 11px;
-          }
-
-          .ha-services {
-            gap: 10px;
-          }
-
-          .ha-service {
-            min-height: 170px;
-            padding: 22px 17px;
-          }
-
-          .ha-service h3 {
-            font-size: 16px;
-          }
-
-          .ha-review-card {
-            width: 255px;
-          }
-
-          .ha-location {
-            grid-template-columns: 1fr;
-          }
-
-          .ha-location-info,
-          .ha-location-map {
-            padding: 30px;
-          }
-
-          .ha-footer-inner {
-            flex-direction: column;
-          }
-
-          .ha-mobile-bar {
-            display: grid;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            grid-template-columns: 1fr 1fr 1.5fr;
-            gap: 8px;
-            background: white;
-            border-top: 1px solid #eae7e1;
-            padding:
-              10px 12px
-              calc(10px + env(safe-area-inset-bottom));
-          }
-
-          .ha-mobile-bar a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 47px;
-            border-radius: 3px;
-            text-align: center;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--blue);
-            background: #f1efeb;
-          }
-
-          .ha-mobile-bar a:last-child {
-            background: var(--blue);
-            color: white;
+          .ha-mobile-bar a:last-child{
+            background:var(--blue);
+            color:#fff;
           }
         }
-
-        @media(prefers-reduced-motion: reduce) {
-          .ha-marquee-track {
-            animation: none;
-          }
-
-          .ha-marquee-window {
-            overflow-x: auto;
-          }
-
-          .ha-work-photo img,
-          .ha-btn {
-            transition: none;
-          }
+        @media(prefers-reduced-motion:reduce){
+          .ha-marquee-track{animation:none}
+          .ha-marquee-window{overflow-x:auto}
+          .ha-work-photo img,.ha-btn{transition:none}
         }
       `}</style>
 
-      {/* 상단 헤더 */}
+      {/* 상단 */}
       <header className="ha-header">
         <div className="ha-wrap ha-header-inner">
           <Link href="/" className="ha-brand">
@@ -1109,8 +838,10 @@ export default function HomePage() {
             <a href="#about">DESIGNER</a>
             <a href="#services">SERVICES</a>
             <a href="#reviews">REVIEWS</a>
-            <a href="#location">LOCATION</a>
-            <BookingButton>예약하기</BookingButton>
+            <SocialLink>INSTAGRAM ↗</SocialLink>
+            <a href={BOOKING} target="_blank" rel="noopener noreferrer">
+              NAVER BOOKING ↗
+            </a>
           </nav>
         </div>
       </header>
@@ -1123,13 +854,8 @@ export default function HomePage() {
               PERSONAL HAIR ATELIER · CHEONGDANG
             </span>
 
-            <h1 className="ha-hero-brand">
-              HI U HAIR
-            </h1>
-
-            <div className="ha-hero-sub">
-              CHEONGDANG
-            </div>
+            <h1 className="ha-hero-brand">HI U HAIR</h1>
+            <div className="ha-hero-sub">CHEONGDANG</div>
 
             <h2>
               당신의 분위기를
@@ -1143,23 +869,27 @@ export default function HomePage() {
               이해린 디자이너의 여성 헤어 디자인
             </p>
 
-            <div className="ha-actions ha-actions-center">
-              <BookingButton>
-                네이버 예약하기 ↗
-              </BookingButton>
-
+            <div className="ha-actions ha-center">
               <a
-                href="#portfolio"
-                className="ha-btn ha-btn-outline"
+                href={BOOKING}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ha-btn ha-btn-blue"
               >
+                네이버 예약하기 ↗
+              </a>
+
+              <a href="#portfolio" className="ha-btn ha-btn-outline">
                 헤어스타일 보기
               </a>
             </div>
 
-            <a
-              href="#portfolio"
-              className="ha-hero-scroll"
-            >
+            <SocialLink className="ha-hero-social">
+              <InstagramIcon />
+              Instagram @hiu_haerin ↗
+            </SocialLink>
+
+            <a href="#portfolio" className="ha-scroll">
               EXPLORE THE COLLECTION ↓
             </a>
           </div>
@@ -1169,77 +899,79 @@ export default function HomePage() {
           HAIR DESIGN BY HAERIN LEE
         </div>
 
-        {/* 포트폴리오를 앞으로 이동 */}
-        <section
-          id="portfolio"
-          className="ha-section"
-        >
+        {/* 포트폴리오 */}
+        <section id="portfolio" className="ha-section">
           <div className="ha-wrap">
             <div className="ha-heading">
               <span className="ha-eyebrow">
                 THE HAIR COLLECTION
               </span>
-
               <h2>Signature Hair</h2>
-
-              <p>
-                당신의 취향에 맞는 아름다운 변화를 만나보세요.
-              </p>
+              <p>당신의 취향에 맞는 아름다운 변화를 만나보세요.</p>
             </div>
 
             <div className="ha-gallery">
               {portfolio.map((item, index) => (
-                <article
-                  className="ha-work"
-                  key={item.img}
-                >
+                <article className="ha-work" key={item.img}>
                   <div className="ha-work-photo">
                     <Image
                       src={item.img}
                       alt={item.title}
                       fill
                       priority={index < 2}
-                      sizes="(max-width: 960px) 50vw, 25vw"
+                      sizes="(max-width:950px) 50vw,25vw"
                     />
-
-                    <span className="ha-work-index">
+                    <span className="ha-work-number">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
 
-                  <div className="ha-work-en">
-                    {item.en}
-                  </div>
-
+                  <div className="ha-work-en">{item.en}</div>
                   <h3>{item.title}</h3>
                   <p>{item.desc}</p>
 
                   <a
+                    className="ha-text-link"
                     href={BOOKING}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ha-text-link"
                   >
                     스타일 예약하기 ↗
                   </a>
                 </article>
               ))}
             </div>
+
+            {/* 인스타그램 포트폴리오 연결 */}
+            <div className="ha-instagram-feature">
+              <div>
+                <span className="ha-eyebrow">
+                  FOLLOW THE HAIR JOURNEY
+                </span>
+                <h3>More Styles on Instagram</h3>
+                <p>
+                  이해린 디자이너의 헤어 디자인과
+                  새로운 스타일을 인스타그램에서 만나보세요.
+                </p>
+              </div>
+
+              <SocialLink className="ha-btn ha-btn-blue">
+                <InstagramIcon />
+                @hiu_haerin 바로가기 ↗
+              </SocialLink>
+            </div>
           </div>
         </section>
 
-        {/* 디자이너 소개 */}
-        <section
-          id="about"
-          className="ha-section ha-cream"
-        >
+        {/* 디자이너 */}
+        <section id="about" className="ha-section ha-cream">
           <div className="ha-wrap ha-about-grid">
             <div className="ha-portrait">
               <Image
                 src="/IMG_1443.jpeg"
                 alt="이해린 디자이너 프로필"
                 fill
-                sizes="(max-width: 960px) 100vw, 45vw"
+                sizes="(max-width:950px) 100vw,45vw"
               />
             </div>
 
@@ -1267,21 +999,24 @@ export default function HomePage() {
                 자연스럽고 감각적인 변화를 고민합니다.
               </p>
 
+              <SocialLink className="ha-profile-social">
+                <InstagramIcon />
+                @hiu_haerin ↗
+              </SocialLink>
+
               <div className="ha-credentials">
                 <div className="ha-credentials-title">
                   EDUCATION & QUALIFICATIONS
                 </div>
 
-                <ul className="ha-highlights">
+                <ul>
                   {highlights.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
 
                 <details className="ha-details">
-                  <summary>
-                    자격 · 수상 경력 전체 보기
-                  </summary>
+                  <summary>자격 · 수상 경력 전체 보기</summary>
 
                   <div className="ha-details-content">
                     <strong>자격 및 교육 수료</strong>
@@ -1302,9 +1037,14 @@ export default function HomePage() {
               </div>
 
               <div className="ha-actions">
-                <BookingButton>
+                <a
+                  href={BOOKING}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ha-btn ha-btn-blue"
+                >
                   이해린 디자이너 예약 ↗
-                </BookingButton>
+                </a>
               </div>
             </div>
           </div>
@@ -1318,28 +1058,18 @@ export default function HomePage() {
         >
           <div className="ha-wrap">
             <div className="ha-heading">
-              <span className="ha-eyebrow">
-                OUR SPECIALTIES
-              </span>
-
+              <span className="ha-eyebrow">OUR SPECIALTIES</span>
               <h2>Hair Services</h2>
-
-              <p>
-                나에게 어울리는 스타일을 위한 디자인 메뉴
-              </p>
+              <p>나에게 어울리는 스타일을 위한 디자인 메뉴</p>
             </div>
 
             <div className="ha-services">
               {services.map((service) => (
-                <article
-                  className="ha-service"
-                  key={service.num}
-                >
+                <article className="ha-service" key={service.num}>
                   <div className="ha-service-num">
                     {service.num}
                   </div>
-
-                  <h3>{service.title}</h3>
+                  <h3>{service.name}</h3>
                   <small>{service.en}</small>
                   <p>{service.desc}</p>
                 </article>
@@ -1348,18 +1078,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 고객 리뷰 자동 슬라이드 */}
-        <section
-          id="reviews"
-          className="ha-section ha-reviews"
-        >
-          <div className="ha-heading ha-wrap">
+        {/* 네이버 평가 자동 슬라이드 */}
+        <section id="reviews" className="ha-section ha-reviews">
+          <div className="ha-wrap ha-heading">
             <span className="ha-eyebrow">
               VOICES FROM OUR CLIENTS
             </span>
-
             <h2>Client Feedback</h2>
-
             <p>
               네이버 예약 고객들이 선택한 좋은 점과
               <br />
@@ -1372,9 +1097,7 @@ export default function HomePage() {
               <strong>293</strong>
               <span>예약자 리뷰</span>
             </div>
-
             <div className="ha-review-separator" />
-
             <div>
               <strong>263</strong>
               <span>좋은 점 평가 참여</span>
@@ -1389,28 +1112,27 @@ export default function HomePage() {
                   key={copy}
                   aria-hidden={copy === 1}
                 >
-                  {feedback.map((review) => (
+                  {feedback.map(([title, value]) => (
                     <a
                       href={REVIEWS}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="ha-review-card"
-                      key={`${copy}-${review.title}`}
+                      key={`${copy}-${title}`}
                       tabIndex={copy === 1 ? -1 : 0}
                     >
                       <div>
                         <small>NAVER CUSTOMER FEEDBACK</small>
-                        <h3>{review.title}</h3>
+                        <h3>{title}</h3>
                       </div>
-
                       <div>
-                        <strong>{review.value}</strong>
-                        <p>{review.desc}</p>
+                        <strong>{value}</strong>
+                        <p>네이버 고객 선택 평가</p>
                       </div>
                     </a>
                   ))}
 
-                  {styles.map((style) => (
+                  {styleCards.map((style) => (
                     <a
                       href="#portfolio"
                       className="ha-review-card"
@@ -1421,7 +1143,6 @@ export default function HomePage() {
                         <small>HAIR DESIGN STYLE</small>
                         <h3>{style}</h3>
                       </div>
-
                       <div>
                         <strong>HI U HAIR</strong>
                         <p>포트폴리오 스타일 소개</p>
@@ -1433,7 +1154,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="ha-actions ha-actions-center">
+          <div className="ha-actions ha-center">
             <a
               href={REVIEWS}
               target="_blank"
@@ -1442,24 +1163,28 @@ export default function HomePage() {
             >
               네이버 고객 리뷰 보기 ↗
             </a>
-
-            <BookingButton>
+            <a
+              href={BOOKING}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ha-btn ha-btn-blue"
+            >
               네이버 예약하기 ↗
-            </BookingButton>
+            </a>
           </div>
 
-          <p className="ha-note">
+          <p className="ha-review-note">
             고객 평가 수치는 2026년 10월 10일 확인 기준이며
-            실시간 갱신되지 않습니다.
+            자동 갱신되지 않습니다.
             <br />
-            평가 카드 5개와 스타일 소개 카드 5개로
-            구성되어 있으며 실제 리뷰 원문은 네이버에서 확인할 수 있습니다.
+            고객 평가 카드 5개와 스타일 소개 카드 5개입니다.
+            개별 후기 원문은 네이버에서 확인할 수 있습니다.
           </p>
         </section>
 
-        {/* 예약 배너 */}
+        {/* 예약 */}
         <section className="ha-booking">
-          <span className="ha-eyebrow">
+          <span className="ha-eyebrow" style={{ color: "#d9e5f7" }}>
             A BEAUTIFUL CHANGE BEGINS HERE
           </span>
 
@@ -1475,10 +1200,15 @@ export default function HomePage() {
             Designer Haerin Lee
           </p>
 
-          <div className="ha-actions ha-actions-center">
-            <BookingButton light>
+          <div className="ha-actions ha-center">
+            <a
+              href={BOOKING}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ha-btn ha-btn-light"
+            >
               네이버 예약하기 ↗
-            </BookingButton>
+            </a>
 
             <Link
               href="/reservation"
@@ -1490,21 +1220,14 @@ export default function HomePage() {
         </section>
 
         {/* 위치 */}
-        <section
-          id="location"
-          className="ha-section ha-cream"
-        >
+        <section id="location" className="ha-section ha-cream">
           <div className="ha-wrap">
             <div className="ha-heading">
               <span className="ha-eyebrow">
                 FIND YOUR SALON
               </span>
-
               <h2>Visit HI U HAIR</h2>
-
-              <p>
-                천안 청당동 하이유헤어 청당점
-              </p>
+              <p>천안 청당동 하이유헤어 청당점</p>
             </div>
 
             <div className="ha-location">
@@ -1514,19 +1237,16 @@ export default function HomePage() {
                 <dl>
                   <dt>DESIGNER</dt>
                   <dd>이해린 디자이너</dd>
-
                   <dt>ADDRESS</dt>
                   <dd>{ADDRESS}</dd>
-
                   <dt>CONTACT</dt>
                   <dd>
-                    <a href={`tel:${PHONE}`}>
-                      {PHONE_VIEW}
-                    </a>
+                    <a href={`tel:${PHONE}`}>{PHONE_VIEW}</a>
                   </dd>
-
-                  <dt>RESERVATION</dt>
-                  <dd>네이버 예약 · 전화 · 문자</dd>
+                  <dt>INSTAGRAM</dt>
+                  <dd>
+                    <SocialLink>@hiu_haerin ↗</SocialLink>
+                  </dd>
                 </dl>
 
                 <div className="ha-actions">
@@ -1578,10 +1298,17 @@ export default function HomePage() {
       {/* 푸터 */}
       <footer className="ha-footer">
         <div className="ha-wrap ha-footer-inner">
-          <Link href="/" className="ha-brand">
-            HI U HAIR
-            <small>CHEONGDANG</small>
-          </Link>
+          <div>
+            <Link href="/" className="ha-brand">
+              HI U HAIR
+              <small>CHEONGDANG</small>
+            </Link>
+
+            <SocialLink className="ha-footer-social">
+              <InstagramIcon />
+              @hiu_haerin ↗
+            </SocialLink>
+          </div>
 
           <p>
             하이유헤어 청당점 · 이해린 디자이너
@@ -1596,21 +1323,11 @@ export default function HomePage() {
         </div>
       </footer>
 
-      {/* 모바일 하단 고정 버튼 */}
+      {/* 모바일 하단 버튼 */}
       <div className="ha-mobile-bar">
-        <a href={`tel:${PHONE}`}>
-          전화
-        </a>
-
-        <a href={`sms:${PHONE}`}>
-          문자
-        </a>
-
-        <a
-          href={BOOKING}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={`tel:${PHONE}`}>전화</a>
+        <a href={`sms:${PHONE}`}>문자</a>
+        <a href={BOOKING} target="_blank" rel="noopener noreferrer">
           네이버 예약
         </a>
       </div>
