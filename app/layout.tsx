@@ -8,30 +8,25 @@ import "./globals.css";
 
 const SITE_URL = "https://hiuhair.com";
 
-const SITE_NAME = "하이유헤어 청당점";
-
 const TITLE =
   "하이유헤어 청당점 이해린 디자이너 | 천안 청당동 미용실";
 
 const DESCRIPTION =
-  "천안 청당동 하이유헤어 청당점 이해린 디자이너 홈페이지. 여성 레이어드컷, 빌드펌, 물결펌, C컬, 매트브라운, 베이지브라운, 루비레드, 블루염색, 붙임머리 등 헤어스타일 포트폴리오와 네이버 예약 안내.";
+  "천안 청당동 하이유헤어 청당점 이해린 디자이너 홈페이지. 여성 레이어드컷, 빌드펌, 물결펌, C컬, 브라운 염색, 루비레드, 블루염색, 붙임머리 등 헤어스타일 포트폴리오와 네이버 예약 안내.";
 
 /* =====================================
-   네이버 서치어드바이저 소유확인
-   새 인증코드
+   네이버 소유확인 코드
 ===================================== */
 
-const NAVER_VERIFICATION =
+const NAVER_CODE =
   "d0255edb43432ea0834785c7719c3f0f8e53aeda";
 
 /* =====================================
-   파비콘 및 대표 이미지
+   파비콘
 ===================================== */
 
 const FAVICON =
   "/46CDE87F-AF98-43B2-8707-1E1C400F19AC.png";
-
-const PROFILE_IMAGE = "/IMG_1443.jpeg";
 
 /* =====================================
    SEO 메타데이터
@@ -47,23 +42,19 @@ export const metadata: Metadata = {
 
   description: DESCRIPTION,
 
-  applicationName: SITE_NAME,
+  applicationName: "하이유헤어 청당점",
 
   keywords: [
     "하이유헤어",
     "하이유헤어 청당점",
-    "하이유헤어 이해린",
     "이해린 디자이너",
-    "천안 미용실",
+    "하이유헤어 이해린",
     "천안미용실",
-    "청당동 미용실",
     "청당동미용실",
-    "천안 여자머리",
     "천안 레이어드컷",
     "천안 빌드펌",
-    "천안 물결펌",
+    "천안 여자머리",
     "천안 염색",
-    "청당동 펌",
     "천안 붙임머리",
   ],
 
@@ -76,12 +67,6 @@ export const metadata: Metadata = {
     follow: true,
   },
 
-  verification: {
-    other: {
-      "naver-site-verification": NAVER_VERIFICATION,
-    },
-  },
-
   icons: {
     icon: [
       {
@@ -89,9 +74,7 @@ export const metadata: Metadata = {
         type: "image/png",
       },
     ],
-
     shortcut: FAVICON,
-
     apple: [
       {
         url: FAVICON,
@@ -104,12 +87,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     url: SITE_URL,
-    siteName: SITE_NAME,
+    siteName: "하이유헤어 청당점",
     title: TITLE,
     description: DESCRIPTION,
     images: [
       {
-        url: PROFILE_IMAGE,
+        url: "/IMG_1443.jpeg",
         alt: "하이유헤어 청당점 이해린 디자이너",
       },
     ],
@@ -119,7 +102,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: [PROFILE_IMAGE],
+    images: ["/IMG_1443.jpeg"],
   },
 
   category: "beauty",
@@ -127,6 +110,8 @@ export const metadata: Metadata = {
 
 /* =====================================
    전체 홈페이지 레이아웃
+
+   네이버 인증 태그 직접 삽입
 ===================================== */
 
 export default function RootLayout({
@@ -136,6 +121,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <meta
+          name="naver-site-verification"
+          content={NAVER_CODE}
+        />
+      </head>
+
       <body>{children}</body>
     </html>
   );
