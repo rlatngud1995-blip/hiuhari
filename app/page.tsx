@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -57,9 +56,6 @@ const services = [
 
 /* =====================================
    포트폴리오 8개
-
-   GitHub public 폴더의
-   실제 파일명 그대로 사용
 ===================================== */
 
 const portfolio = [
@@ -122,13 +118,7 @@ const portfolio = [
 ];
 
 /* =====================================
-   네이버 예약 고객 평가
-
-   이전에 정리한 평가 항목 5개만
-   집계 수치를 표시함.
-
-   나머지 5개는 시술 스타일 소개 카드.
-   실제 후기 개수인 것처럼 표시하지 않음.
+   네이버 예약 고객 평가 카드
 ===================================== */
 
 const reviewCards = [
@@ -202,6 +192,27 @@ const reviewCards = [
     count: "PINK",
     desc: "베이비핑크 컬러와 붙임머리",
   },
+];
+
+/* =====================================
+   경력 / 자격 / 수상
+===================================== */
+
+const careers = [
+  "유원대학교 뷰티케어학과 졸업",
+  "미용 종합면허증",
+  "헤어 국가자격증",
+  "메이크업 국가자격증",
+  "Makeup 3급 자격증",
+  "Makeup 2급 자격증",
+  "방송분장사 3급 자격증",
+  "Trichologist 자격증",
+  "Personal Color Consultant 자격증",
+  "전국미용경연대회 Permanent 은상",
+  "전국미용경연대회 Haircolor 동상",
+  "전국미용경진대회 Hair design perm 우수상",
+  "맛과멋창의력경진대회 Permanent 은상",
+  "HISTEMO HEAD SPA 수료",
 ];
 
 /* =====================================
@@ -437,38 +448,21 @@ export default function HomePage() {
 
         .hiu-profile {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 70px;
-          align-items: center;
+          grid-template-columns: 0.9fr 1.1fr;
+          gap: 55px;
+          align-items: start;
         }
 
         .hiu-profile-photo {
-          min-height: 440px;
-          background: linear-gradient(
-            135deg,
-            #e7e0d6,
-            #b9b1aa
-          );
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          color: #fff;
-          padding: 35px;
+          position: relative;
+          min-height: 620px;
+          border-radius: 4px;
+          overflow: hidden;
+          background: #e8e4de;
         }
 
-        .hiu-profile-photo strong {
-          font-family: Georgia, serif;
-          display: block;
-          font-size: 42px;
-          font-weight: 400;
-          letter-spacing: 3px;
-          margin-bottom: 15px;
-        }
-
-        .hiu-profile-photo span {
-          font-size: 13px;
-          line-height: 2;
+        .hiu-profile-photo img {
+          object-fit: cover;
         }
 
         .hiu-profile-text h2 {
@@ -496,6 +490,47 @@ export default function HomePage() {
           line-height: 2;
           font-weight: 600;
           color: var(--hiu-blue);
+        }
+
+        .hiu-career-box {
+          margin-top: 24px;
+          background: #faf8f4;
+          border: 1px solid #ebe5dc;
+          padding: 24px 22px;
+        }
+
+        .hiu-career-box h3 {
+          margin: 0 0 16px;
+          font-size: 18px;
+          color: var(--hiu-blue);
+          font-weight: 700;
+        }
+
+        .hiu-career-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px 18px;
+          padding: 0;
+          margin: 0;
+          list-style: none;
+        }
+
+        .hiu-career-grid li {
+          position: relative;
+          padding-left: 14px;
+          color: #5f646d;
+          font-size: 13px;
+          line-height: 1.9;
+          word-break: keep-all;
+        }
+
+        .hiu-career-grid li::before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: var(--hiu-blue);
+          font-weight: 700;
         }
 
         .hiu-services {
@@ -847,12 +882,20 @@ export default function HomePage() {
             gap: 35px;
           }
 
+          .hiu-profile-photo {
+            min-height: 500px;
+          }
+
           .hiu-services {
             grid-template-columns: repeat(2,minmax(0,1fr));
           }
 
           .hiu-portfolio-grid {
             grid-template-columns: repeat(2,minmax(0,1fr));
+          }
+
+          .hiu-career-grid {
+            grid-template-columns: 1fr;
           }
         }
 
@@ -874,7 +917,7 @@ export default function HomePage() {
           }
 
           .hiu-profile-photo {
-            min-height: 340px;
+            min-height: 420px;
           }
 
           .hiu-service {
@@ -1031,23 +1074,20 @@ export default function HomePage() {
             HAIR DESIGN BY HAERIN LEE
           </div>
 
-          {/* 디자이너 */}
+          {/* 디자이너 소개 */}
           <section
             id="about"
             className="hiu-section hiu-section-white"
           >
             <div className="hiu-container hiu-profile">
               <div className="hiu-profile-photo">
-                <div>
-                  <strong>HAERIN LEE</strong>
-                  <span>
-                    PERSONAL HAIR DESIGNER
-                    <br />
-                    이해린 디자이너
-                    <br />
-                    프로필 사진 준비 중
-                  </span>
-                </div>
+                <Image
+                  src="/IMG_1443.jpeg"
+                  alt="이해린 디자이너 프로필 사진"
+                  fill
+                  sizes="(max-width: 950px) 100vw, 45vw"
+                  priority
+                />
               </div>
 
               <div className="hiu-profile-text">
@@ -1083,6 +1123,16 @@ export default function HomePage() {
                   HI U HAIR CHEONGDANG
                   <br />
                   DESIGNER · 이해린
+                </div>
+
+                <div className="hiu-career-box">
+                  <h3>학력 · 자격 · 수상 경력</h3>
+
+                  <ul className="hiu-career-grid">
+                    {careers.map((career) => (
+                      <li key={career}>{career}</li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div
@@ -1133,7 +1183,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* 포트폴리오 8개 */}
+          {/* 포트폴리오 */}
           <section
             id="portfolio"
             className="hiu-section hiu-section-white"
@@ -1194,7 +1244,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* 네이버 고객 평가 자동 슬라이드 */}
+          {/* 리뷰 */}
           <section
             id="reviews"
             className="hiu-review-section"
@@ -1323,7 +1373,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* 매장 안내 */}
+          {/* 위치 */}
           <section
             id="location"
             className="hiu-section hiu-section-cream"
@@ -1433,15 +1483,11 @@ export default function HomePage() {
           </div>
         </footer>
 
-        {/* 모바일 하단 고정 버튼 */}
+        {/* 모바일 하단 버튼 */}
         <div className="hiu-bottom-bar">
-          <a href={`tel:${PHONE}`}>
-            전화
-          </a>
+          <a href={`tel:${PHONE}`}>전화</a>
 
-          <a href={`sms:${PHONE}`}>
-            문자
-          </a>
+          <a href={`sms:${PHONE}`}>문자</a>
 
           <a
             href={NAVER_BOOKING}
