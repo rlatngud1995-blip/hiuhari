@@ -23,19 +23,19 @@ const services = [
     number: "02",
     title: "LAYERED CUT",
     name: "레이어드컷 / C컬",
-    desc: "자연스러운 움직임과 볼륨감을 살린 스타일",
+    desc: "움직임과 볼륨감을 살린 자연스러운 스타일",
   },
   {
     number: "03",
     title: "PERM DESIGN",
     name: "여성 펌",
-    desc: "빌드펌, 물결펌 등 취향에 맞춘 컬 디자인",
+    desc: "빌드펌, 물결펌 등 취향에 맞춘 펌 디자인",
   },
   {
     number: "04",
     title: "HAIR COLOR",
     name: "여성 염색",
-    desc: "매트브라운부터 루비레드까지 컬러 디자인",
+    desc: "매트브라운, 밀크브라운, 루비레드 등",
   },
 ];
 
@@ -43,32 +43,37 @@ const gallery = [
   {
     title: "BUILD PERM",
     name: "빌드펌 / 매트브라운",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85",
+    description:
+      "풍성한 볼륨과 차분한 매트브라운 컬러",
+    image: "/IMG_1424.jpeg",
   },
   {
     title: "HIGH LAYERED CUT",
     name: "하이레이어드컷 / C컬",
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85",
+    description:
+      "자연스러운 레이어와 부드러운 C컬",
+    image: "/IMG_1427.jpeg",
   },
   {
     title: "WAVE PERM",
     name: "물결펌 / 밀크브라운",
-    image:
-      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85",
+    description:
+      "부드러운 물결 웨이브와 밀크브라운 컬러",
+    image: "/IMG_1423.jpeg",
   },
   {
     title: "BEIGE BROWN",
     name: "베이지브라운",
-    image:
-      "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=85",
+    description:
+      "은은하고 세련된 베이지브라운 컬러",
+    image: "/IMG_1425.jpeg",
   },
   {
-    title: "RUBY RED",
+    title: "RUBY RED COLOR",
     name: "루비레드컬러",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=85",
+    description:
+      "선명하면서 깊이감 있는 루비레드 컬러",
+    image: "/IMG_1433.jpeg",
   },
 ];
 
@@ -98,7 +103,7 @@ export default function HomePage() {
       </header>
 
       <main id="home">
-        {/* 첫 화면: 사진 없는 브랜드 로고 */}
+        {/* 메인 로고 영역 */}
         <section
           style={{
             background: "#ffffff",
@@ -124,7 +129,7 @@ export default function HomePage() {
               fontFamily: "Georgia, serif",
               fontWeight: 400,
               color: "#173b72",
-              fontSize: "clamp(48px, 10vw, 110px)",
+              fontSize: "clamp(42px, 10vw, 110px)",
               letterSpacing: "-2px",
               lineHeight: 1.1,
               margin: "0 auto",
@@ -151,6 +156,7 @@ export default function HomePage() {
                 flex: 1,
               }}
             />
+
             <span
               style={{
                 fontSize: 11,
@@ -160,6 +166,7 @@ export default function HomePage() {
             >
               CHEONGDANG
             </span>
+
             <div
               style={{
                 height: 1,
@@ -241,7 +248,10 @@ export default function HomePage() {
         </div>
 
         {/* 디자이너 소개 */}
-        <section id="about" className="section section-light">
+        <section
+          id="about"
+          className="section section-light"
+        >
           <div className="container profile-grid">
             <div className="profile-photo">
               <div className="profile-placeholder">
@@ -304,13 +314,18 @@ export default function HomePage() {
         </section>
 
         {/* 시술 메뉴 */}
-        <section id="service" className="section section-cream">
+        <section
+          id="service"
+          className="section section-cream"
+        >
           <div className="container">
             <div className="section-heading center">
               <span className="eyebrow">
                 HAIR DESIGN MENU
               </span>
+
               <h2>여성 헤어 디자인</h2>
+
               <p className="section-desc">
                 나에게 어울리는 스타일을 찾아가는 시간
               </p>
@@ -333,16 +348,21 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 헤어스타일 갤러리 */}
-        <section id="portfolio" className="section section-light">
+        {/* 실제 업로드 사진 갤러리 */}
+        <section
+          id="portfolio"
+          className="section section-light"
+        >
           <div className="container">
             <div className="section-heading center">
               <span className="eyebrow">
-                HAIR INSPIRATION
+                HAIR DESIGN COLLECTION
               </span>
-              <h2>Style Gallery</h2>
+
+              <h2>Hair Portfolio</h2>
+
               <p className="section-desc">
-                여성 헤어스타일 디자인 모음
+                다양한 여성 헤어 디자인을 만나보세요.
               </p>
             </div>
 
@@ -355,28 +375,45 @@ export default function HomePage() {
                   <div className="gallery-image">
                     <Image
                       src={item.image}
-                      alt={`${item.name} 참고 이미지`}
-                      width={600}
-                      height={750}
-                      unoptimized
+                      alt={item.name}
+                      width={650}
+                      height={800}
+                      sizes="(max-width: 600px) 50vw, (max-width: 900px) 50vw, 33vw"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </div>
 
-                  <h3>{item.title}</h3>
-                  <p>{item.name}</p>
+                  <h3>{item.name}</h3>
+
+                  <p>{item.description}</p>
+
+                  <div style={{ marginTop: 17 }}>
+                    <Link
+                      href="/reservation"
+                      style={{
+                        color: "#173b72",
+                        fontSize: 12,
+                        fontWeight: 600,
+                      }}
+                    >
+                      이 스타일 예약 문의 →
+                    </Link>
+                  </div>
                 </article>
               ))}
             </div>
-
-            <p className="gallery-notice">
-              현재 이미지는 스타일 참고용 사진입니다.
-              실제 시술 사진은 추후 업데이트됩니다.
-            </p>
           </div>
         </section>
 
         {/* 예약 안내 */}
-        <section id="booking" className="booking-banner">
+        <section
+          id="booking"
+          className="booking-banner"
+        >
           <span
             className="eyebrow"
             style={{ color: "#dce5ff" }}
@@ -384,7 +421,9 @@ export default function HomePage() {
             YOUR BEAUTY, YOUR STYLE
           </span>
 
-          <h2>당신만의 스타일을 만나보세요.</h2>
+          <h2>
+            당신만의 스타일을 만나보세요.
+          </h2>
 
           <p>
             하이유헤어 청당점 이해린 디자이너
@@ -396,18 +435,27 @@ export default function HomePage() {
             className="hero-actions"
             style={{ justifyContent: "center" }}
           >
-            <Link href="/reservation" className="btn">
+            <Link
+              href="/reservation"
+              className="btn"
+            >
               예약 신청하기
             </Link>
 
-            <a href={`sms:${PHONE}`} className="btn">
+            <a
+              href={`sms:${PHONE}`}
+              className="btn"
+            >
               문자 문의하기
             </a>
           </div>
         </section>
 
-        {/* 위치 및 연락처 */}
-        <section id="location" className="section">
+        {/* 매장 정보 */}
+        <section
+          id="location"
+          className="section"
+        >
           <div className="container">
             <div className="section-heading">
               <span className="eyebrow">
@@ -485,6 +533,7 @@ export default function HomePage() {
         </section>
       </main>
 
+      {/* 푸터 */}
       <footer>
         <div className="container footer-inner">
           <div
@@ -517,9 +566,17 @@ export default function HomePage() {
             gap: 8,
           }}
         >
-          <a href={`tel:${PHONE}`}>전화</a>
-          <a href={`sms:${PHONE}`}>문자</a>
-          <Link href="/reservation">예약하기</Link>
+          <a href={`tel:${PHONE}`}>
+            전화
+          </a>
+
+          <a href={`sms:${PHONE}`}>
+            문자
+          </a>
+
+          <Link href="/reservation">
+            예약하기
+          </Link>
         </div>
       </div>
     </>
