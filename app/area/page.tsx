@@ -20,24 +20,24 @@ const services = [
   { slug: "build-perm", name: "빌드펌" },
   { slug: "wave-perm", name: "물결펌" },
   { slug: "color", name: "여성 염색" },
-  { slug: "extensions", name: "붙임머리" },
+  { slug: "wedding-color", name: "웨딩염색" },
 ];
 
 export const metadata: Metadata = {
   title: {
     absolute:
-      "천안 여자머리 전문·레이어드컷·염색·붙임머리 | 하이유헤어",
+      "천안 여자머리 전문·레이어드컷·염색·웨딩염색 | 하이유헤어",
   },
   description:
-    "천안 청당동 하이유헤어 이해린 디자이너의 여성 헤어스타일 안내. 레이어드컷, 빌드펌, 물결펌, 염색, 붙임머리 정보와 지역별 방문 안내를 확인하세요.",
+    "천안 청당동 하이유헤어 이해린 디자이너의 여성 헤어스타일 안내. 레이어드컷, 빌드펌, 물결펌, 여성 염색, 웨딩염색 정보와 지역별 방문 안내를 확인하세요.",
   alternates: {
     canonical: `${SITE}/area`,
   },
   openGraph: {
     title:
-      "천안 여성 헤어스타일 안내 | 하이유헤어",
+      "천안 여성 헤어스타일·웨딩염색 안내 | 하이유헤어",
     description:
-      "천안 청당동 이해린 디자이너의 여자머리 시술과 방문 안내.",
+      "천안 청당동 이해린 디자이너의 여자머리, 레이어드컷, 펌, 여성 염색, 웨딩염색 시술 및 방문 안내.",
     url: `${SITE}/area`,
   },
 };
@@ -152,6 +152,10 @@ export default function AreaPage() {
           border-radius:3px;
         }
 
+        .area-index-links a:hover {
+          background:#e9edf3;
+        }
+
         .area-index-footer {
           text-align:center;
           background:var(--blue);
@@ -176,7 +180,8 @@ export default function AreaPage() {
 
         @media(max-width:650px) {
           .area-index-links {
-            grid-template-columns:repeat(2,minmax(0,1fr));
+            grid-template-columns:
+              repeat(2,minmax(0,1fr));
           }
 
           .area-index-group {
@@ -205,7 +210,7 @@ export default function AreaPage() {
         <p>
           하이유헤어 청당점 이해린 디자이너
           <br />
-          레이어드컷 · 펌 · 염색 · 붙임머리
+          레이어드컷 · 펌 · 염색 · 웨딩염색
         </p>
       </section>
 
@@ -230,9 +235,7 @@ export default function AreaPage() {
                 {services.map((service) => (
                   <Link
                     key={service.slug}
-                    href={
-                      `/area/${region.slug}/${service.slug}`
-                    }
+                    href={`/area/${region.slug}/${service.slug}`}
                   >
                     {region.name} {service.name} →
                   </Link>
