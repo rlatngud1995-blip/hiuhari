@@ -55,7 +55,7 @@ const slides = [
     desc: "부드러운 웨이브로 만드는 분위기",
   },
   {
-    name: "여성 염색",
+    name: "여자 염색",
     english: "HAIR COLOR",
     image: "/IMG_1433.jpeg",
     href: "/hair/color",
@@ -95,7 +95,7 @@ const signatures = [
     no: "03",
     en: "YOUR OWN COLOR",
     title: "Hair Color",
-    korean: "여성 염색",
+    korean: "여자 염색",
     desc: "피부톤과 취향에 맞춰 상담하는 컬러 디자인.",
     image: "/IMG_1433.jpeg",
     href: "/hair/color",
