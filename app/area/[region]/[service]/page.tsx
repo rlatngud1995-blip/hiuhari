@@ -290,7 +290,7 @@ const SERVICES: Record<string, Service> = {
   },
 
   color: {
-    name: "여성 염색",
+    name: "여자 염색",
     english: "PERSONAL HAIR COLOR",
     headline: "컬러 하나로 달라지는 나만의 분위기",
     description:
