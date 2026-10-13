@@ -233,13 +233,13 @@ const services: Record<string, Service> = {
   },
 
   color: {
-    name: "여성 염색",
+    name: "여자 염색",
     english: "HAIR COLOR",
-    title: "천안 청당동 여성 염색",
+    title: "천안 청당동 여자 염색",
     intro:
       "나만의 분위기를 색감으로 표현하는 헤어 컬러.",
     description:
-      "천안 하이유헤어 청당점 이해린 디자이너의 여성 염색. 베이지브라운, 루비레드, 블루, 베이비핑크 등 다양한 컬러를 소개합니다.",
+      "천안 하이유헤어 청당점 이해린 디자이너의 여자 염색. 베이지브라운, 루비레드, 블루, 베이비핑크 등 다양한 컬러를 소개합니다.",
     photos: [
       { src: "/IMG_1433.jpeg", alt: "루비레드 염색" },
       { src: "/IMG_1445.jpeg", alt: "블루 염색" },
