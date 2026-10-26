@@ -1,10 +1,7 @@
 
 "use client";
 
-import {
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "./components/SiteHeader";
@@ -12,6 +9,8 @@ import SiteHeader from "./components/SiteHeader";
 /* =========================================
    HI U HAIR · EDITORIAL SALON HOME
    파일: app/page.tsx
+
+   첫 방문 40% 할인 쿠폰 팝업 추가
 ========================================= */
 
 const PHONE = "01023277653";
@@ -30,7 +29,9 @@ const MAP =
   "https://map.naver.com/p/search/" +
   encodeURIComponent("하이유헤어 청당점");
 
-/* 기존 자동 슬라이드 사진 및 순서 유지 */
+const COUPON_STORAGE_KEY = "hiuhair_coupon_hide_today";
+
+/* 기존 자동 슬라이드 유지 */
 
 const slides = [
   {
@@ -70,7 +71,7 @@ const slides = [
   },
 ];
 
-/* 메인에 노출할 대표 시술 사진 */
+/* 기존 대표 시술 유지 */
 
 const signatures = [
   {
@@ -119,7 +120,68 @@ export default function HomePage() {
   const [reducedMotion, setReducedMotion] =
     useState(false);
 
-  /* 기존 4초 자동 슬라이드 기능 유지 */
+  /* 신규: 할인 쿠폰 */
+
+  const [showCoupon, setShowCoupon] =
+    useState(false);
+
+  const [hideCouponToday, setHideCouponToday] =
+    useState(false);
+
+  useEffect(() => {
+    const today = new Date().toLocaleDateString("en-CA");
+
+    try {
+      const hiddenDate = localStorage.getItem(
+        COUPON_STORAGE_KEY
+      );
+
+      if (hiddenDate !== today) {
+        setShowCoupon(true);
+      }
+    } catch {
+      setShowCoupon(true);
+    }
+  }, []);
+
+  const closeCoupon = () => {
+    if (hideCouponToday) {
+      const today =
+        new Date().toLocaleDateString("en-CA");
+
+      try {
+        localStorage.setItem(
+          COUPON_STORAGE_KEY,
+          today
+        );
+      } catch {
+        // 브라우저 저장소가 차단되어도 팝업은 닫습니다.
+      }
+    }
+
+    setShowCoupon(false);
+  };
+
+  useEffect(() => {
+    if (!showCoupon) return;
+
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setShowCoupon(false);
+      }
+    };
+
+    document.addEventListener("keydown", onEscape);
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        onEscape
+      );
+    };
+  }, [showCoupon]);
+
+  /* 기존 자동 슬라이드 기능 */
 
   useEffect(() => {
     const media = window.matchMedia(
@@ -131,6 +193,7 @@ export default function HomePage() {
     };
 
     update();
+
     media.addEventListener("change", update);
 
     return () => {
@@ -142,8 +205,9 @@ export default function HomePage() {
     if (reducedMotion) return;
 
     const timer = window.setInterval(() => {
-      setActive((previous) =>
-        (previous + 1) % slides.length
+      setActive(
+        (previous) =>
+          (previous + 1) % slides.length
       );
     }, 4000);
 
@@ -190,10 +254,7 @@ export default function HomePage() {
         }
 
         .hu-container {
-          width:min(
-            1180px,
-            calc(100% - 64px)
-          );
+          width:min(1180px,calc(100% - 64px));
           margin:0 auto;
         }
 
@@ -215,9 +276,7 @@ export default function HomePage() {
           font-size:12px;
           font-weight:700;
           border:1px solid var(--navy);
-          transition:
-            transform .25s,
-            background .25s;
+          transition:transform .25s,background .25s;
         }
 
         .hu-btn:hover {
@@ -241,7 +300,7 @@ export default function HomePage() {
         }
 
         /* =====================================
-           01. HERO
+           HERO
         ===================================== */
 
         .hu-hero {
@@ -396,8 +455,6 @@ export default function HomePage() {
           backdrop-filter:blur(8px);
         }
 
-        /* HERO STATUS STRIP */
-
         .hu-hero-status {
           background:var(--deep);
           color:white;
@@ -472,7 +529,7 @@ export default function HomePage() {
         }
 
         /* =====================================
-           02. BRAND MESSAGE
+           BRAND MESSAGE
         ===================================== */
 
         .hu-intro {
@@ -488,7 +545,8 @@ export default function HomePage() {
         }
 
         .hu-intro h2 {
-          font:400 clamp(32px,4vw,49px) Georgia,serif;
+          font:400 clamp(32px,4vw,49px)
+            Georgia,serif;
           line-height:1.35;
           letter-spacing:-1px;
           margin:0 0 25px;
@@ -523,7 +581,7 @@ export default function HomePage() {
         }
 
         /* =====================================
-           03. SIGNATURE WORK
+           SIGNATURE WORK
         ===================================== */
 
         .hu-work {
@@ -539,7 +597,8 @@ export default function HomePage() {
         }
 
         .hu-section-top h2 {
-          font:400 clamp(34px,4.8vw,59px) Georgia,serif;
+          font:400 clamp(34px,4.8vw,59px)
+            Georgia,serif;
           margin:13px 0 0;
           letter-spacing:-1.2px;
         }
@@ -633,7 +692,7 @@ export default function HomePage() {
         }
 
         /* =====================================
-           04. EXPERTISE
+           EXPERTISE
         ===================================== */
 
         .hu-expertise {
@@ -650,7 +709,8 @@ export default function HomePage() {
         }
 
         .hu-expertise h2 {
-          font:400 clamp(33px,4.5vw,56px) Georgia,serif;
+          font:400 clamp(33px,4.5vw,56px)
+            Georgia,serif;
           line-height:1.3;
           margin:18px 0 22px;
         }
@@ -704,7 +764,7 @@ export default function HomePage() {
         }
 
         /* =====================================
-           05. CONSULTATION
+           CONSULTATION
         ===================================== */
 
         .hu-consult {
@@ -768,7 +828,7 @@ export default function HomePage() {
         }
 
         /* =====================================
-           06. REVIEW & VISIT
+           REVIEW & VISIT
         ===================================== */
 
         .hu-trust {
@@ -871,7 +931,7 @@ export default function HomePage() {
         }
 
         /* =====================================
-           07. BOOKING / FOOTER
+           BOOKING / FOOTER
         ===================================== */
 
         .hu-booking {
@@ -926,6 +986,249 @@ export default function HomePage() {
 
         .hu-mobile-bar {
           display:none;
+        }
+
+        /* =====================================
+           신규 첫 방문 할인 쿠폰 팝업
+        ===================================== */
+
+        .hu-coupon-backdrop {
+          position:fixed;
+          inset:0;
+          z-index:9999;
+          background:rgba(9,17,29,.76);
+          backdrop-filter:blur(9px);
+          -webkit-backdrop-filter:blur(9px);
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          padding:22px;
+          overflow-y:auto;
+          animation:hu-coupon-fade .3s ease-out;
+        }
+
+        .hu-coupon-modal {
+          width:min(100%,440px);
+          max-height:calc(100dvh - 44px);
+          overflow-y:auto;
+          position:relative;
+          background:#f9f7f1;
+          color:#213047;
+          box-shadow:0 25px 100px rgba(0,0,0,.3);
+          animation:hu-coupon-rise .4s ease-out;
+        }
+
+        .hu-coupon-close {
+          position:absolute;
+          right:14px;
+          top:13px;
+          z-index:2;
+          width:38px;
+          height:38px;
+          border:1px solid rgba(255,255,255,.35);
+          background:rgba(0,0,0,.13);
+          color:white;
+          font-size:24px;
+          font-weight:300;
+          display:grid;
+          place-items:center;
+          cursor:pointer;
+        }
+
+        .hu-coupon-top {
+          background:
+            radial-gradient(circle at 50% 0%,#305582 0%,transparent 58%),
+            linear-gradient(145deg,#1d3e70,#101f36);
+          color:#fff;
+          padding:35px 27px 31px;
+          text-align:center;
+          position:relative;
+        }
+
+        .hu-coupon-top:before {
+          content:"";
+          position:absolute;
+          inset:12px;
+          border:1px solid rgba(221,193,145,.38);
+          pointer-events:none;
+        }
+
+        .hu-coupon-brand {
+          font:26px Georgia,serif;
+          letter-spacing:3px;
+          margin:11px 0 7px;
+        }
+
+        .hu-coupon-collection {
+          font-size:9px;
+          letter-spacing:3px;
+          color:#d7c19c;
+          font-weight:700;
+        }
+
+        .hu-coupon-divider {
+          height:1px;
+          width:35px;
+          margin:23px auto;
+          background:#c7ae88;
+        }
+
+        .hu-coupon-first {
+          font-size:13px;
+          letter-spacing:3px;
+          font-weight:600;
+          margin:0;
+        }
+
+        .hu-coupon-discount {
+          display:flex;
+          justify-content:center;
+          align-items:baseline;
+          gap:8px;
+          margin:12px 0 6px;
+          line-height:1;
+        }
+
+        .hu-coupon-discount strong {
+          font:normal 112px Georgia,serif;
+          letter-spacing:-8px;
+        }
+
+        .hu-coupon-discount span {
+          font:40px Georgia,serif;
+          color:#ddc49e;
+        }
+
+        .hu-coupon-off {
+          font-size:13px;
+          letter-spacing:7px;
+          color:#dbc6a6;
+        }
+
+        .hu-coupon-caption {
+          margin:22px auto 0;
+          color:#e8e1d6;
+          font-size:12px;
+          line-height:1.9;
+        }
+
+        .hu-coupon-ticket-edge {
+          position:relative;
+          height:23px;
+          background:#f9f7f1;
+          border-top:1px dashed #c9b796;
+        }
+
+        .hu-coupon-ticket-edge:before,
+        .hu-coupon-ticket-edge:after {
+          content:"";
+          position:absolute;
+          width:25px;
+          height:25px;
+          top:-13px;
+          border-radius:50%;
+          background:#253146;
+        }
+
+        .hu-coupon-ticket-edge:before {
+          left:-13px;
+        }
+
+        .hu-coupon-ticket-edge:after {
+          right:-13px;
+        }
+
+        .hu-coupon-bottom {
+          padding:20px 35px 27px;
+          text-align:center;
+        }
+
+        .hu-coupon-label {
+          font-size:10px;
+          color:#947b5c;
+          letter-spacing:2.4px;
+          font-weight:700;
+        }
+
+        .hu-coupon-title {
+          font-size:22px;
+          font-weight:500;
+          margin:13px 0 9px;
+          letter-spacing:-.8px;
+        }
+
+        .hu-coupon-copy {
+          color:#777a80;
+          font-size:12px;
+          line-height:1.9;
+          margin:0 0 21px;
+        }
+
+        .hu-coupon-book {
+          width:100%;
+          min-height:51px;
+          background:#193b71;
+          border:1px solid #193b71;
+          color:#fff!important;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          gap:14px;
+          font-size:13px;
+          font-weight:700;
+          letter-spacing:.3px;
+        }
+
+        .hu-coupon-note {
+          color:#86868a;
+          font-size:10px;
+          line-height:1.8;
+          margin:17px 0 0;
+        }
+
+        .hu-coupon-hide {
+          margin-top:19px;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          gap:8px;
+          color:#767980;
+          font-size:11px;
+          cursor:pointer;
+        }
+
+        .hu-coupon-hide input {
+          width:16px;
+          height:16px;
+          accent-color:#193b71;
+        }
+
+        .hu-coupon-dismiss {
+          margin-top:14px;
+          border:0;
+          background:transparent;
+          color:#666d78;
+          cursor:pointer;
+          text-decoration:underline;
+          text-underline-offset:3px;
+          font-size:12px;
+          padding:9px;
+        }
+
+        @keyframes hu-coupon-fade {
+          from {opacity:0}
+          to {opacity:1}
+        }
+
+        @keyframes hu-coupon-rise {
+          from {
+            opacity:0;
+            transform:translateY(25px) scale(.97);
+          }
+          to {
+            opacity:1;
+            transform:translateY(0) scale(1);
+          }
         }
 
         /* =====================================
@@ -1281,6 +1584,55 @@ export default function HomePage() {
             background:var(--navy);
             color:white;
           }
+
+          .hu-coupon-backdrop {
+            padding:12px;
+          }
+
+          .hu-coupon-modal {
+            width:min(100%,390px);
+            max-height:calc(100dvh - 24px);
+          }
+
+          .hu-coupon-top {
+            padding:29px 21px 26px;
+          }
+
+          .hu-coupon-discount strong {
+            font-size:90px;
+          }
+
+          .hu-coupon-discount span {
+            font-size:32px;
+          }
+
+          .hu-coupon-bottom {
+            padding:16px 24px 23px;
+          }
+        }
+
+        @media(max-height:700px) {
+          .hu-coupon-top {
+            padding-top:20px;
+            padding-bottom:19px;
+          }
+
+          .hu-coupon-divider {
+            margin:14px auto;
+          }
+
+          .hu-coupon-discount strong {
+            font-size:77px;
+          }
+
+          .hu-coupon-caption {
+            margin-top:13px;
+          }
+
+          .hu-coupon-bottom {
+            padding-top:12px;
+            padding-bottom:15px;
+          }
         }
 
         @media(prefers-reduced-motion:reduce) {
@@ -1293,16 +1645,20 @@ export default function HomePage() {
           .hu-progress:after {
             animation:none;
           }
+
+          .hu-coupon-modal,
+          .hu-coupon-backdrop {
+            animation:none;
+          }
         }
       `}</style>
 
-      {/* 공통 상단 로고 · 예약 · 삼선 메뉴 */}
       <SiteHeader />
 
       <main>
-        {/* =============================
+        {/* =====================================
             HERO / AUTO SLIDESHOW
-        ============================= */}
+        ===================================== */}
 
         <section
           className="hu-hero"
@@ -1392,6 +1748,7 @@ export default function HomePage() {
         </section>
 
         {/* 슬라이드 현재 스타일 */}
+
         <div className="hu-hero-status">
           <div className="hu-container hu-status-inner">
             <div className="hu-status-title">
@@ -1424,9 +1781,9 @@ export default function HomePage() {
           />
         </div>
 
-        {/* =============================
+        {/* =====================================
             BRAND INTRO
-        ============================= */}
+        ===================================== */}
 
         <section className="hu-intro">
           <div className="hu-container hu-intro-layout">
@@ -1465,9 +1822,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* =============================
+        {/* =====================================
             SIGNATURE STYLES
-        ============================= */}
+        ===================================== */}
 
         <section className="hu-work">
           <div className="hu-container">
@@ -1534,9 +1891,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* =============================
+        {/* =====================================
             DESIGNER EXPERTISE
-        ============================= */}
+        ===================================== */}
 
         <section className="hu-expertise">
           <div className="hu-container hu-expertise-grid">
@@ -1607,9 +1964,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* =============================
+        {/* =====================================
             PERSONAL CONSULTATION
-        ============================= */}
+        ===================================== */}
 
         <section className="hu-consult">
           <div className="hu-container hu-consult-grid">
@@ -1671,9 +2028,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* =============================
+        {/* =====================================
             NAVER REVIEWS
-        ============================= */}
+        ===================================== */}
 
         <section className="hu-trust">
           <div className="hu-container hu-trust-inner">
@@ -1700,9 +2057,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* =============================
+        {/* =====================================
             LOCATION
-        ============================= */}
+        ===================================== */}
 
         <section className="hu-visit">
           <div className="hu-container hu-visit-grid">
@@ -1758,9 +2115,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* =============================
+        {/* =====================================
             BOOKING
-        ============================= */}
+        ===================================== */}
 
         <section className="hu-booking">
           <span
@@ -1814,7 +2171,7 @@ export default function HomePage() {
         </div>
       </footer>
 
-      {/* 기존 모바일 전화 / 문자 / 예약 */}
+      {/* 모바일 전화 / 문자 / 예약 */}
 
       <nav
         className="hu-mobile-bar"
@@ -1836,6 +2193,134 @@ export default function HomePage() {
           네이버 예약
         </a>
       </nav>
+
+      {/* =====================================
+          첫 방문 40% 할인 쿠폰 팝업
+      ===================================== */}
+
+      {showCoupon && (
+        <div
+          className="hu-coupon-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              closeCoupon();
+            }
+          }}
+        >
+          <div
+            className="hu-coupon-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="hu-coupon-title"
+            aria-describedby="hu-coupon-desc"
+          >
+            <button
+              type="button"
+              className="hu-coupon-close"
+              onClick={closeCoupon}
+              aria-label="쿠폰 팝업 닫기"
+            >
+              ×
+            </button>
+
+            <div className="hu-coupon-top">
+              <div className="hu-coupon-brand">
+                HI U HAIR
+              </div>
+
+              <div className="hu-coupon-collection">
+                EXCLUSIVE WELCOME BENEFIT
+              </div>
+
+              <div className="hu-coupon-divider" />
+
+              <p className="hu-coupon-first">
+                FIRST VISIT
+              </p>
+
+              <div className="hu-coupon-discount">
+                <strong>40</strong>
+                <span>%</span>
+              </div>
+
+              <div className="hu-coupon-off">
+                OFF
+              </div>
+
+              <p className="hu-coupon-caption">
+                처음 만나는 당신을 위한
+                <br />
+                특별한 웰컴 혜택
+              </p>
+            </div>
+
+            <div className="hu-coupon-ticket-edge" />
+
+            <div className="hu-coupon-bottom">
+              <span className="hu-coupon-label">
+                WELCOME GIFT
+              </span>
+
+              <h2
+                className="hu-coupon-title"
+                id="hu-coupon-title"
+              >
+                첫 방문 고객 40% 할인
+              </h2>
+
+              <p
+                className="hu-coupon-copy"
+                id="hu-coupon-desc"
+              >
+                하이유헤어 청당점
+                <br />
+                이해린 디자이너와 함께하는
+                <br />
+                특별한 첫 만남
+              </p>
+
+              <a
+                href={BOOKING}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hu-coupon-book"
+                onClick={() => setShowCoupon(false)}
+              >
+                40% 할인 예약 문의하기
+                <Arrow diagonal />
+              </a>
+
+              <p className="hu-coupon-note">
+                첫 방문 고객 대상 혜택입니다.
+                <br />
+                적용 시술 및 중복 할인 가능 여부는
+                예약 전 확인해 주세요.
+              </p>
+
+              <label className="hu-coupon-hide">
+                <input
+                  type="checkbox"
+                  checked={hideCouponToday}
+                  onChange={(event) =>
+                    setHideCouponToday(
+                      event.target.checked
+                    )
+                  }
+                />
+                오늘 하루 이 팝업 보지 않기
+              </label>
+
+              <button
+                type="button"
+                className="hu-coupon-dismiss"
+                onClick={closeCoupon}
+              >
+                홈페이지 둘러보기
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
